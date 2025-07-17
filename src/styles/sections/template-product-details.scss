@@ -1,0 +1,124 @@
+@use '../variables.scss' as *;
+@use '../ui/typography.scss';
+@use '../mixins/_global-mixins.scss' as *;
+
+.template-product-details__inner-wrapper {
+    display: flex;
+    flex-direction: column;
+
+    @include break_points($laptop, min) {
+        gap: 40px;
+    }
+
+    @include break_points($laptop) {
+        gap: 20px;
+    }
+}
+
+.template-product-details__title {
+    text-transform: uppercase;
+}
+
+.template-product-details__tabs {
+    display: flex;
+    align-items: flex-start;
+    gap: 35px;
+    max-width: 100%;
+    overflow: auto;
+
+    &::-webkit-scrollbar,
+    &::-webkit-scrollbar-thumb,
+    &::-webkit-scrollbar-track {
+        display: none;
+    }
+}
+
+.template-product-details__tab {
+    padding-bottom: 10px;
+    font-weight: 600;
+    transition: opacity 0.3s;
+    cursor: pointer;
+
+    &:hover {
+        opacity: 0.7;
+    }
+
+    &.active {
+        border-bottom: 3px solid $black;
+    }
+}
+
+.template-product-details__content {
+    display: none;
+    flex-direction: column;
+
+    &.dimensions {
+        @include break_points($laptop, min) {
+            flex-direction: row;
+            align-items: flex-start;
+            gap: 200px;
+        }
+
+        @include break_points($laptop) {
+            flex-direction: column;
+            padding-top: 20px;
+            gap: 80px;
+        }
+    }
+
+    &.manual {
+        * + * {
+            margin-top: 24px;
+        }
+    }
+
+    &.active {
+        display: flex;
+    }
+
+    a {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        width: fit-content;
+    }
+
+    * {
+        font-size: unset !important;
+    }
+}
+
+.template-product-details__dimension-item {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.template-product-details__dimension-title {
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.template-product-details__dimension-parameter {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+
+    @include break_points($laptop, min) {
+        width: 300px;
+    }
+
+    @include break_points($laptop) {
+        width: 100%;
+    }
+
+    span:first-child {
+        font-weight: 700;
+    }
+}
+
+.template-product-details__manual-content {
+    font-weight: 700;
+    text-transform: uppercase;
+}

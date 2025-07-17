@@ -1,0 +1,31 @@
+<style>
+    :root {
+        {% if settings.main_wrapper_width != blank %}
+            --main-wrapper: {{ settings.main_wrapper_width }}px;
+        {% endif %}
+
+        {% if settings.form_text_color != blank %}
+            --form-text-color: {{ settings.form_text_color }};
+        {% else %}
+            --form-text-color: black;
+        {% endif %}
+
+        {% if settings.body_bg_color != blank %}
+            --bg-body-color: {{ settings.body_bg_color }};
+        {% else %}
+            --bg-body-color: white;
+        {% endif %}
+
+        {% if settings.body_text_color != blank %}
+            --body-text-color: {{ settings.body_text_color }};
+        {% else %}
+            --body-text-color: black;
+        {% endif %}  
+    }   
+    a {
+        {% if settings.body_link_color != blank %}
+            color: {{ settings.body_link_color }};
+        {% endif %}
+    }
+    
+</style>

@@ -1,0 +1,244 @@
+/*!**********************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].use[3]!./src/styles/sections/template-404.scss ***!
+  \**********************************************************************************************************************************************************************************************************************************/
+/* ==================================================== ADAPTIVE =================================================== */
+/* ===================================================== FONTS ===================================================== */
+/* ===================================================== COLORS ==================================================== */
+/* ====================================================== FORM ===================================================== */
+.drop {
+  position: relative;
+}
+@media screen and (max-width: 1199px) {
+  .drop {
+    padding: 25px 0;
+  }
+}
+
+.drop__btn {
+  display: inline-flex;
+  align-items: center;
+  background-color: transparent;
+  cursor: pointer;
+  color: var(--body-text-color);
+}
+@media screen and (max-width: 767px) {
+  .drop__btn {
+    width: 100%;
+    justify-content: space-between;
+  }
+}
+
+.drop__btn_text {
+  font-size: 18px;
+  font-weight: 700;
+  color: inherit;
+  text-transform: uppercase;
+  transition: color 0.3s ease;
+}
+@media screen and (min-width: 1200px) {
+  .header__wrapper--mod .drop__btn_text {
+    color: #FFFFFF;
+  }
+  .header--scroll_state .header__wrapper--mod .drop__btn_text {
+    color: var(--body-text-color);
+  }
+}
+@media (max-width: 1199px) and (min-width: 768px) {
+  .drop__btn:hover .drop__btn_text {
+    color: #690BA7;
+  }
+}
+
+.drop__btn_icon {
+  display: block;
+  width: 20px;
+  height: 20px;
+  transition: transform 0.5s ease, color 0.3s ease;
+  margin-left: 10px;
+}
+.active .drop__btn_icon {
+  transform: rotate(180deg);
+}
+@media screen and (min-width: 1200px) {
+  .drop__btn:hover .drop__btn_icon {
+    transform: rotate(180deg);
+  }
+}
+@media (max-width: 1199px) and (min-width: 768px) {
+  .drop__btn:hover .drop__btn_icon {
+    color: #690BA7;
+  }
+}
+@media screen and (min-width: 1200px) {
+  .header__wrapper--mod .drop__btn_icon {
+    color: #FFFFFF;
+  }
+  .header--scroll_state .header__wrapper--mod .drop__btn_icon {
+    color: var(--body-text-color);
+  }
+}
+
+.drop_menu {
+  transition: max-height 0.5s ease;
+  overflow: hidden;
+}
+@media screen and (min-width: 1200px) {
+  .drop_menu {
+    z-index: 1;
+    position: absolute;
+    top: calc(100% - 1px);
+    left: 0;
+    width: 180px;
+    opacity: 0;
+    pointer-events: none;
+    background-color: #FFFFFF;
+    box-shadow: 0px 1px 14px 2px rgba(76, 89, 119, 0.3);
+    overflow: hidden;
+    transition: all 0.15s ease-out;
+  }
+}
+@media screen and (max-width: 1199px) {
+  .drop_menu {
+    max-height: 0;
+  }
+}
+@media screen and (min-width: 1200px) {
+  .active .drop_menu, .drop:hover .drop_menu {
+    opacity: 1;
+    pointer-events: auto;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .drop_menu__list {
+    padding: 18px 10px;
+  }
+}
+@media screen and (max-width: 1199px) {
+  .drop_menu__list {
+    padding-top: 18px;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .drop_menu__item:not(:last-child) {
+    margin-bottom: 14px;
+  }
+}
+@media screen and (max-width: 1199px) {
+  .drop_menu__item:not(:last-child) {
+    margin-bottom: 21px;
+  }
+}
+
+.drop_menu__link {
+  font-size: 18px;
+  font-style: normal;
+  color: #000000;
+  transition: opacity 0.3s ease;
+}
+@media screen and (min-width: 1200px) {
+  .drop_menu__link:hover {
+    opacity: 0.6;
+  }
+}
+
+.template-404 {
+  padding: 0 var(--gl-indent);
+}
+
+@media screen and (min-width: 768px) {
+  .template-404__container {
+    border-left: 3px solid #E1DACD;
+    border-right: 3px solid #E1DACD;
+    max-width: 1085px;
+    margin: 0 auto;
+  }
+}
+
+.template-404__title {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+  max-width: 330px;
+  margin: 0 auto 35px;
+}
+@media screen and (min-width: 768px) {
+  .template-404__title {
+    margin: 0 auto 5px;
+  }
+}
+@media screen and (min-width: 1200px) {
+  .template-404__title {
+    max-width: 512px;
+  }
+}
+.template-404__title span {
+  font-size: 130px;
+  font-weight: 800;
+  color: #000000;
+  text-transform: uppercase;
+}
+@media screen and (min-width: 1200px) {
+  .template-404__title span {
+    font-size: 237px;
+  }
+}
+
+.template-404__svg {
+  height: 186px;
+  width: 130px;
+  color: #000000;
+  position: relative;
+}
+
+.template-404__svg_splinter {
+  position: absolute;
+  top: 42px;
+  right: 0;
+  width: 64px;
+}
+.template-404__svg_splinter path {
+  fill: var(--bg-body-color);
+}
+
+.template-404__description {
+  text-align: center;
+  font-size: 22px;
+  font-weight: 500;
+  line-height: 1.45;
+  margin-bottom: 35px;
+}
+@media screen and (min-width: 768px) {
+  .template-404__description {
+    max-width: 700px;
+    margin: 0 auto 50px;
+  }
+}
+
+.template-404__buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+@media screen and (min-width: 768px) {
+  .template-404__buttons {
+    flex-direction: row;
+    gap: 28px;
+    max-width: 590px;
+    margin: 0 auto;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .template-404__home-button,
+  .template-404__collection-button {
+    width: 50%;
+  }
+}
+@media screen and (max-width: 767px) {
+  .template-404__home-button,
+  .template-404__collection-button {
+    justify-content: center;
+  }
+}

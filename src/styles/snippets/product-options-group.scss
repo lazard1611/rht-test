@@ -1,0 +1,37 @@
+@use '../variables.scss' as *;
+@use '../mixins/_global-mixins.scss' as *;
+
+.product-options-group {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+
+    @include break_points($laptop) {
+        display: none;
+    }
+}
+
+.product-options-group__group-title {
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.product-options-group__options-list {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.product-options-group__option {
+    padding: 12px 20px;
+    border: 1px solid $black;
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 24px;
+    background-color: transparent;
+    cursor: pointer;
+
+    &.active {
+        background-color: $brown_light;
+    }
+}

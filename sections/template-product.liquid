@@ -1,0 +1,221 @@
+<link rel="stylesheet" href="{{ "template-product.css" | asset_url }}">
+
+{% assign selectCollection = "" %}
+{% assign inventoryList = "" %}
+
+{% for collection in product.collections %}
+    {% unless collection.handle contains "all" or collection.handle contains "sale" %}
+        {% assign selectCollection = collection %}
+        {% break %}
+    {% endunless %}
+{% endfor %}
+
+{% if selectCollection == blank %}
+    {% assign selectCollection = product.collections[0] %}
+{% endif %}
+
+{% for variant in product.variants %}
+    {% if variant.inventory_policy == "deny" %}
+        {% assign inventoryList = inventoryList | append: variant.inventory_quantity | append: " | " %}
+    {% else %}
+        {% assign inventoryList = inventoryList | append: "undefined" | append: " | " %}
+    {% endif %}
+{% endfor %}
+
+<script>
+    window.localStorage.setItem("activeVariant", '{{ product.first_available_variant | json }}')
+    window.localStorage.setItem("productVariants", '{{ product.variants | json }}')
+    window.localStorage.setItem("inventoryList", '{{ inventoryList }}')
+
+    window.localStorage.setItem("cartButtonTitle", '{{ section.settings.cart_button_title }}')
+    window.localStorage.setItem("cartButtonSuccessTitle", '{{ section.settings.cart_button_success_title }}')
+</script>
+
+
+{% form 'product', product, class: 'template-product__wrapper page_wrap page_wrap--border page_wrap--without-paddings' %}
+    <div class="template-product__gallery-wrapper js-product-animation">
+        <div class="template-product__gallery template-product__gallery--mobile swiper" data-template-product-swiper>
+            <div class="swiper-wrapper ">
+                {% for image in product.media limit: 10 %}
+                    <img 
+                        class="template-product__gallery-image swiper-slide slide js-scale-fade-item"
+                        src="{{ image | image_url }}"
+                        alt=""
+                        width="auto"
+                        height="auto"
+                        loading="lazy"
+                    >
+                {% endfor %}
+            </div>
+
+            <div class="template-product__navigation">
+                {% render "buttons", class: "template-product__button-prev swiper-button-prev", filename: "arrow_left", icon: true %}
+                {% render "buttons", class: "template-product__button-next swiper-button-next", filename: "arrow_right", icon: true %}
+
+                <div class="template-product__swiper-pagination swiper-pagination"></div>
+            </div>
+        </div>
+
+        <div class="template-product__gallery template-product__gallery--desktop">
+            {% for image in product.media %}
+                <div class="template-product__gallery-image-wrapper">
+                    <img 
+                        class="template-product__gallery-image js-scale-fade-item"
+                        src="{{ image | image_url }}"
+                        alt=""
+                        width="auto"
+                        height="auto"
+                        loading="lazy"
+                    >
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <div class="template-product__content-track">
+        <div class="template-product__content js-fade-section">
+            <div class="template-product__content-block">
+                <div class="template-product__header js-fade">
+                    <div class="template-product__markers">
+                        <div class="template-product__collection-name">{{ selectCollection.title }}</div>
+
+                        <div class="template-product__badges">
+                            {% if product.metafields.opk.product_badge == 'Hand picked' %}
+                                <span class="template-product__badge hand_picked">{{ product.metafields.opk.product_badge }}</span>
+
+                            {% elsif product.metafields.opk.product_badge == 'Limited edition' %}
+                                <span class="template-product__badge limited_edition">{{ product.metafields.opk.product_badge }}</span>
+
+                            {% else %}
+                                <span class="template-product__badge sale {% if product.first_available_variant.compare_at_price == blank and product.metafields.opk.product_badge == blank %}hidden{% endif %}" data-template-product-sale-badge-sale>Sale</span>
+
+                            {% endif %}
+                        </div>
+                    </div>
+
+                    <div class="template-product__title-block">
+                        <h1 class="template-product__title">{{ product.title }}</h1>
+
+                        {% if product.content != blank %}
+                            <div class="template-product__description">{{ product.content }}</div>
+                        {% endif %}
+                    </div>
+                </div>
+
+                <div class="template-product__pricing js-fade">
+                    <div class="template-product__prices">
+                        <h4 class="template-product__old-price {% if product.first_available_variant.compare_at_price == blank %}hidden{% endif %}"
+                            data-template-product-compered-price>
+                            {{ product.first_available_variant.compare_at_price | money_without_trailing_zeros | replace: '€', '€ ' }}
+                        </h4>
+
+                        <h4 class="template-product__price" data-template-product-price>
+                            {{ product.first_available_variant.price | money_without_trailing_zeros | replace: '€', '€ ' }}
+                        </h4>
+                    </div>
+
+                    <div class="template-product__delivery-time">
+                        {% if product.metafields.opk.delivery_time != blank %}
+                            {{ product.metafields.opk.delivery_time }}
+
+                        {% elsif section.settings.default_delivery_time != blank %}
+                            {{ section.settings.default_delivery_time }}
+
+                        {% endif %}
+                    </div>
+                </div>
+
+                {% assign first_option = product.options_with_values | first %}
+                {% assign first_option_group_downcase_name = first_option.name | downcase %}
+
+                {% if first_option_group_downcase_name != "title" or product.options_with_values.size > 1 %}
+                    <div class="template-product__controllers js-fade">
+                        {% for option_group in product.options_with_values %}
+                            {% assign option_group_downcase_name = option_group.name | downcase %}
+
+                            {% if option_group_downcase_name != blank and option_group_downcase_name != "title" %}
+                                {% render "product-options-group", option_group: option_group %}
+                                {% render "product-options-select", option_group: option_group %}
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                {% endif %}
+
+                <div class="template-product__buttons js-fade">
+                    {% render "quantity", class: "template-product__quantity-button", default_value: 1, max: product.first_available_variant.inventory_quantity %}
+                    {% render "buttons", title: section.settings.cart_button_title, mobile_title: section.settings.cart_button_title_mobile, class: "template-product__cart-button btn_base_small", attribute: "data-template-product-cart-button" %}
+                    {% render "buttons", class: "template-product__wishlist-button btn_icon", icon: true, filename: "heart" %}
+                </div>
+            </div>
+
+            <div class="template-product__content-block">
+                {% if product.metafields.opk.description != blank %}
+                    <div class="template-product__details js-fade">
+                        <h5 class="template-product__detail-title">{{ section.settings.read_more_title }}</h5>
+                        {{ product.metafields.opk.description | metafield_tag | truncatewords: 20, '...' }}
+                    </div>
+
+                    {% render "buttons", title: section.settings.read_more_button_title, class: "template-product__detail-button btn_base_text", attribute: "data-template-product-details-button", icon: true, filename: "arrow_down" %}
+                {% endif %}
+            </div>
+        </div>
+    </div>
+{% endform %}
+
+<script src="{{ "template-product.js" | asset_url }}" type="module" defer></script>
+
+{% schema %}
+{
+    "name": "Product",
+    "class": "template-product",
+    "tag": "section",
+    "settings": [
+        {
+            "type": "text",
+            "id": "default_delivery_time",
+            "label": "Default delivery time",
+            "default": "delivery time 12-14 weeks"
+        },
+        {
+            "type": "text",
+            "id": "cart_button_title",
+            "label": "Cart button title",
+            "default": "Toevoegen aan winkelwagen"
+        },
+        {
+            "type": "text",
+            "id": "cart_button_title_mobile",
+            "label": "Cart button title (mobile)",
+            "default": "Toevoegen"
+        },
+        {
+            "type": "text",
+            "id": "cart_button_success_title",
+            "label": "Cart button success title",
+            "default": "Product added to cart"
+        },
+        {
+            "type": "text",
+            "id": "read_more_title",
+            "label": "Read more title",
+            "default": "Productgegevens"
+        },
+        {
+            "type": "text",
+            "id": "read_more_button_title",
+            "label": "Read more button title",
+            "default": "Lees meer"
+        }
+    ],
+    "presets": [
+        {
+            "name": "Product"
+        }
+    ],
+    "enabled_on": {
+        "templates": [
+            "product"
+        ]
+    }
+}
+{% endschema %}

@@ -1,0 +1,180 @@
+{% if product.metafields.opk.faq.value != blank %}
+    <link rel="stylesheet" href="{{ "template-product-faq.css" | asset_url }}">
+    {% render "set-sections-paddings", section_data: section, wrapper_class: "template-product-faq__header-wrapper" %}
+    {% render "set-sections-borders", section_data: section, wrapper_class: "template-product-faq__wrapper" %}
+
+    {% if section.settings.title_limits == "true" %}
+        {% assign title_limits = true %}
+    {% endif %}
+
+    <div class="template-product-faq__wrapper">
+        {% render "section-header", section: section, parent_class: "template-product-faq", limits: title_limits, borders: true, button_color: section.settings.button_color %}
+
+        <div class="template-product-faq__content page_wrap page_wrap--border page_wrap--without-paddings js-fade-section">
+            <div class="template-product-faq__list">
+                {% for item in product.metafields.opk.faq.value %}
+                    <div class="dropdown-faq js-fade" data-dropdown="faq" {% if forloop.first %}data-dropdown-first{% endif %} data-dropdown-close-others>
+                        <div class="dropdown-faq__wrapper">
+                            <div class="dropdown-faq__header" data-dropdown-header>
+                                <h5 class="dropdown-faq__title">{{ item.question }}</h5>
+                                <div class="dropdown-faq__arrow">
+                                    {% render "icons", filename: "arrow_down" %}
+                                </div>
+                            </div>
+
+                            <div class="dropdown-faq__content" data-dropdown-content>{{ item.answer }}</div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+
+            <picture class="template-product-faq__image-wrap js-title-section">
+                <img class="template-product-faq__image js-scale-fade-item" src="{{ section.settings.faq_image | image_url }}"
+                    alt=""
+                    width="auto"
+                    height="auto"
+                    loading="lazy"
+                >
+            </picture>            
+        </div>
+    </div>
+
+    <script src="{{ "template-product-faq.js" | asset_url }}" type="module" defer></script>
+{% endif %}
+
+{% schema %}
+{
+    "name": "Product faq",
+    "class": "template-product-faq",
+    "tag": "section",
+    "settings": [
+        {
+            "type": "range",
+            "id": "padding_top",
+            "min": 0,
+            "max": 200,
+            "step": 5,
+            "unit": "px",
+            "label": "Padding top",
+            "default": 0
+        },
+        {
+            "type": "range",
+            "id": "padding_bottom",
+            "min": 0,
+            "max": 200,
+            "step": 5,
+            "unit": "px",
+            "label": "Padding bottom",
+            "default": 0
+        },
+        {
+            "type": "range",
+            "id": "padding_top_mobile",
+            "min": 0,
+            "max": 100,
+            "step": 5,
+            "unit": "px",
+            "label": "Padding top mobile",
+            "default": 0
+        },
+        {
+            "type": "range",
+            "id": "padding_bottom_mobile",
+            "min": 0,
+            "max": 100,
+            "step": 5,
+            "unit": "px",
+            "label": "Padding bottom mobile",
+            "default": 0
+        },
+        {
+            "type": "select",
+            "id": "section_horizontal_borders",
+            "label": "Section horizontal borders",
+            "options": [
+                {
+                    "value": "top",
+                    "label": "Top"
+                },
+                {
+                    "value": "bottom",
+                    "label": "Bottom"
+                },
+                {
+                    "value": "double",
+                    "label": "Double"
+                }
+            ],
+            "default": "top"
+        },
+        {
+            "type": "select",
+            "id": "title_limits",
+            "label": "Title limits",
+            "options": [
+                {
+                    "value": "true",
+                    "label": "True"
+                },
+                {
+                    "value": "false",
+                    "label": "False"
+                }
+            ],
+            "default": "false"
+        },
+        {
+            "type": "select",
+            "id": "button_color",
+            "label": "Button color",
+            "options": [
+                {
+                    "value": "btn_base_brown",
+                    "label": "Brown"
+                },
+                {
+                    "value": "btn_base",
+                    "label": "Base"
+                }
+            ],
+            "default": "btn_base"
+        },
+        {
+            "type": "text",
+            "id": "title",
+            "label": "Title"
+        },
+        {
+            "type": "text",
+            "id": "description",
+            "label": "Description"
+        },
+        {
+            "type": "text",
+            "id": "button_title",
+            "label": "Button title"
+        },
+        {
+            "type": "url",
+            "id": "button_url",
+            "label": "Button url"
+        },
+        {
+            "type": "image_picker",
+            "id": "faq_image",
+            "label": "Faq image"
+        }
+    ],
+    "presets": [
+        {
+            "name": "Product faq"
+        }
+    ],
+    "enabled_on": {
+        "templates": [
+            "product"
+        ]
+    }
+}
+{% endschema %}

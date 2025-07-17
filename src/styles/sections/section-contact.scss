@@ -1,0 +1,205 @@
+@use '../variables.scss' as *;
+@use '../mixins/_global-mixins.scss' as *;
+@use '../mixins/buttons.scss' as *;
+@use '../mixins/typography.scss';
+@use '../snippets/success-popup.scss';
+
+.contact__wrap {
+    .section-header__title {
+        @include break_points($tablet) {
+            font-size: 50px;
+            line-height: 0.8;
+        }
+    }
+}
+
+.contact__header-wrapper {
+    padding-bottom: 30px;
+
+    .section-header__title {
+        text-transform: uppercase;
+    }
+
+    @include break_points($tablet, min) {
+        padding-top: 25px;
+    }
+
+    @include break_points($tablet) {
+        padding-top: 40px;
+    }
+}
+
+.contact__blocks {
+    display: flex;
+    // align-items: center;
+
+    @include break_points($tabletXl) {
+        flex-direction: column;
+    }
+}
+
+.contact__block {
+    &.contact__block--pic {
+        @include break_points($tabletXl, min) {
+            width: 47.8%;
+        }      
+
+        @include break_points($tablet) {
+            padding: 25px var(--gl-indent);
+        }
+    }
+
+    &.contact__block--form {
+        @include break_points($tabletXl, min) {
+            width: 52.2%;
+        }        
+
+        @include break_points($tablet) {
+            padding: 0 var(--gl-indent) 35px;
+        }
+    }
+
+    @include break_points($tablet, min) {
+        padding: 35px 34px;
+    }
+}
+
+.contact__pic {
+    display: block;
+
+    @include break_points($tablet, min) {
+        aspect-ratio: 708/665;
+    }
+
+    @include break_points($tablet) {
+        aspect-ratio: 345/305;
+    }
+}
+
+.contact__img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.contact__form_title {
+    text-transform: uppercase;
+    font-size: 32px;
+
+    &:not(:last-child) {
+        @include break_points($tablet, min) {
+            margin-bottom: 36px;
+        }
+
+        @include break_points($tablet) {
+            margin-bottom: 20px;
+        }
+    }
+}
+
+.contact__form_description {
+    p:not(:last-child) {
+        margin-bottom: 22px;
+    }
+
+    &:not(:last-child) {
+        @include break_points($tablet, min) {
+            margin-bottom: 40px;
+        }
+
+        @include break_points($tablet) {
+            margin-bottom: 16px;
+        }
+    }
+
+    @include break_points($tablet) {
+        line-height: 1.27;
+    }
+}
+
+.contact__form_description_grid {
+    display: grid;
+
+    &:not(:last-child) {
+        margin-bottom: 37px;
+    }
+
+    @include break_points($laptop, min) {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 46px;
+    }
+
+    @include break_points($laptop) {
+        margin-bottom: 20px;
+        gap: 21px;
+    }
+}
+
+.contact__form_description_item {
+    font-size: 20px;
+
+    p:not(:last-child) {
+        @include break_points($tablet, min) {
+            margin-bottom: 25px;
+        }
+
+        @include break_points($tablet) {
+            margin-bottom: 20px;
+        }
+    }
+}
+
+.contact__form {
+    display: grid;
+    column-gap: 44px;
+
+    @include break_points($laptop, min) {
+        grid-template-columns: repeat(2, 1fr);
+        row-gap: 24px;
+    }
+
+    @include break_points($laptop) {
+        row-gap: 33px;
+    }
+}
+
+.contact__form_textarea {
+    @include break_points($laptop, min) {
+        grid-column: 1/3;
+    }
+}
+
+.contact__form_consent {
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+    font-weight: 400;
+    flex-wrap: wrap;
+    gap: 10px;
+
+    @include break_points($laptop, min) {
+        grid-column: 1/3;
+    }
+}
+
+.contact__form_consent_link {
+    @include link_hover;
+
+    & {        
+        color: $black;
+    }
+}
+
+.contact__form_btn_wrap {
+    @include break_points($laptop, min) {
+        grid-column: 1/3;
+    }
+}
+
+.contact__form_btn {
+    @include break_points($tablet, min) {
+        min-width: 345px;
+    }
+}
+

@@ -1,0 +1,17 @@
+@use '../variables.scss' as *;
+@use '../mixins/_global-mixins.scss' as *;
+@use '../snippets/portfolio-products.scss';
+@use '../snippets/portfolio-richtext.scss';
+@use '../snippets/portfolio-parameters.scss';
+@use '../snippets/portfolio-video.scss';
+@use '../snippets/portfolio-content-block.scss';
+@use '../snippets/product-card.scss';
+
+.template-portfolio-content__wrapper {
+    display: flex;
+    flex-direction: column;
+}
+
+.portfolio-parameters {
+    order: 1;
+}

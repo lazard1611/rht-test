@@ -1,0 +1,33 @@
+{% assign option_group_downcase_name = optionGroup.name | downcase %}
+{% assign position_index = option_group.position | minus: 1 %}
+
+<div class="product-option-select"
+    data-product-options-select="{{ option_group_downcase_name }}"
+    data-product-option-position="{{ position_index }}"
+    data-product-options
+>
+    <div class="product-option-select__select-wrapper">
+        <div class="product-option-select__active-option" data-product-options-select-active>
+            <span data-product-options-select-active-title>
+                {% for option in option_group.values %}
+                    {% if product.first_available_variant.options[position_index] == option %}
+                        {{ option }}
+                    {% endif %}
+                {% endfor %}
+            </span>
+
+            <div class="product-option-select__arrow">
+                {% render "icons", filename: "arrow_down" %}
+            </div>
+        </div>
+
+        <ul class="product-option-select__options">
+            {% for option in option_group.values %}
+                <li class="product-option-select__option {% if product.first_available_variant.options[position_index] == option %}active{% endif %}"
+                    data-product-option="{{ option }}">
+                    {{ option }}
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>

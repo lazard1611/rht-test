@@ -1,0 +1,34 @@
+<div class="portfolio-video js-fade-section">
+    <div class="portfolio-video__inner-wrapper js-fade page_wrap page_wrap--border">
+        {% if article.metafields.opk.portfolio_video.value.video != blank %}
+            <div class="portfolio-video__video-wrapper" data-portfolio-video-wrapper>
+                <video data-new-colection-video class="portfolio-video__video" muted loop playsinline
+                       crossOrigin="anonymous" data-portfolio-video>
+                    <source src="{{ article.metafields.opk.portfolio_video.value.video | file_url }}" type="video/mp4"/>
+                </video>
+
+                <div class="portfolio-video__play-button" data-portfolio-play-button>
+                    <svg class="portfolio-video__play-button-icon" width="27" height="32" viewBox="0 0 27 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M26.625 16.0007C26.626 16.4039 26.5226 16.8005 26.3249 17.1519C26.1272 17.5033 25.842 17.7976 25.4969 18.0061L4.11 31.0894C3.74942 31.3102 3.33644 31.4307 2.91371 31.4386C2.49098 31.4464 2.07382 31.3412 1.70531 31.1339C1.34032 30.9299 1.03627 30.6323 0.824431 30.2717C0.612592 29.9112 0.50061 29.5007 0.5 29.0825V2.91894C0.50061 2.50077 0.612592 2.09031 0.824431 1.72977C1.03627 1.36923 1.34032 1.07161 1.70531 0.867538C2.07382 0.660243 2.49098 0.555079 2.91371 0.562907C3.33644 0.570736 3.74942 0.691273 4.11 0.912069L25.4969 13.9953C25.842 14.2039 26.1272 14.4981 26.3249 14.8495C26.5226 15.201 26.626 15.5975 26.625 16.0007Z" fill="black"/>
+                    </svg>
+                </div>
+            </div>
+
+        {% elsif article.metafields.opk.portfolio_video.value.image != blank %}
+            <div class="portfolio-video__image-wrapper">
+                <img class="portfolio-video__image"
+                     src="{{ article.metafields.opk.portfolio_video.value.image | image_url }}"
+                     alt=""
+                     width="auto"
+                     height="auto"
+                     loading="lazy"
+                >
+            </div>
+
+        {% endif %}
+
+        <div class="portfolio-video__description base_richtext normal">
+            {{ article.metafields.opk.portfolio_video.value.description | metafield_tag }}
+        </div>
+    </div>
+</div>

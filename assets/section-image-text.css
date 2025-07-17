@@ -1,0 +1,104 @@
+/*!****************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].use[3]!./src/styles/sections/section-image-text.scss ***!
+  \****************************************************************************************************************************************************************************************************************************************/
+/* ==================================================== ADAPTIVE =================================================== */
+/* ===================================================== FONTS ===================================================== */
+/* ===================================================== COLORS ==================================================== */
+/* ====================================================== FORM ===================================================== */
+.image_text__grid {
+  display: grid;
+}
+@media screen and (min-width: 1024px) {
+  .image_text__grid:not(.image_text__grid--column_mod) {
+    grid-template-columns: 0.85fr 1fr;
+  }
+}
+@media screen and (min-width: 1024px) {
+  .image_text__grid.image_text__grid--column_mod {
+    grid-template-columns: 2fr 1fr 1fr;
+  }
+}
+@media screen and (max-width: 1023px) {
+  .image_text__grid {
+    border: none !important;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .image_text__grid--border_mod .image_text__grid_item:not(:last-child):not(:has(.image_text__description)) {
+    border-right: 3px solid #E1DACD;
+  }
+}
+@media screen and (max-width: 1023px) {
+  .image_text__grid--border_mod .image_text__grid_item:not(:last-child):not(:has(.image_text__description)) {
+    border-bottom: 3px solid #E1DACD;
+  }
+}
+@media screen and (max-width: 767px) {
+  .image_text__grid_item.image_text__grid_item--desctop {
+    display: none;
+  }
+}
+@media screen and (min-width: 768px) {
+  .image_text__grid_item.image_text__grid_item--mobile {
+    display: none;
+  }
+}
+@media screen and (max-width: 767px) {
+  .image_text__grid_item:has(.image_text__description) {
+    order: -1;
+  }
+}
+@media screen and (max-width: 767px) {
+  .image_text__grid--column_mod .image_text__grid_item:has(.image_text__description) {
+    order: 0;
+  }
+}
+@media screen and (min-width: 1024px) {
+  .image_text__grid_item {
+    padding: 35px;
+  }
+}
+@media (max-width: 1023px) and (min-width: 768px) {
+  .image_text__grid_item {
+    padding: 15px 35px;
+  }
+}
+@media screen and (max-width: 767px) {
+  .image_text__grid_item {
+    padding: 15px var(--gl-indent);
+  }
+}
+
+.image_text__pic {
+  display: block;
+}
+.image_text__pic:nth-child(2) {
+  aspect-ratio: 381/413;
+}
+.image_text__pic.image_text__pic--border_mod {
+  border: 1px solid #000000;
+}
+
+.image_text__img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.image_text__description {
+  line-height: 1.27;
+}
+.image_text__description p:not(:last-child) {
+  margin-bottom: 28px;
+}
+.image_text__description h4:not(:last-child) {
+  margin-bottom: 0.4em;
+}
+@media screen and (min-width: 1024px) {
+  .image_text__description:not(.image_text__grid--column_mod .image_text__description) {
+    padding-top: 46px;
+  }
+}

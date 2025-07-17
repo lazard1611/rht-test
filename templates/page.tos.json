@@ -1,0 +1,23 @@
+{
+  "sections": {
+    "section-tos": {
+      "type": "section-tos",
+      "settings": {
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "padding_top_mobile": 0,
+        "padding_bottom_mobile": 0,
+        "section_horizontal_borders": "double",
+        "button_color": "btn_base",
+        "title": "Algemene voorwaarden",
+        "description": "",
+        "button_title": "",
+        "button_title_mob": "",
+        "button_url": ""
+      }
+    }
+  },
+  "order": [
+    "section-tos"
+  ]
+}

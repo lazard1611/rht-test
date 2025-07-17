@@ -1,0 +1,104 @@
+<link rel="stylesheet" href="{{ 'ui-components.css' | asset_url }}">
+
+<div class="page_wrap page_wrap--border">
+    <div class="ui_components__block">
+        <div class="ui_components__title">Typography</div>
+        <div class="ui_components__row">
+            <div class="ui_components__item">
+                <h1 class="h1">H1</h1>
+                <h2 class="h2">H2</h2>
+                <h3 class="h3">H3</h3>
+                <h4 class="h4">H4</h4>
+                <h5>H5</h5>
+                <h6>H6</h6>
+            </div>            
+        </div>
+    </div>
+    <div class="ui_components__block">
+        <div class="ui_components__title">Buttons</div>
+        <div class="ui_components__row">
+            <div class="ui_components__item">
+                {% render 'buttons',
+                    title: 'btn_base',
+                    class: 'btn_base',
+                    icon: true
+                %}                
+            </div>
+            <div class="ui_components__item">
+                {% render 'buttons',
+                    title: 'btn_base_brown',
+                    class: 'btn_base_brown',
+                    icon: true
+                %}                
+            </div>
+            <div class="ui_components__item">
+                {% render 'buttons',
+                    title: 'btn_base_transparent',
+                    class: 'btn_base_transparent',
+                    icon: true
+                %}                
+            </div>
+            <div class="ui_components__item">
+                {% render 'buttons',
+                    title: 'btn_base_with_bg',
+                    class: 'btn_base_with_bg',
+                    icon: true
+                %}                
+            </div>
+        </div>
+    </div>
+    <div class="ui_components__block">
+        <div class="ui_components__title">Form</div>
+        <div class="ui_components__row"> 
+            <div class="ui_components__item">
+                <div class="form_el">
+                    <input type="text" class="form_el__input js-input-field">           
+                    <label class="form_el__label">First Name</label>
+                </div>
+            </div>  
+            
+            <div class="ui_components__item">
+                {% render 'default-checkbox',
+                    label: 'Label text'
+                %}
+            </div>
+
+            <div class="ui_components__item">
+                {% render 'default-checkbox',
+                    label: 'Label text',
+                    mod: true,
+                %}
+            </div>
+        </div>
+    </div>
+    <div class="ui_components__block">
+        <div class="ui_components__title">Qantity</div>
+        <div class="ui_components__row">
+            <div class="ui_components__item">
+                {% render 'quantity' %}  
+            </div>            
+        </div>
+    </div>
+</div>
+
+<script type="module" src="{{ 'ui-components.js' | asset_url }}"></script>
+
+{% schema %}
+    {
+        "name": "UI componens",
+        "class": "ui_components",
+        "tag": "section",
+        "settings": [
+            	
+        ],
+
+        "presets": [
+            {
+                "name": "UI componens",
+                "settings": {
+
+                }
+            }
+        ]
+    }
+{% endschema %}

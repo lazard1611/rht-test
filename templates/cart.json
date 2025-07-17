@@ -1,0 +1,48 @@
+{
+  "sections": {
+    "template-cart": {
+      "type": "template-cart",
+      "settings": {
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "padding_top_mobile": 0,
+        "padding_bottom_mobile": 0,
+        "section_horizontal_borders": "top",
+        "title": "Winkelwagen",
+        "cart_line_item_remove_btn_text": "Verwijderen",
+        "subtotal_title": "Subtotaal",
+        "cart_note_placeholder": "Uw bericht",
+        "cart_btn_back_to_shop_title": "Verder winkelen",
+        "cart_btn_back_to_shop_url": "shopify:\/\/collections",
+        "cart_btn_checkout_title": "Doorgaan naar afrekenen",
+        "empty_block_title": "Winkelwagen",
+        "empty_block_description": "<p>je mandje is leeg<\/p>",
+        "empty_block_home_btn_title": "Ga naar de startpagina",
+        "empty_block_home_btn_url": "",
+        "empty_block_collection_btn_title": "Bekijk verzamelpagina",
+        "empty_block_collection_btn_url": "shopify:\/\/collections\/all"
+      }
+    },
+    "section_related_products_H9cqhK": {
+      "type": "section-related-products",
+      "settings": {
+        "padding_top": 200,
+        "padding_bottom": 20,
+        "padding_top_mobile": 60,
+        "padding_bottom_mobile": 20,
+        "section_horizontal_borders": "top",
+        "title_limits": "false",
+        "button_color": "btn_base",
+        "title": "Essentiële producten",
+        "description": "",
+        "button_title": "Bekijk onze producten",
+        "button_title_mob": "Onze producten",
+        "button_url": "shopify:\/\/collections\/all",
+        "collection": "all"
+      }
+    }
+  },
+  "order": [
+    "template-cart"
+  ]
+}

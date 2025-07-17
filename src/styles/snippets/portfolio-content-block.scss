@@ -1,0 +1,325 @@
+@use '../variables.scss' as *;
+@use '../mixins/_global-mixins.scss' as *;
+
+.portfolio-content-block {
+    border-bottom: 3px solid $brown_light;
+    max-height: fit-content;
+
+    @include break_points($laptop, min) {
+        display: grid;
+        grid-template-rows: 1fr;
+    }
+
+    @include break_points($laptop) {
+        display: flex;
+        flex-direction: column-reverse;
+    }
+
+    .portfolio-content-block__image-wrapper:first-child {
+        border-bottom: 0;
+    }
+
+    &.text-image,
+    &.text-large-image {
+        &.left .portfolio-content-block__content-item {
+            @include break_points($laptop, min) {
+                &:first-child {
+                    border-right: 3px solid $brown_light;
+                }
+            }
+        }
+
+        &.right .portfolio-content-block__content-item {
+            @include break_points($laptop, min) {
+                &:first-child {
+                    border-left: 3px solid $brown_light;
+                }
+            }
+        }
+    }
+
+    &.text-image-image,
+    &.image-image-undertext,
+    &.image-text-image-undertext {
+        &.left .portfolio-content-block__content-item {
+            @include break_points($laptop, min) {
+                &:nth-child(2) {
+                    border-right: 3px solid $brown_light;
+                    border-left: 3px solid $brown_light;
+                }
+            }
+        }
+
+        &.right .portfolio-content-block__content-item {
+            @include break_points($laptop, min) {
+                &:nth-child(2) {
+                    border-right: 3px solid $brown_light;
+                    border-left: 3px solid $brown_light;
+                }
+            }
+        }
+    }
+
+    &.text-image {
+        &.left {
+            @include break_points($desktop, min) {
+                grid-template-columns: 26.3% auto;
+            }
+
+            @include break_points($desktop, $laptop) {
+                grid-template-columns: 36.3% auto;
+            }
+        }
+
+        &.right {
+            @include break_points($desktop, min) {
+                grid-template-columns: auto 26.3%;
+            }
+
+            @include break_points($desktop, $laptop) {
+                grid-template-columns: auto 36.3%;
+            }
+
+            @include break_points($laptop, min) {
+                .portfolio-content-block__image {
+                    order: 1;
+                }
+
+                .portfolio-content-block__content {
+                    order: 2;
+                }
+            }
+        }
+
+        .portfolio-content-block__content {
+            justify-content: flex-end;
+        }
+    }
+
+    &.text-large-image {
+        &.left {
+            @include break_points($laptop, min) {
+                grid-template-columns: 45.8% auto;
+            }
+        }
+
+        &.right {
+            @include break_points($laptop, min) {
+                grid-template-columns: auto 45.8%;
+
+                .portfolio-content-block__image-wrapper {
+                    order: 1;
+                }
+
+                .portfolio-content-block__content {
+                    order: 2;
+                }
+            }
+        }
+
+        .portfolio-content-block__content {
+            justify-content: flex-end;
+        }
+    }
+
+    &.text-image-image {
+        &.left {
+            @include break_points($laptop, min) {
+                grid-template-columns: 26.2% 28% auto;
+            }
+        }
+
+        &.right {
+            @include break_points($laptop, min) {
+                grid-template-columns: auto 28% 26.2%;
+
+                .portfolio-content-block__image-wrapper {
+                    &.first {
+                        order: 1;
+                    }
+
+                    &.second {
+                        order: 2;
+                    }
+                }
+
+                .portfolio-content-block__content {
+                    order: 3;
+                    border-left: 3px solid $brown_light;
+                }
+            }
+        }
+
+        .portfolio-content-block__content {
+            justify-content: flex-end;
+        }
+    }
+
+    &.image-image-undertext {
+        &.left {
+            @include break_points($desktop, min) {
+                grid-template-columns: auto 26.5% 28%;
+            }
+
+            @include break_points($desktop, $laptop) {
+                grid-template-columns: auto 24% 28%;
+            }
+
+            @include break_points($laptop, min) {
+                .portfolio-content-block__image-wrapper {
+                    &.first {
+                        order: 3;
+                    }
+
+                    &.second {
+                        order: 1;
+                    }
+                }
+
+                .portfolio-content-block__empty-block:nth-child(2) {
+                    border-left: 3px solid $brown_light;
+                    border-right: none;
+                    order: 2;
+                }
+            }
+        }
+
+        &.right {
+            @include break_points($desktop, min) {
+                grid-template-columns: 28% 26.5% auto;
+            }
+
+            @include break_points($desktop, $laptop) {
+                grid-template-columns: 28% 24% auto;
+            }
+
+            .portfolio-content-block__content-item:nth-child(2) {
+                border-left: none;
+                border-right: 3px solid $brown_light;
+            }
+        }
+
+        .portfolio-content-block__image-wrapper {
+            &.first {
+                @include break_points($laptop, min) {
+                    border: none;
+                    justify-content: flex-end;
+                }
+            }
+        }
+    }
+
+    &.image-text-image-undertext {
+        &.left {
+            @include break_points($laptop, min) {
+                grid-template-columns: auto 26.5% 28%;
+            }
+        }
+
+        &.right {
+            @include break_points($laptop, min) {
+                grid-template-columns: 28% 26.5% auto;
+
+                .portfolio-content-block__image-wrapper {
+                    &.first {
+                        order: 3;
+                    }
+
+                    &.second {
+                        order: 1;
+                    }
+                }
+
+                .portfolio-content-block__content {
+                    order: 2;
+                    border-left: 3px solid $brown_light;
+                }
+            }
+        }
+
+        .portfolio-content-block__content {
+            @include break_points($laptop) {
+                border-bottom: 3px solid $brown_light;
+            }
+        }
+    }
+}
+
+.portfolio-content-block__content,
+.portfolio-content-block__image-wrapper {
+    @include break_points($laptop, min) {
+        padding-top: 35px;
+        padding-bottom: 35px;
+    }
+
+    @include break_points($laptop) {
+        padding-top: 25px;
+        padding-bottom: 25px;
+    }
+}
+
+.portfolio-content-block__content {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.portfolio-content-block__undertext {
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 28px;
+}
+
+.portfolio-content-block__image-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+    height: 100%;
+
+    @include break_points($laptop) {
+        border-bottom: 3px solid $brown_light;
+    }
+}
+
+.portfolio-content-block__image {
+    width: 100%;
+    height: fit-content;
+    object-fit: cover;
+    object-position: center;
+
+    @include break_points($laptop) {
+        aspect-ratio: 345 / 242;
+    }
+
+    &.large {
+        @include break_points($laptop, min) {
+            aspect-ratio: 810 / 716;
+        }
+    }
+
+    &.panoramic {
+        @include break_points($laptop, min) {
+            aspect-ratio: 1127 / 600;
+        }
+    }
+
+    &.large-half {
+        @include break_points($laptop, min) {
+            aspect-ratio: 676 / 789;
+        }
+    }
+
+    &.square {
+        @include break_points($laptop, min) {
+            aspect-ratio: 629 / 716;
+            max-height: 716px;
+        }
+    }
+
+    &.small {
+        @include break_points($laptop, min) {
+            aspect-ratio: 381 / 413;
+        }
+    }
+}

@@ -1,0 +1,187 @@
+@use '../variables.scss' as *;
+@use '../mixins/_global-mixins.scss' as *;
+@use '../snippets/product-card.scss';
+
+.section-about-furniture__header {
+    border-bottom: 3px solid $brown_light;
+
+    .section-header__title {
+        max-width: 1200px;
+    }
+}
+
+.section-about-furniture__grid {
+    display: grid;
+
+    @include break_points(1800px, min) {
+        grid-template-columns: auto 31% 26%;
+    }
+
+    @include break_points(1800px, $desktop) {
+        grid-template-columns: 38% repeat(2, 1fr);
+    }
+
+    @include break_points($desktop, $laptop) {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    @include break_points($laptop) {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+.section-about-furniture__grid-item {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;    
+    border-bottom: 3px solid $brown_light;
+
+    @include break_points(1800px, min) {
+        align-items: flex-start;
+        padding: 30px 30px 90px;
+        border-bottom: none;
+
+        &:nth-child(3),
+        &:nth-child(6) {
+            border-right: none;
+        }
+
+        &:nth-child(4) {
+            justify-content: flex-start;
+        }
+
+        &:first-child .section-about-furniture__product {
+            max-width: none;
+        }
+    }
+
+    @include break_points(1800px, $desktop) {
+        align-items: flex-start;
+        padding: 25px 25px 70px;
+        border-bottom: none;
+
+        &:nth-child(4) {
+            justify-content: flex-start;
+        }
+
+        &:nth-child(4),
+        &:nth-child(5),
+        &:nth-child(6) {
+            border-bottom: none;
+        }
+
+        &:nth-child(3),
+        &:nth-child(6) {
+            border-right: none;
+        }
+
+        &:first-child .section-about-furniture__product {
+            max-width: none;
+        }
+    }
+
+    @include break_points($desktop, $laptop) {
+        padding: 25px;
+
+        &:nth-child(3),
+        &:nth-child(6) {
+            border-right: none;
+        }
+
+        &:nth-child(4),
+        &:nth-child(5),
+        &:nth-child(6) {
+            border-bottom: none;
+        }
+    }
+
+    @include break_points($laptop, $tabletXl) {
+        padding: 20px 15px;
+
+        &:nth-child(2),
+        &:nth-child(4),
+        &:nth-child(6) {
+            border-right: none;
+        }
+
+        &:nth-child(5),
+        &:nth-child(6) {
+            border-bottom: none;
+        }
+    }
+
+    @include break_points($tabletXl) {
+        padding: 20px 15px;
+
+        &:nth-child(2),
+        &:nth-child(4) {
+            border-right: 3px solid $brown_light;
+        }
+
+        &:first-child,
+        &:last-child {
+            grid-column: 1 / 3;
+        }
+
+        &:last-child {
+            border: none;
+        }
+    }
+
+    @include break_points($tabletXl, min) {
+        border-right: 3px solid $brown_light;
+    }
+}
+
+.section-about-furniture {
+    .product-card {
+        &:first-child {
+            @include break_points($laptop) {
+                .product-card__image-wrapper {
+                    max-height: 600px;
+                }
+
+                .product-card__image {
+                    aspect-ratio: 345/ 462;
+                }
+            }
+        }
+    }
+}
+
+.section-about-furniture__wrapper {
+    @include break_points($tabletXl) {
+        border-bottom: none!important;
+    }
+}
+
+.section-about-furniture__product {
+    @include break_points($desktop, min) {
+        max-width: 360px;
+    }
+}
+
+.section-about-furniture {
+    .product-card {
+        @include break_points($laptop) {
+            height: 100%;
+        }
+    }
+}
+
+.section-about-furniture__text-block {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+}
+
+.section-about-furniture__text-block-description {
+    line-height: 1.27;
+}
+
+.section-about-furniture__button {
+    @include break_points($laptop, min) {
+        width: fit-content;
+    }
+}

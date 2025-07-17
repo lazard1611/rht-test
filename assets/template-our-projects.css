@@ -1,0 +1,67 @@
+/*!*******************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].use[3]!./src/styles/sections/template-related-projects.scss ***!
+  \*******************************************************************************************************************************************************************************************************************************************/
+/* ==================================================== ADAPTIVE =================================================== */
+/* ===================================================== FONTS ===================================================== */
+/* ===================================================== COLORS ==================================================== */
+/* ====================================================== FORM ===================================================== */
+.template-related-projects__header {
+  border-bottom: 3px solid #E1DACD !important;
+}
+
+@media screen and (min-width: 1024px) {
+  .template-related-projects__content {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media screen and (max-width: 1023px) {
+  .template-related-projects__content {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+.template-related-projects__project-card {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+@media screen and (min-width: 1200px) {
+  .template-related-projects__project-card {
+    padding: 35px;
+    border-right: 3px solid #E1DACD !important;
+  }
+}
+@media screen and (max-width: 767px) {
+  .template-related-projects__project-card {
+    padding: 15px 15px 25px;
+    border-bottom: 3px solid #E1DACD !important;
+  }
+}
+.template-related-projects__project-card:last-child {
+  border: none !important;
+}
+
+.template-related-projects__project-card-image {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: center;
+     object-position: center;
+}
+@media screen and (min-width: 1200px) {
+  .template-related-projects__project-card-image {
+    aspect-ratio: 745/413;
+  }
+}
+@media screen and (max-width: 1199px) {
+  .template-related-projects__project-card-image {
+    aspect-ratio: 345/242;
+  }
+}
+
+.template-related-projects__project-card-title {
+  text-transform: uppercase;
+}

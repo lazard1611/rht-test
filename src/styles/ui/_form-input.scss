@@ -1,0 +1,58 @@
+@use '../variables.scss' as *;
+@use '../mixins/form-input.scss' as *;
+    
+@mixin transformLabel {
+    font-size: 14px;
+    transform: translateY(-70%);
+}
+
+.form_el {
+    position: relative;
+}
+
+.form_el__label {
+    @include form_el_label;
+
+    .fill_state & {
+        @include transformLabel;
+    }
+}
+
+.form_el__input {
+    @include form_el_default;
+}
+
+.form_el__input:focus + .form_el__label {
+    @include transformLabel;
+}
+
+.form_el__btn_show {
+    z-index: 1;
+    position: absolute;
+    top: 50%;
+    right: 12px;
+    width: 26px;
+    height: 26px;
+    cursor: pointer;
+
+    transform: translateY(-50%);
+    transition: color 0.3s ease;
+    color: $black;
+}
+
+.form_el__icon_eye {
+    .hidden_state & {
+        display: none;
+    }
+}
+
+.error_message {
+    margin-top: 5px;
+    font-size: 12px;
+    color: $red;
+    display: none;
+
+    .error & {
+        display: block;
+    }
+}

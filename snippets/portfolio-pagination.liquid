@@ -1,0 +1,51 @@
+<div class="portfolio-pagination {{ class }}">
+    <div class="portfolio-pagination__title portfolio-pagination__pagination-item">{{ pagination_info_text }}</div>
+
+    {% if paginate.previous != blank %}
+        <a class="portfolio-pagination__controller prev portfolio-pagination__pagination-item"
+           href="{{ paginate.previous.url }}">
+            <span class="portfolio-pagination__controller-icon">
+                {% render "icons", filename: "chevron_left" %}
+            </span>
+            <span class="portfolio-pagination__controller-title">{{ pagination_prev_btn_title }}</span>
+        </a>
+    {% endif %}
+
+    <div class="portfolio-pagination__select"
+         data-portfolio-blogs-select>
+        <div class="portfolio-pagination__select__select-wrapper">
+            <div class="portfolio-pagination__select__active-option" data-portfolio-blogs-select-active>
+            <span data-portfolio-blogs-select-active-title>
+                {{ paginate.current_page }}
+            </span>
+
+                <div class="portfolio-pagination__select__arrow">
+                    {% render "icons", filename: "arrow_down" %}
+                </div>
+            </div>
+
+            <ul class="portfolio-pagination__select__options">
+                {% for part in paginate.parts %}
+                    {% unless part.title contains "&hellip;" %}
+                        <a class="portfolio-pagination__select__option
+                        {% if part.title == paginate.current_page %}active{% endif %}
+                        {% if part.is_link == false %}untached{% endif %}"
+                           href="{{ part.url }}">
+                            {{ part.title }}
+                        </a>
+                    {% endunless %}
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+
+    {% if paginate.next != blank %}
+        <a class="portfolio-pagination__controller next portfolio-pagination__pagination-item"
+           href="{{ paginate.next.url }}">
+            <span class="portfolio-pagination__controller-title">{{ pagination_next_btn_title }}</span>
+            <span class="portfolio-pagination__controller-icon">
+                {% render "icons", filename: "chevron_right" %}
+            </span>
+        </a>
+    {% endif %}
+</div>

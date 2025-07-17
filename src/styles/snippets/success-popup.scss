@@ -1,0 +1,74 @@
+@use '../variables.scss' as *;
+@use '../mixins/_global-mixins.scss' as *;
+
+.success__popup {
+    z-index: 200;
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    background-color: rgba($color: #000000, $alpha: 0.5);
+
+    .popup-close & {
+        display: none;
+    }
+}
+
+.success__popup_wrap {
+    position: relative;
+    margin: 0 auto;
+    max-width: 675px;
+    width: 100%;
+    background-color: $white;
+    padding: 62px var(--gl-indent);
+}
+
+.success__popup_item {
+    max-width: 466px;
+    margin: 0 auto;
+    display: grid;
+    gap: 40px;
+    text-align: center;
+}
+
+.success__popup_close {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+
+    width: 32px;
+    height: 32px;
+    background-color: $brown_light;
+    border-radius: 50%;
+    overflow: hidden;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+        background-color: transparent;
+    }
+}
+
+.success__popup_logo {
+    display: inline-flex;
+    width: 260px;
+    height: 71px;
+    margin: 0 auto;
+}
+
+.success__popup_logo_img {
+}
+
+.success__popup_title {
+}
+
+.success__popup_description {
+}
+
+.success__popup_btn {
+    justify-content: center;
+}

@@ -1,0 +1,131 @@
+<link rel="stylesheet" href="{{ "template-service-detail-hero.css" | asset_url }}">
+{% render "set-sections-paddings", section_data: section, wrapper_class: "template-service-detail-hero__title-inner-wrapper" %}
+
+<div class="template-service-detail-hero__wrapper">
+    <div class="template-service-detail-hero__title-wrapper">
+        <div class="template-service-detail-hero__title-inner-wrapper page_wrap page_wrap--border">
+            <h1 class="template-service-detail-hero__title h2">{{ page.title }}</h1>
+        </div>
+    </div>
+
+    <div class="template-service-detail-hero__content-block ">
+        <div class="template-service-detail-hero__content-block-wrapper template-service-detail-hero__content-block-wrapper--header page_wrap page_wrap--border page_wrap--without-paddings">
+            <h4 class="template-service-detail-hero__content-item template-service-detail-hero__content-item--title h4 page_wrap">
+                {{ section.settings.first_text_block_title }}
+            </h4>
+
+            <div class="template-service-detail-hero__content-item page_wrap base_richtext normal">
+                {{ section.settings.first_block_content }}
+            </div>
+        </div>
+    </div>
+
+    <div class="template-service-detail-hero__image-wrapper">
+        <div class="template-service-detail-hero__image-inner-wrapper page_wrap page_wrap--border">
+            <img class="template-service-detail-hero__image " src="{{ section.settings.image | image_url }}" alt=""
+                 width="auto"
+                 height="auto"
+                 loading="lazy"
+            >
+        </div>
+    </div>
+
+    <div class="template-service-detail-hero__content-block bottom">
+        <div class="template-service-detail-hero__content-block-wrapper template-service-detail-hero__content-block-wrapper--content page_wrap page_wrap--border page_wrap--without-paddings">
+            <div class="template-service-detail-hero__content-item page_wrap base_richtext normal">
+                {{ section.settings.second_block_content }}
+            </div>
+
+            <div class="template-service-detail-hero__content-item page_wrap base_richtext normal">
+                {{ section.settings.third_block_content }}
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="{{ "template-service-detail-hero.js" | asset_url }}" type="module" defer></script>
+
+{% schema %}
+{
+    "name": "Service detail hero",
+    "class": "template-service-detail-hero",
+    "tag": "section",
+    "settings": [
+        {
+            "type": "range",
+            "id": "padding_top",
+            "min": 0,
+            "max": 200,
+            "step": 5,
+            "unit": "px",
+            "label": "Padding top",
+            "default": 0
+        },
+        {
+            "type": "range",
+            "id": "padding_bottom",
+            "min": 0,
+            "max": 200,
+            "step": 5,
+            "unit": "px",
+            "label": "Padding bottom",
+            "default": 0
+        },
+        {
+            "type": "range",
+            "id": "padding_top_mobile",
+            "min": 0,
+            "max": 100,
+            "step": 5,
+            "unit": "px",
+            "label": "Padding top mobile",
+            "default": 0
+        },
+        {
+            "type": "range",
+            "id": "padding_bottom_mobile",
+            "min": 0,
+            "max": 100,
+            "step": 5,
+            "unit": "px",
+            "label": "Padding bottom mobile",
+            "default": 0
+        },
+        {
+            "type": "text",
+            "id": "first_text_block_title",
+            "label": "First text block title"
+        },
+        {
+            "type": "richtext",
+            "id": "first_block_content",
+            "label": "First block content"
+        },
+        {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image"
+        },
+        {
+            "type": "richtext",
+            "id": "second_block_content",
+            "label": "Second block content"
+        },
+        {
+            "type": "richtext",
+            "id": "third_block_content",
+            "label": "Third block content"
+        }
+    ],
+    "presets": [
+        {
+            "name": "Service detail hero"
+        }
+    ],
+    "enabled_on": {
+        "templates": [
+            "page"
+        ]
+    }
+}
+{% endschema %}

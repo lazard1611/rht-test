@@ -1,0 +1,89 @@
+/*!************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].use[3]!./src/styles/sections/section-social.scss ***!
+  \************************************************************************************************************************************************************************************************************************************/
+/* ==================================================== ADAPTIVE =================================================== */
+/* ===================================================== FONTS ===================================================== */
+/* ===================================================== COLORS ==================================================== */
+/* ====================================================== FORM ===================================================== */
+.social {
+  overflow: hidden;
+}
+@media screen and (min-width: 1024px) {
+  .social {
+    padding: 0 var(--gl-indent);
+  }
+}
+
+.social__item {
+  position: relative;
+}
+.social__item:before, .social__item:after {
+  position: absolute;
+  left: calc(var(--gl-indent) * -1);
+  width: calc(100vw + var(--gl-indent));
+  height: 3px;
+  background-color: #E1DACD;
+}
+.social__item:first-of-type::before {
+  content: "";
+  top: 0;
+}
+.social__item:not(:last-of-type)::after {
+  content: "";
+  bottom: 0;
+}
+
+.social__link {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  text-transform: uppercase;
+  transition: color 0.3s ease;
+  font-weight: 800;
+}
+@media screen and (min-width: 768px) {
+  .social__link {
+    font-size: max(45px, min(6vw, 80px));
+    line-height: 1.27;
+  }
+}
+@media screen and (max-width: 767px) {
+  .social__link {
+    font-size: 22px;
+    line-height: 1;
+  }
+}
+@media screen and (min-width: 768px) {
+  .social__link {
+    padding: 70px 0;
+  }
+}
+@media screen and (max-width: 767px) {
+  .social__link {
+    padding: 28px 0;
+  }
+}
+
+.social__item_icon {
+  margin-left: 10px;
+  flex-shrink: 0;
+  will-change: transform;
+  transition: transform 0.3s ease-in-out, color 0.3s ease;
+  transform-origin: center;
+}
+@media screen and (min-width: 768px) {
+  .social__item_icon {
+    width: 62px;
+    height: 62px;
+  }
+}
+@media screen and (max-width: 767px) {
+  .social__item_icon {
+    width: 18px;
+    height: 18px;
+  }
+}
+.social__link:hover .social__item_icon {
+  transform: rotate(45deg);
+}

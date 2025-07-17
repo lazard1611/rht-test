@@ -1,0 +1,161 @@
+<link rel="stylesheet" href="{{ "section-preview-products.css" | asset_url }}">
+{% render "set-sections-paddings", section_data: section, wrapper_class: "section-preview-products__header-wrapper" %}
+{% render "set-sections-borders", section_data: section, wrapper_class: "section-preview-products__wrapper" %}
+
+{% if section.settings.title_limits == "true" %}
+    {% assign title_limits = true %}
+{% endif %}
+
+<div class="section-preview-products__wrapper">
+    {% render "section-header", section: section, parent_class: "section-preview-products", limits: title_limits, borders: true, button_color: section.settings.button_color %}
+
+    {% if section.settings.collection.products.size > 0 %}
+        <div class="section-preview-products__swiper swiper js-fade-section"
+             data-section-preview-products-swiper="{{ section.settings.collection.products.size }}"
+        >
+            <div class="swiper-wrapper">
+                {% for product in section.settings.collection.products %}
+                    {% render "product-card", product: product, class: "swiper-slide slide" %}
+                {% endfor %}
+            </div>
+        </div>
+
+        <div class="section-preview-products__controllers-wrapper page_wrap">
+            {% render "swiper-controllers", parent_name: "section-preview-products", size: section.settings.collection.products.size %}
+        </div>
+    {% endif %}
+</div>
+
+<script src="{{ "section-preview-products.js" | asset_url }}" type="module" defer></script>
+
+{% schema %}
+{
+    "name": "Preview products",
+    "class": "section-preview-products",
+    "tag": "section",
+    "settings": [
+        {
+            "type": "range",
+            "id": "padding_top",
+            "min": 0,
+            "max": 200,
+            "step": 5,
+            "unit": "px",
+            "label": "Padding top",
+            "default": 0
+        },
+        {
+            "type": "range",
+            "id": "padding_bottom",
+            "min": 0,
+            "max": 200,
+            "step": 5,
+            "unit": "px",
+            "label": "Padding bottom",
+            "default": 0
+        },
+        {
+            "type": "range",
+            "id": "padding_top_mobile",
+            "min": 0,
+            "max": 100,
+            "step": 5,
+            "unit": "px",
+            "label": "Padding top mobile",
+            "default": 0
+        },
+        {
+            "type": "range",
+            "id": "padding_bottom_mobile",
+            "min": 0,
+            "max": 100,
+            "step": 5,
+            "unit": "px",
+            "label": "Padding bottom mobile",
+            "default": 0
+        },
+        {
+            "type": "select",
+            "id": "section_horizontal_borders",
+            "label": "Section horizontal borders",
+            "options": [
+                {
+                    "value": "top",
+                    "label": "Top"
+                },
+                {
+                    "value": "bottom",
+                    "label": "Bottom"
+                },
+                {
+                    "value": "double",
+                    "label": "Double"
+                }
+            ],
+            "default": "top"
+        },
+        {
+            "type": "select",
+            "id": "title_limits",
+            "label": "Title limits",
+            "options": [
+                {
+                    "value": "true",
+                    "label": "True"
+                },
+                {
+                    "value": "false",
+                    "label": "False"
+                }
+            ],
+            "default": "false"
+        },
+        {
+            "type": "select",
+            "id": "button_color",
+            "label": "Button color",
+            "options": [
+                {
+                    "value": "btn_base_brown",
+                    "label": "Brown"
+                },
+                {
+                    "value": "btn_base",
+                    "label": "Base"
+                }
+            ],
+            "default": "btn_base"
+        },
+        {
+            "type": "text",
+            "id": "title",
+            "label": "Title"
+        },
+        {
+            "type": "text",
+            "id": "description",
+            "label": "Description"
+        },
+        {
+            "type": "text",
+            "id": "button_title",
+            "label": "Button title"
+        },
+        {
+            "type": "url",
+            "id": "button_url",
+            "label": "Button url"
+        },
+        {
+            "type": "collection",
+            "id": "collection",
+            "label": "Collection"
+        }
+    ],
+    "presets": [
+        {
+            "name": "Preview products"
+        }
+    ]
+}
+{% endschema %}

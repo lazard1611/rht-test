@@ -1,0 +1,288 @@
+/*!*********************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].use[3]!./src/styles/sections/section-about-furniture.scss ***!
+  \*********************************************************************************************************************************************************************************************************************************************/
+/* ==================================================== ADAPTIVE =================================================== */
+/* ===================================================== FONTS ===================================================== */
+/* ===================================================== COLORS ==================================================== */
+/* ====================================================== FORM ===================================================== */
+.product-card {
+  width: -moz-fit-content;
+  width: fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+}
+.product-card:hover .product-card__image {
+  transform: scale(1.1);
+}
+.collection__products-container .product-card {
+  opacity: 0;
+}
+
+.product-card__image-wrapper {
+  position: relative;
+  display: flex;
+  width: calc(100% + 3px);
+  margin-bottom: 25px;
+  overflow: hidden;
+}
+
+.product-card__image {
+  display: block;
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  aspect-ratio: 0.878/1;
+  transition: transform 0.5s ease;
+}
+
+.product-card__badge {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  right: 15px;
+  width: -moz-fit-content;
+  width: fit-content;
+  padding: 12px 18px;
+  font-size: 18px;
+  font-weight: 800;
+  line-height: 0.83;
+  text-transform: uppercase;
+  color: #FFFFFF;
+  z-index: 1;
+}
+.product-card__badge.hand_picked {
+  background-color: #513450;
+}
+.product-card__badge.limited_edition {
+  background-color: #B6A490;
+}
+.product-card__badge.sale {
+  background-color: #BC2DC5;
+}
+
+.product-card__info {
+  display: flex;
+  gap: 15px;
+  width: calc(100% + 3px);
+}
+@media screen and (max-width: 767px) {
+  .product-card__info {
+    flex-direction: column;
+  }
+}
+
+.product-card__title {
+  display: -webkit-box;
+  max-width: 100%;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+@media screen and (min-width: 768px) {
+  .product-card__title {
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 1.45;
+  }
+}
+@media screen and (max-width: 767px) {
+  .product-card__title {
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 1.2;
+  }
+}
+
+.product-card__price-container {
+  display: flex;
+  gap: 15px;
+  white-space: nowrap;
+}
+@media screen and (min-width: 768px) {
+  .product-card__price-container {
+    margin-left: auto;
+  }
+}
+
+.product-card__price,
+.product-card__compare-price {
+  font-weight: 600;
+}
+@media screen and (min-width: 768px) {
+  .product-card__price,
+  .product-card__compare-price {
+    font-size: 22px;
+    line-height: 1.45;
+  }
+}
+@media screen and (max-width: 767px) {
+  .product-card__price,
+  .product-card__compare-price {
+    font-size: 20px;
+    line-height: 1.2;
+  }
+}
+
+.product-card__compare-price {
+  text-decoration-line: line-through;
+  color: #AFAFAF;
+}
+
+.section-about-furniture__header {
+  border-bottom: 3px solid #E1DACD;
+}
+.section-about-furniture__header .section-header__title {
+  max-width: 1200px;
+}
+
+.section-about-furniture__grid {
+  display: grid;
+}
+@media screen and (min-width: 1800px) {
+  .section-about-furniture__grid {
+    grid-template-columns: auto 31% 26%;
+  }
+}
+@media (max-width: 1799px) and (min-width: 1440px) {
+  .section-about-furniture__grid {
+    grid-template-columns: 38% repeat(2, 1fr);
+  }
+}
+@media (max-width: 1439px) and (min-width: 1200px) {
+  .section-about-furniture__grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+@media screen and (max-width: 1199px) {
+  .section-about-furniture__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.section-about-furniture__grid-item {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  border-bottom: 3px solid #E1DACD;
+}
+@media screen and (min-width: 1800px) {
+  .section-about-furniture__grid-item {
+    align-items: flex-start;
+    padding: 30px 30px 90px;
+    border-bottom: none;
+  }
+  .section-about-furniture__grid-item:nth-child(3), .section-about-furniture__grid-item:nth-child(6) {
+    border-right: none;
+  }
+  .section-about-furniture__grid-item:nth-child(4) {
+    justify-content: flex-start;
+  }
+  .section-about-furniture__grid-item:first-child .section-about-furniture__product {
+    max-width: none;
+  }
+}
+@media (max-width: 1799px) and (min-width: 1440px) {
+  .section-about-furniture__grid-item {
+    align-items: flex-start;
+    padding: 25px 25px 70px;
+    border-bottom: none;
+  }
+  .section-about-furniture__grid-item:nth-child(4) {
+    justify-content: flex-start;
+  }
+  .section-about-furniture__grid-item:nth-child(4), .section-about-furniture__grid-item:nth-child(5), .section-about-furniture__grid-item:nth-child(6) {
+    border-bottom: none;
+  }
+  .section-about-furniture__grid-item:nth-child(3), .section-about-furniture__grid-item:nth-child(6) {
+    border-right: none;
+  }
+  .section-about-furniture__grid-item:first-child .section-about-furniture__product {
+    max-width: none;
+  }
+}
+@media (max-width: 1439px) and (min-width: 1200px) {
+  .section-about-furniture__grid-item {
+    padding: 25px;
+  }
+  .section-about-furniture__grid-item:nth-child(3), .section-about-furniture__grid-item:nth-child(6) {
+    border-right: none;
+  }
+  .section-about-furniture__grid-item:nth-child(4), .section-about-furniture__grid-item:nth-child(5), .section-about-furniture__grid-item:nth-child(6) {
+    border-bottom: none;
+  }
+}
+@media (max-width: 1199px) and (min-width: 1024px) {
+  .section-about-furniture__grid-item {
+    padding: 20px 15px;
+  }
+  .section-about-furniture__grid-item:nth-child(2), .section-about-furniture__grid-item:nth-child(4), .section-about-furniture__grid-item:nth-child(6) {
+    border-right: none;
+  }
+  .section-about-furniture__grid-item:nth-child(5), .section-about-furniture__grid-item:nth-child(6) {
+    border-bottom: none;
+  }
+}
+@media screen and (max-width: 1023px) {
+  .section-about-furniture__grid-item {
+    padding: 20px 15px;
+  }
+  .section-about-furniture__grid-item:nth-child(2), .section-about-furniture__grid-item:nth-child(4) {
+    border-right: 3px solid #E1DACD;
+  }
+  .section-about-furniture__grid-item:first-child, .section-about-furniture__grid-item:last-child {
+    grid-column: 1/3;
+  }
+  .section-about-furniture__grid-item:last-child {
+    border: none;
+  }
+}
+@media screen and (min-width: 1024px) {
+  .section-about-furniture__grid-item {
+    border-right: 3px solid #E1DACD;
+  }
+}
+
+@media screen and (max-width: 1199px) {
+  .section-about-furniture .product-card:first-child .product-card__image-wrapper {
+    max-height: 600px;
+  }
+  .section-about-furniture .product-card:first-child .product-card__image {
+    aspect-ratio: 345/462;
+  }
+}
+
+@media screen and (max-width: 1023px) {
+  .section-about-furniture__wrapper {
+    border-bottom: none !important;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .section-about-furniture__product {
+    max-width: 360px;
+  }
+}
+
+@media screen and (max-width: 1199px) {
+  .section-about-furniture .product-card {
+    height: 100%;
+  }
+}
+
+.section-about-furniture__text-block {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+}
+
+.section-about-furniture__text-block-description {
+  line-height: 1.27;
+}
+
+@media screen and (min-width: 1200px) {
+  .section-about-furniture__button {
+    width: -moz-fit-content;
+    width: fit-content;
+  }
+}

@@ -1,0 +1,38 @@
+@use '../variables.scss' as *;
+@use '../mixins/_global-mixins.scss' as *;
+@use '../snippets/product-card.scss';
+@use '../snippets/swiper-controllers.scss';
+
+.section-preview-products__wrapper {
+    @include break_points($laptop, min) {
+        padding-bottom: 30px;
+    }
+}
+
+.section-preview-products__header {
+    border-bottom: 3px solid $brown_light;
+}
+
+.section-preview-products__swiper {
+    @include break_points($laptop, min) {
+        padding: 30px 35px 40px;
+    }
+
+    @include break_points($laptop) {
+        padding: 25px;
+    }
+}
+
+.section-preview-products__controllers-wrapper {
+    justify-content: flex-end;
+    align-items: center;
+    gap: 12px;
+
+    @include break_points($laptop, min) {
+        display: flex;
+    }
+
+    @include break_points($laptop) {
+        display: none;
+    }
+}

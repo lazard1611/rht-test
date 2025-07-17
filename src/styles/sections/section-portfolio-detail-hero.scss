@@ -1,0 +1,122 @@
+@use '../variables.scss' as *;
+@use '../mixins/_global-mixins.scss' as *;
+
+.section-portfolio-detail-hero {
+    position: relative;
+    width: 100%;
+
+    @include break_points($tablet, min) {
+        font-size: calc(100vw / 192);
+    }
+
+    @include break_points($tablet, $mobile) {
+        font-size: calc(100vw / 55);
+    }
+
+    @include break_points($mobile) {
+        font-size: calc(100vw / 40);
+    }
+}
+
+.section-portfolio-detail-hero__wrapper {
+    display: flex;
+
+    @include break_points($tablet, min) {
+        padding-top: calc(var(--heigth-header) + 9em);
+        padding-bottom: calc(var(--heigth-header) + 9em);
+        min-height: calc(99.8em - var(--heigth-header));
+    }
+
+    @include break_points($tablet) {
+        padding-top: calc(var(--heigth-header) + 4em);
+        padding-bottom: calc(var(--heigth-header) + 9em);
+        min-height: 59em;
+    }
+
+    &.horizontal {
+        &--left {
+            justify-content: flex-start;
+
+            .section-portfolio-detail-hero__title {
+                text-align: left;
+            }
+        }
+
+        &--center {
+            justify-content: center;
+
+            .section-portfolio-detail-hero__title {
+                text-align: center;
+            }
+        }
+
+        &--right {
+            justify-content: flex-end;
+
+            .section-portfolio-detail-hero__title {
+                text-align: right;
+            }
+        }
+    }
+
+    &.vertical {
+        &--top {
+            align-items: flex-start;
+        }
+
+        &--center {
+            align-items: center;
+        }
+
+        &--bottom {
+            align-items: flex-end;
+        }
+
+        &--center .section-portfolio-detail-hero__title,
+        &--bottom .section-portfolio-detail-hero__title {
+            bottom: 2em;
+        }
+    }
+}
+
+.section-portfolio-detail-hero__title {
+    max-width: 1200px;
+    height: fit-content;
+    font-weight: 700;
+    line-height: 1;
+    text-transform: uppercase;
+    color: $white;
+    z-index: 1;
+
+    @include break_points($laptop, min) {
+        font-size: 70px;
+    }
+
+    @include break_points($laptop, $tablet) {
+        font-size: 55px;
+    }
+
+    @include break_points($tablet) {
+        font-size: 40px;
+        word-break: break-word;
+    }
+}
+
+.section-portfolio-detail-hero__fade,
+.section-portfolio-detail-hero__image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.section-portfolio-detail-hero__fade {
+    z-index: -1;
+}
+
+.section-portfolio-detail-hero__image {
+    object-fit: cover;
+    object-position: center;
+    z-index: -2;
+}

@@ -1,0 +1,60 @@
+<div class="portfolio-products page_wrap page_wrap--border">
+    <div class="portfolio-products__header js-title-section js-fade-section">
+        <h2 class="portfolio-products__title js-title-fade h2">{{ article.metafields.opk.portfolio_related_products_header_.value.title }}</h2>
+
+        <div class="portfolio-products__image-wrapper js-fade">
+            <img class="portfolio-products__image"
+                 src="{{ article.metafields.opk.portfolio_related_products_header_.value.image | image_url }}"
+                 alt=""
+                 width="auto"
+                 height="auto"
+                 loading="lazy"
+            >
+
+            {% for product in article.metafields.opk.portfolio_related_products.value %}
+                <a class="portfolio-products__pagination portfolio-products__pagination--{{ forloop.index }}"
+                   href="{{ product.product.value.url }}">
+                    <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="24" cy="24" r="15.5" fill="white" fill-opacity="0.5" stroke="white"
+                                stroke-width="3"/>
+                        <circle cx="24" cy="24" r="10" fill="white"/>
+                        <circle class="portfolio-products__product-tail-circle center" cx="24"
+                                cy="24" r="15.5"
+                                fill="white" fill-opacity="0.5" stroke="white"
+                                stroke-width="3"/>
+                        <circle class="portfolio-products__product-tail-circle halo" cx="24" cy="24"
+                                r="10"
+                                fill="white"/>
+                    </svg>
+                </a>
+
+                <style>
+                    .portfolio-products__pagination--{{ forloop.index }} {
+                        top: {{ product.y_range_mobile }}%;
+                        left: {{ product.x_range_mobile }}vw;
+                    }
+
+                    @media screen and (min-width: 400px) {
+                        .portfolio-products__pagination--{{ forloop.index }} {
+                            top: {{ product.y_range_mobile }}%;
+                            left: calc({{ block.x_range_mobile }}% + 3vw);
+                        }
+                    }
+
+                    @media screen and (min-width: 768px) {
+                        .portfolio-products__pagination--{{ forloop.index }} {
+                            top: {{ product.y_range }}%;
+                            left: {{ product.x_range }}%;
+                        }
+                    }
+                </style>
+            {% endfor %}
+        </div>
+    </div>
+
+    <div class="portfolio-products__products js-fade-section">
+        {% for product in article.metafields.opk.portfolio_related_products.value %}
+            {% render "product-card", product: product.product.value %}
+        {% endfor %}
+    </div>
+</div>

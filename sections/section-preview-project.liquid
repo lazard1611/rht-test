@@ -1,0 +1,202 @@
+<link rel="stylesheet" href="{{ "section-preview-project.css" | asset_url }}">
+{% render "set-sections-paddings", section_data: section, wrapper_class: "section-preview-project__grid-item" %}
+{% render "set-sections-borders", section_data: section, wrapper_class: "section-preview-project__wrapper" %}
+
+<div class="section-preview-project__wrapper js-fade-section">
+    <div class="section-preview-project__inner-wrapper {% if section.blocks[0] == blank %}without-frames{% endif %} page_wrap page_wrap--border page_wrap--without-paddings ">
+        <div class="section-preview-project__about js-title-section">
+            <div class="section-preview-project__about-wrapper section-preview-project__grid-item page_wrap ">
+                <h2 class="section-preview-project__about-title js-title-fade h2">{{ section.settings.title }}</h2>
+
+                {% if section.settings.description != blank %}
+                    <div class="section-preview-project__about-description js-title-el">{{ section.settings.description |  replace: '<br>', '<br>' }}</div>
+                {% endif %}
+            </div>
+        </div>
+
+        {% if section.blocks[0] != blank %}
+            <div class="section-preview-project__frames-wrapper js-fade section-preview-project__grid-item page_wrap">
+                {% render "frames-animation", frames: section.blocks[0].settings %}
+            </div>
+        {% endif %}
+
+        <a class="section-preview-project__project js-fade section-preview-project__grid-item page_wrap"
+            href="{{ section.settings.project.url }}">
+            <div class="section-preview-project__project-image-wrapper">
+                {% if section.settings.project.image != blank %}
+                    <img class="section-preview-project__project-image"
+                        src="{{ section.settings.project.image | image_url }}"
+                        alt=""
+                        width="auto"
+                        height="auto"
+                        loading="lazy"
+                    >
+                {% else %}
+                    {{ 'collection-1' | placeholder_svg_tag: 'placeholder-svg placeholder-svg--cover ' }}
+                {% endif %}
+                
+            </div>
+
+            <div class="section-preview-project__project-header">
+                <h4 class="section-preview-project__project-title h4">
+                    {% if section.settings.project_title != blank %}
+                        {{ section.settings.project_title }}
+
+                    {% else %}
+                        {{ section.settings.project.title }}
+
+                    {% endif %}
+                </h4>
+
+                <div class="section-preview-project__project-icon">
+                    {% render "icons", filename: "arrow_link" %}
+                </div>
+            </div>
+
+            <p class="section-preview-project__project-description">
+                {% if section.settings.project_description != blank %}
+                    {{ section.settings.project_description }}
+
+                {% else %}
+                    {{ project.settings.project.content }}
+
+                {% endif %}
+            </p>
+        </a>
+    </div>
+</div>
+
+<script src="{{ "section-preview-project.js" | asset_url }}" type="module" defer></script>
+
+{% schema %}
+{
+    "name": "Preview project",
+    "class": "section-preview-project",
+    "tag": "section",
+    "settings": [
+        {
+            "type": "range",
+            "id": "padding_top",
+            "min": 0,
+            "max": 200,
+            "step": 5,
+            "unit": "px",
+            "label": "Padding top",
+            "default": 0
+        },
+        {
+            "type": "range",
+            "id": "padding_bottom",
+            "min": 0,
+            "max": 200,
+            "step": 5,
+            "unit": "px",
+            "label": "Padding bottom",
+            "default": 0
+        },
+        {
+            "type": "range",
+            "id": "padding_top_mobile",
+            "min": 0,
+            "max": 100,
+            "step": 5,
+            "unit": "px",
+            "label": "Padding top mobile",
+            "default": 0
+        },
+        {
+            "type": "range",
+            "id": "padding_bottom_mobile",
+            "min": 0,
+            "max": 100,
+            "step": 5,
+            "unit": "px",
+            "label": "Padding bottom mobile",
+            "default": 0
+        },
+        {
+            "type": "select",
+            "id": "section_horizontal_borders",
+            "label": "Section horizontal borders",
+            "options": [
+                {
+                    "value": "top",
+                    "label": "Top"
+                },
+                {
+                    "value": "bottom",
+                    "label": "Bottom"
+                },
+                {
+                    "value": "double",
+                    "label": "Double"
+                },
+                {
+                    "value": "none",
+                    "label": "None"
+                }
+            ],
+            "default": "top"
+        },
+        {
+            "type": "text",
+            "id": "title",
+            "label": "Title"
+        },
+        {
+            "type": "richtext",
+            "id": "description",
+            "label": "Description"
+        },
+        {
+            "type": "article",
+            "id": "project",
+            "label": "Project"
+        },
+        {
+            "type": "text",
+            "id": "project_title",
+            "label": "Project title"
+        },
+        {
+            "type": "text",
+            "id": "project_description",
+            "label": "Project description"
+        }
+    ],
+    "blocks": [
+        {
+            "name": "Animation frames",
+            "type": "animation_frames",
+            "limit": 1,
+            "settings": [
+                {
+                    "type": "image_picker",
+                    "id": "frame_first",
+                    "label": "First frame"
+                },
+                {
+                    "type": "image_picker",
+                    "id": "frame_second",
+                    "label": "Second frame"
+                },
+                {
+                    "type": "image_picker",
+                    "id": "frame_third",
+                    "label": "Third frame"
+                },
+                {
+                    "type": "image_picker",
+                    "id": "frame_fourth",
+                    "label": "Fourth frame"
+                }
+            ]
+        }
+    ],
+    "presets": [
+        {
+            "name": "Preview project"
+        }
+    ]
+}
+{% endschema %}

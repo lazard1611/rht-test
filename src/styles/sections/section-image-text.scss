@@ -1,0 +1,117 @@
+@use '../variables.scss' as *;
+@use '../mixins/_global-mixins.scss' as *;
+
+.image_text {
+}
+
+.image_text__wrap {    
+    // @include break_points($tablet, min) {
+    //     padding: 0;
+    // }   
+}
+
+.image_text__grid {
+    display: grid;
+
+    &:not(.image_text__grid--column_mod) {
+        @include break_points($tabletXl, min) {
+            grid-template-columns: 0.85fr 1fr;
+        }
+    }
+
+    &.image_text__grid--column_mod {
+        @include break_points($tabletXl, min) {
+            grid-template-columns: 2fr 1fr 1fr;
+        }
+    }
+    
+    @include break_points($tabletXl) {
+        border: none!important;
+    }
+}
+
+.image_text__grid_item {
+    .image_text__grid--border_mod & {
+        &:not(:last-child):not(:has(.image_text__description)) { 
+            @include break_points($tabletXl, min) {
+                border-right: 3px solid $brown_light;
+            }
+
+            @include break_points($tabletXl) {
+                border-bottom: 3px solid $brown_light;
+            }
+        }
+    }
+
+    &.image_text__grid_item--desctop {
+        @include break_points($tablet) {
+            display: none;
+        }
+    }
+
+    &.image_text__grid_item--mobile {
+        @include break_points($tablet, min) {
+            display: none;
+        }
+    }
+
+    &:has(.image_text__description) {
+        @include break_points($tablet) {
+            order: -1;
+        }
+        .image_text__grid--column_mod & {
+            @include break_points($tablet) {
+                order: 0;
+            }
+        }
+    }
+
+    @include break_points($tabletXl, min) {
+        padding: 35px;  
+    }   
+    
+    @include break_points($tabletXl, $tablet) {
+        padding: 15px 35px;  
+    }   
+
+    @include break_points($tablet) {
+        padding: 15px var(--gl-indent);  
+    }
+}
+
+.image_text__pic {
+    display: block;
+
+    &:nth-child(2) {
+        aspect-ratio: 381/413;
+    }
+
+    &.image_text__pic--border_mod {
+        border: 1px solid $black;
+    }
+}
+
+.image_text__img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.image_text__description {
+    line-height: 1.27;
+
+    p:not(:last-child) {
+        margin-bottom: 28px;
+    }
+
+    h4:not(:last-child) {
+        margin-bottom: 0.4em;
+    }
+
+    &:not(.image_text__grid--column_mod &) {
+        @include break_points($tabletXl, min) {
+            padding-top: 46px;
+        }
+    }
+}

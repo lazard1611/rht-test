@@ -1,0 +1,198 @@
+/*!**********************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].use[3]!./src/styles/sections/template-product-details.scss ***!
+  \**********************************************************************************************************************************************************************************************************************************************/
+/* ==================================================== ADAPTIVE =================================================== */
+/* ===================================================== FONTS ===================================================== */
+/* ===================================================== COLORS ==================================================== */
+/* ====================================================== FORM ===================================================== */
+.h1 {
+  font-weight: 700;
+}
+@media screen and (min-width: 768px) {
+  .h1 {
+    font-size: max(50px, min(6vw, 100px));
+    line-height: 1.11;
+  }
+}
+@media screen and (max-width: 767px) {
+  .h1 {
+    font-size: 38px;
+    line-height: 0.9;
+  }
+}
+
+.h2 {
+  font-weight: 800;
+}
+@media screen and (min-width: 768px) {
+  .h2 {
+    font-size: max(45px, min(6vw, 80px));
+    line-height: 1.27;
+  }
+}
+@media screen and (max-width: 767px) {
+  .h2 {
+    font-size: 32px;
+    line-height: 1;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .h3 {
+    font-size: 32px;
+    line-height: 1.31;
+  }
+}
+@media (max-width: 1199px) and (min-width: 768px) {
+  .h3 {
+    font-size: 28px;
+    line-height: 1.31;
+  }
+}
+@media screen and (max-width: 767px) {
+  .h3 {
+    font-size: 22px;
+    line-height: 1.27;
+  }
+}
+
+.h4 {
+  font-weight: 800;
+  font-size: 22px;
+  line-height: 1.45;
+}
+
+.page_title {
+  font-weight: 800;
+}
+@media screen and (min-width: 1024px) {
+  .page_title {
+    font-size: 80px;
+    line-height: 1.125;
+  }
+}
+@media (max-width: 1023px) and (min-width: 768px) {
+  .page_title {
+    font-size: 64px;
+  }
+}
+@media screen and (max-width: 767px) {
+  .page_title {
+    font-size: 50px;
+    line-height: 1;
+  }
+}
+
+.template-product-details__inner-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+@media screen and (min-width: 1200px) {
+  .template-product-details__inner-wrapper {
+    gap: 40px;
+  }
+}
+@media screen and (max-width: 1199px) {
+  .template-product-details__inner-wrapper {
+    gap: 20px;
+  }
+}
+
+.template-product-details__title {
+  text-transform: uppercase;
+}
+
+.template-product-details__tabs {
+  display: flex;
+  align-items: flex-start;
+  gap: 35px;
+  max-width: 100%;
+  overflow: auto;
+}
+.template-product-details__tabs::-webkit-scrollbar, .template-product-details__tabs::-webkit-scrollbar-thumb, .template-product-details__tabs::-webkit-scrollbar-track {
+  display: none;
+}
+
+.template-product-details__tab {
+  padding-bottom: 10px;
+  font-weight: 600;
+  transition: opacity 0.3s;
+  cursor: pointer;
+}
+.template-product-details__tab:hover {
+  opacity: 0.7;
+}
+.template-product-details__tab.active {
+  border-bottom: 3px solid #000000;
+}
+
+.template-product-details__content {
+  display: none;
+  flex-direction: column;
+}
+@media screen and (min-width: 1200px) {
+  .template-product-details__content.dimensions {
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 200px;
+  }
+}
+@media screen and (max-width: 1199px) {
+  .template-product-details__content.dimensions {
+    flex-direction: column;
+    padding-top: 20px;
+    gap: 80px;
+  }
+}
+.template-product-details__content.manual * + * {
+  margin-top: 24px;
+}
+.template-product-details__content.active {
+  display: flex;
+}
+.template-product-details__content a {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+.template-product-details__content * {
+  font-size: inherit !important;
+}
+
+.template-product-details__dimension-item {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.template-product-details__dimension-title {
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.template-product-details__dimension-parameter {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+}
+@media screen and (min-width: 1200px) {
+  .template-product-details__dimension-parameter {
+    width: 300px;
+  }
+}
+@media screen and (max-width: 1199px) {
+  .template-product-details__dimension-parameter {
+    width: 100%;
+  }
+}
+.template-product-details__dimension-parameter span:first-child {
+  font-weight: 700;
+}
+
+.template-product-details__manual-content {
+  font-weight: 700;
+  text-transform: uppercase;
+}

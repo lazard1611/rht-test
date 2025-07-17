@@ -1,0 +1,18 @@
+<style>
+    {% if wrapper_class != blank %}
+        {% if section.settings.section_horizontal_borders == "top" or section.settings.section_horizontal_borders == "double" %}
+            #shopify-section-{{ section_data.id }} .{{ wrapper_class }} {
+                border-top: 3px solid #E1DACD;
+            }
+
+        {% endif %}
+
+        {% if section.settings.section_horizontal_borders == "bottom" or section.settings.section_horizontal_borders == "double" %}
+            #shopify-section-{{ section_data.id }} .{{ wrapper_class }} {
+                border-bottom: 3px solid #E1DACD;
+            }
+
+        {% endif %}
+    {% endif %}
+</style>
+

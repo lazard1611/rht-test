@@ -1,0 +1,201 @@
+<link rel="stylesheet" href="{{ 'footer.css' | asset_url }}">
+
+{% assign popupState = '' %}
+
+<div class="footer__wrapper {{ popupState }}">
+	{% if section.blocks.size > 0 %}
+		<div class="footer__main">
+			{% for block in section.blocks %}
+				{% if block.type == 'logo' %}
+
+					{% if block.settings.logo != blank %}
+						<picture class="footer__main_item footer__logo js-fade">
+							<img width="auto" height="auto" src="{{ block.settings.logo |  image_url }}" alt="logo" class="footer__logo_img">
+						</picture>
+					{% else %}
+						<div class="footer__logo js-fade">
+							{% render 'logo-animate' %}
+						</div>										
+					{% endif %}
+
+				{% elsif block.type == 'navigation' %}
+					{% if block.settings.link_list_first.links.size > 0 %}
+						<nav class="footer__main_item footer__nav footer__nav--first js-fade">					
+							<ul class="footer__list">
+								{% for item in block.settings.link_list_first.links %}
+									{% if item.title != blank %}
+										<li class="footer__list_item">
+											<a href="{{ item.url }}" class="footer__list_link">{{ item.title }}</a>
+										</li>
+									{% endif %}						                                       
+								{% endfor %} 						
+							</ul>                       
+						</nav>  
+					{% endif %}					
+					
+				{% elsif block.type == 'newsletter' %}                
+					<div class="footer__main_item footer__newsletter js-fade">
+						<h2 class="footer__newsletter_title">{{block.settings.newsletter_title}}</h2>
+						<div class="footer__newsletter_wrap">							
+							{%  form 'customer', class: 'footer__newsletter_form js-newsletter-form', id: 'newsletter' %}	
+								
+								{% if form.posted_successfully? %}
+									{% assign popupState = 'popup-open' %}
+									{% render 'success-popup' %}
+								{% endif %}
+								
+								<div class="footer__newsletter_form_wrap js-newsletter-form-field {% if form.errors %}error{% endif %}">
+									<div class="footer__newsletter_form_el_wrap">
+										<div class="form_el footer__newsletter_form_el">
+											<input type="hidden" name="contact[tags]" value="newsletter">
+											<input
+												type="email"
+												name="contact[email]"                                    
+												class="form_el__input footer__newsletter_input js-input-field"																			
+											>   
+											<label class="form_el__label">{{ settings.label_email }}</label>
+										</div>
+
+										<button type="submit" aria-label="submit" class="footer__newsletter_btn">
+											<span class="footer__newsletter_btn_icon">
+												{% render 'icons', filename: 'arrow_right' %}
+											</span>									
+										</button>													
+									</div>	
+									<p class="error_message">{{ settings.error_email_newsletter }}</p>														
+									
+								</div>								
+							{% endform %}							 
+						</div> 
+					</div>
+					
+				{% elsif block.type == 'navigation_secondary' %}  		
+					{% if block.settings.link_list_secondary.links.size > 0 %}
+						<nav class="footer__main_item footer__nav footer__nav--secondary js-fade">					
+							<ul class="footer__list">
+								{% for item in block.settings.link_list_secondary.links %}
+									{% if item.title != blank %}
+										<li class="footer__list_item">
+											<a href="{{ item.url }}" class="footer__list_link">{{ item.title }}</a>
+										</li>
+									{% endif %}						                                       
+								{% endfor %} 						
+							</ul>                       
+						</nav>  
+					{% endif %}									
+
+				{% elsif block.type == 'richtext' %}  
+					{% if block.settings.richtext != blank %}
+						<div class="footer__main_item footer__richtext js-fade {% if block.settings.richtext_hidden == true %}footer__richtext--desctop{% endif %}">
+							{{ block.settings.richtext |  replace: '<br>', '<br>'  }}
+						</div>
+					{% endif %}
+				{% endif %}
+			{% endfor %}
+		</div>
+	{% endif %}		
+	
+	<div class="footer__bottom">
+		<div class="footer__bottom_copyright">			
+			&copy; {{ 'now' | date: "%Y" }}
+			{% if section.settings.copyright != blank %}
+				{{ section.settings.copyright }}				
+			{% endif %}
+
+			<a target="_blank" href="https://opklopper.nl/" class="footer__bottom_brand">
+				Made by
+				<div class="footer__bottom_logo">
+					{% render 'icons', filename: 'opklopper' %}
+				</div>
+			</a>
+		</div>
+		<div class="footer__payments">
+			{% render 'payments' %}
+		</div>
+	</div>
+</div>
+
+<script type="module" src="{{ 'footer.js' | asset_url }}"></script>
+
+{% schema %}
+{
+	"name": "Footer",
+	"class": "footer js-animate-section-svg js-fade-section",
+	"tag": "footer",
+	"settings": [
+		{
+			"type": "text",
+			"id": "copyright",
+			"label": "Copyright",
+			"default": "All About Interior, all right reserved"
+		}
+	],
+	"max_blocks": 5,
+	"blocks": [
+		{
+			"name": "Logo",
+			"type": "logo",
+			"settings": [
+				{
+					"type": "image_picker",
+					"id": "logo",
+					"label": "Logo"
+				}
+			]
+		},
+		{
+			"name": "Navigation",
+			"type": "navigation",
+			"settings": [
+				{
+					"type": "link_list",
+					"id": "link_list_first",
+					"label": "Navigation"
+				}
+			]
+		},
+		{
+			"name": "Newsletter",
+			"type": "newsletter",
+			"settings": [
+				
+				{
+					"type": "text",
+					"id": "newsletter_title",
+					"label": "Heading",
+					"default": "Don't miss your chance for a special discount and more!"
+				}
+			]
+		},
+		{
+			"name": "Navigation secondary",
+			"type": "navigation_secondary",
+			"settings": [
+				{
+					"type": "link_list",
+					"id": "link_list_secondary",
+					"label": "Navigation secondary"
+				}
+			]
+		},
+		{
+			"name": "Richtext",
+			"type": "richtext",
+			"settings": [
+				{
+					"type": "richtext",
+					"id": "richtext",
+					"label": "Richtext",
+					"default": "<p>Schutsboomstraat 45</p>"
+				},
+				{
+					"type": "checkbox",
+					"id": "richtext_hidden",
+					"label": "Hidden for mobile",
+					"default": false
+				}
+			]
+		}
+	]	
+}
+{% endschema %}

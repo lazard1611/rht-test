@@ -1,0 +1,30 @@
+/* ==================================================== ADAPTIVE =================================================== */
+$mobile:                                             480px;
+$tablet:                                             768px;
+$tabletXl:                                          1024px;
+$laptop:                                            1200px;
+$desktop:                                           1440px;
+/* ===================================================== FONTS ===================================================== */
+$font_montserrat:                 'Montserrat', sans-serif;
+/* ===================================================== COLORS ==================================================== */
+$black:                                          #000000;
+$light_black:                                    #2F2F2F;
+$second_light_black:                             #262625;
+$white:                                          #FFFFFF;
+$gray:                                           #A4A4A4;
+$gray_second:                                    #AFAFAF;
+$gray_light:                                     #F0EDE7;
+$brown_light:                                    #E1DACD;
+$brown:                                          #B6A490;
+$purple_dark:                                    #513450;
+$purple:                                         #690BA7;
+$red:                                            #FF0000;
+$pink:                                           #BC2DC5;
+/* ====================================================== FORM ===================================================== */
+$input_border_color:                                $black;
+$input_border_color_active:                          $gray;
+$input_placeholder_color:                           $black;
+$input_font_size:                                     22px;
+$input_radius:                                           0;
+$input_height:                                        44px;
+$input_offset:                                           0;

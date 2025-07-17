@@ -1,0 +1,130 @@
+{% if section.settings.text != blank %}
+    <link rel="stylesheet" href="{{ "section-richtext.css" | asset_url }}">
+
+    {% render "set-sections-paddings", section_data: section, wrapper_class: 'section-richtext__inner-wrapper' %}
+    {% render "set-sections-borders", section_data: section, wrapper_class: 'section-richtext__wrapper' %}
+
+    <div class="section-richtext__wrapper js-fade">
+        <div class="section-richtext__inner-wrapper base_richtext {{ section.settings.text_size }} page_wrap page_wrap--border" style="text-align: {{ section.settings.text_position }}">
+            {{ section.settings.text }}
+        </div>
+    </div>
+
+    <script src="{{ 'section-richtext.js' | asset_url }}" type="module" defer></script>
+{% endif %}
+
+{% schema %}
+{
+    "name": "Richtext block",
+    "class": "section-richtext js-fade-section",
+    "tag": "section",
+    "settings": [
+        {
+            "type": "range",
+            "id": "padding_top",
+            "min": 0,
+            "max": 200,
+            "step": 5,
+            "unit": "px",
+            "label": "Padding top",
+            "default": 0
+        },
+        {
+            "type": "range",
+            "id": "padding_bottom",
+            "min": 0,
+            "max": 200,
+            "step": 5,
+            "unit": "px",
+            "label": "Padding bottom",
+            "default": 0
+        },
+        {
+            "type": "range",
+            "id": "padding_top_mobile",
+            "min": 0,
+            "max": 100,
+            "step": 5,
+            "unit": "px",
+            "label": "Padding top mobile",
+            "default": 0
+        },
+        {
+            "type": "range",
+            "id": "padding_bottom_mobile",
+            "min": 0,
+            "max": 100,
+            "step": 5,
+            "unit": "px",
+            "label": "Padding bottom mobile",
+            "default": 0
+        },
+        {
+            "type": "select",
+            "id": "section_horizontal_borders",
+            "label": "Section horizontal borders",
+            "options": [
+                {
+                    "value": "top",
+                    "label": "Top"
+                },
+                {
+                    "value": "bottom",
+                    "label": "Bottom"
+                },
+                {
+                    "value": "double",
+                    "label": "Double"
+                }
+            ],
+            "default": "top"
+        },
+        {
+            "type": "richtext",
+            "id": "text",
+            "label": "Text"
+        },
+        {
+            "type": "select",
+            "id": "text_size",
+            "label": "Text size",
+            "options": [
+                {
+                    "value": "large",
+                    "label": "Large"
+                },
+                {
+                    "value": "normal",
+                    "label": "Normal"
+                }
+            ],
+            "default": "large"
+        },
+        {
+            "type": "select",
+            "id": "text_position",
+            "label": "Text position",
+            "options": [
+                {
+                    "value": "left",
+                    "label": "Left"
+                },
+                {
+                    "value": "center",
+                    "label": "center"
+                },
+                {
+                    "value": "right",
+                    "label": "Right"
+                }
+            ],
+            "default": "left"
+        }
+    ],
+    "presets": [
+        {
+            "name": "Richtext block"
+        }
+    ]
+}
+{% endschema %}

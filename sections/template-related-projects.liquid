@@ -1,0 +1,200 @@
+<link rel="stylesheet" href="{{ "template-related-projects.css" | asset_url }}">
+{% render "set-sections-paddings", section_data: section, wrapper_class: "template-related-projects__header-wrapper" %}
+{% render "set-sections-borders", section_data: section, wrapper_class: "template-related-projects__wrapper" %}
+
+{% if section.settings.title_limits == "true" %}
+    {% assign title_limits = true %}
+{% endif %}
+
+<div class="template-related-projects__wrapper">
+    {% render "section-header", section: section, parent_class: "template-related-projects", limits: title_limits, borders: true, button_color: section.settings.button_color %}
+
+    <div class="template-related-projects__content js-fade-section page_wrap page_wrap--border page_wrap--without-paddings">
+        {% if article.metafields.opk.related_projects.value != blank %}
+            {% for project in article.metafields.opk.related_projects.value %}
+                {% render "related-project-card", url: project.url, image: project.image, title: project.title, description: project.description %}
+            {% endfor %}
+        {% elsif section.blocks.size > 0 %}
+            {% for project in section.blocks %}
+                {% if project.settings.image %}
+                    {% assign image = project.settings.image %}
+                {% elsif project.settings.project.image %}
+                    {% assign image = project.settings.project.image %}
+                {% endif %}
+
+                {% if project.settings.title != blank %}
+                    {% assign title = project.settings.title %}
+                {% else %}
+                    {% assign title = project.settings.project.title %}
+                {% endif %}
+
+                {% if project.settings.description != blank %}
+                    {% assign description = project.settings.description %}
+                {% else %}
+                    {% assign description = project.settings.project.content %}
+                {% endif %}
+
+                {% render "related-project-card", url: project.settings.project.url, image: image, title: title, description: description %}
+
+            {% endfor %}
+        {% endif %}
+    </div>
+</div>
+
+<script src="{{ "template-related-projects.js" | asset_url }}" type="module" defer></script>
+
+{% schema %}
+{
+    "name": "Related projects",
+    "class": "template-related-projects",
+    "tag": "section",
+    "settings": [
+        {
+            "type": "range",
+            "id": "padding_top",
+            "min": 0,
+            "max": 200,
+            "step": 5,
+            "unit": "px",
+            "label": "Padding top",
+            "default": 0
+        },
+        {
+            "type": "range",
+            "id": "padding_bottom",
+            "min": 0,
+            "max": 200,
+            "step": 5,
+            "unit": "px",
+            "label": "Padding bottom",
+            "default": 0
+        },
+        {
+            "type": "range",
+            "id": "padding_top_mobile",
+            "min": 0,
+            "max": 100,
+            "step": 5,
+            "unit": "px",
+            "label": "Padding top mobile",
+            "default": 0
+        },
+        {
+            "type": "range",
+            "id": "padding_bottom_mobile",
+            "min": 0,
+            "max": 100,
+            "step": 5,
+            "unit": "px",
+            "label": "Padding bottom mobile",
+            "default": 0
+        },
+        {
+            "type": "select",
+            "id": "section_horizontal_borders",
+            "label": "Section horizontal borders",
+            "options": [
+                {
+                    "value": "top",
+                    "label": "Top"
+                },
+                {
+                    "value": "bottom",
+                    "label": "Bottom"
+                },
+                {
+                    "value": "double",
+                    "label": "Double"
+                }
+            ],
+            "default": "top"
+        },
+        {
+            "type": "select",
+            "id": "title_limits",
+            "label": "Title limits",
+            "options": [
+                {
+                    "value": "true",
+                    "label": "True"
+                },
+                {
+                    "value": "false",
+                    "label": "False"
+                }
+            ],
+            "default": "false"
+        },
+        {
+            "type": "select",
+            "id": "button_color",
+            "label": "Button color",
+            "options": [
+                {
+                    "value": "btn_base_brown",
+                    "label": "Brown"
+                },
+                {
+                    "value": "btn_base",
+                    "label": "Base"
+                }
+            ],
+            "default": "btn_base"
+        },
+        {
+            "type": "text",
+            "id": "title",
+            "label": "Title"
+        },
+        {
+            "type": "text",
+            "id": "description",
+            "label": "Description"
+        },
+        {
+            "type": "text",
+            "id": "button_title",
+            "label": "Button title"
+        },
+        {
+            "type": "url",
+            "id": "button_url",
+            "label": "Button url"
+        }
+    ],
+    "blocks": [
+        {
+            "name": "Project",
+            "type": "project",
+            "limit": 2,
+            "settings": [
+                {
+                    "type": "article",
+                    "id": "project",
+                    "label": "Project"
+                },
+                {
+                    "type": "image_picker",
+                    "id": "image",
+                    "label": "Image"
+                },
+                {
+                    "type": "text",
+                    "id": "title",
+                    "label": "Title"
+                },
+                {
+                    "type": "text",
+                    "id": "description",
+                    "label": "Description"
+                }
+            ]
+        }
+    ],
+    "presets": [
+        {
+            "name": "Related projects"
+        }
+    ]
+}
+{% endschema %}

@@ -1,0 +1,55 @@
+{
+  "sections": {
+    "section-contact": {
+      "type": "section-contact",
+      "blocks": {
+        "picture_MiVYjh": {
+          "type": "picture",
+          "settings": {
+            "block_img": "shopify:\/\/shop_images\/cintact.jpg"
+          }
+        },
+        "form_KzgRXQ": {
+          "type": "form",
+          "settings": {
+            "block_form_title": "VRAAG NU AAN",
+            "block_form_richtext": "<p>Heeft u een project of vraag voor ons? Vul het contactformulier in en wij nemen zo snel mogelijk contact met u op.<\/p>",
+            "block_form_richtext_col_1": "<p>Ma-Vr: 8:00 – 20:00<\/p><p>Morijnenhof 45, 5374 CB Schaijk<\/p>",
+            "block_form_richtext_col_2": "<p>06 523 000 40<\/p><p>info@allaboutinterior.com<\/p>",
+            "block_label_name": "Voornaam",
+            "block_label_email": "Uw e-mail",
+            "block_label_phone": "Telefoonnummer",
+            "block_label_service": "Diensttype",
+            "block_label_message": "Uw verzoeken",
+            "block_checkbox_text": "Ik ben het ermee eens",
+            "block_link_text": "Privacybeleid",
+            "block_link_url": "",
+            "block_btn_text": "Indienen"
+          }
+        }
+      },
+      "block_order": [
+        "picture_MiVYjh",
+        "form_KzgRXQ"
+      ],
+      "settings": {
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "padding_top_mobile": 0,
+        "padding_bottom_mobile": 0,
+        "title": "Alles over contact",
+        "description": "",
+        "decor_line": true,
+        "button_title": "",
+        "button_url": "",
+        "popup_title": "Uw aanvraag is succesvol verzonden",
+        "popup_description": "<p>Bedankt voor uw aanvraag! Wij zullen u binnenkort antwoorden<\/p>",
+        "popup_button_title": "Ga terug naar webshop",
+        "popup_button_url": "shopify:\/\/collections"
+      }
+    }
+  },
+  "order": [
+    "section-contact"
+  ]
+}

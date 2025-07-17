@@ -1,0 +1,16 @@
+<style>
+    {% if wrapper_class != blank %}
+        @media (min-width: 1023px) {
+            #shopify-section-{{ section_data.id }} .{{ wrapper_class }} {
+                padding-top: {{ section_data.settings.padding_top }}px;
+                padding-bottom: {{ section_data.settings.padding_bottom }}px;
+            }
+        }
+        @media (max-width: 1024px) {
+            #shopify-section-{{ section_data.id }} .{{ wrapper_class }} {
+                padding-top: {{ section_data.settings.padding_top_mobile }}px;
+                padding-bottom: {{ section_data.settings.padding_bottom_mobile }}px;
+            }
+        }        
+    {% endif %}
+</style>

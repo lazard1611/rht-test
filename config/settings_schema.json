@@ -1,0 +1,283 @@
+[
+  {
+    "name": "theme_info",
+    "theme_name": "Opklopper",
+    "theme_author": "Opklopper",
+    "theme_version": "1.1",
+    "theme_documentation_url": "https:\/\/opklopper.nl",
+    "theme_support_url": "https:\/\/opklopper.nl"
+  },
+  {
+    "name": "Favicon",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "favicon",
+        "label": "Favicon image",
+        "info": "Will be scaled down to 32px x 32px"
+      }
+    ]
+  },
+  {
+    "name": "Wrappers",
+    "settings": [
+      {
+        "type": "range",
+        "id": "main_wrapper_width",
+        "label": "Main wrapper width",
+        "min": 800,
+        "max": 1800,
+        "step": 10,
+        "unit": "px",
+        "default": 1630
+      }
+    ]
+  },
+  {
+    "name": "Colors",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Main"
+      },
+      {
+        "type": "color",
+        "id": "body_bg_color",
+        "label": "Body backgound"
+      },
+      {
+        "type": "color",
+        "id": "body_text_color",
+        "label": "Body text"
+      },
+      {
+        "type": "color",
+        "id": "body_link_color",
+        "label": "Body link"
+      },
+      {
+        "type": "header",
+        "content": "Form fields"
+      },
+      {
+        "type": "color",
+        "id": "form_text_color",
+        "label": "Text"
+      },
+      {
+        "type": "header",
+        "content": "Filter colors",
+        "info": "If filter doesn't show some color, then add this color in this section."
+      },
+      {
+        "type": "textarea",
+        "id": "filter_colors",
+        "label": "Colors list",
+        "info": "FORMAT (splitted by comma): {{color_name: #FFF000}}"
+      }
+    ]
+  },
+  {
+    "name": "Phone",
+    "settings": [
+      {
+        "type": "text",
+        "id": "phone",
+        "label": "Phone number"
+      }
+    ]
+  },
+  {
+    "name": "Email",
+    "settings": [
+      {
+        "type": "text",
+        "id": "email",
+        "label": "Email"
+      }
+    ]
+  },
+  {
+    "name": "Social media",
+    "settings": [
+      {
+        "type": "text",
+        "id": "social_twitter",
+        "label": "Twitter"
+      },
+      {
+        "type": "text",
+        "id": "social_facebook",
+        "label": "Facebook"
+      },
+      {
+        "type": "text",
+        "id": "social_linkedin",
+        "label": "LinkedIn"
+      },
+      {
+        "type": "text",
+        "id": "social_pinterest",
+        "label": "Pinterest"
+      },
+      {
+        "type": "text",
+        "id": "social_instagram",
+        "label": "Instagram"
+      },
+      {
+        "type": "text",
+        "id": "social_tumblr",
+        "label": "Tumblr"
+      },
+      {
+        "type": "text",
+        "id": "social_snapchat",
+        "label": "Snapchat"
+      },
+      {
+        "type": "text",
+        "id": "social_youtube",
+        "label": "YouTube"
+      },
+      {
+        "type": "text",
+        "id": "social_vimeo",
+        "label": "Vimeo"
+      }
+    ]
+  },
+  {
+    "name": "Payments",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "payments_ideal",
+        "label": "Ideal",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "payments_mastercard",
+        "label": "Mastercard",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "payments_visa",
+        "label": "Visa",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "payments_maestro",
+        "label": "Maestro",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "payments_bancontact",
+        "label": "Bancontact",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "payments_apple_pay",
+        "label": "Applle Pay",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "payments_google_pay",
+        "label": "Googla Pay",
+        "default": true
+      }
+    ]
+  },
+  {
+    "name": "Form message",
+    "settings": [
+      {
+        "type": "text",
+        "id": "label_email",
+        "label": "Label for email",
+        "default": "E-mail"
+      },
+      {
+        "type": "text",
+        "id": "error_email_newsletter",
+        "label": "Text error for newsletter email",
+        "default": "Er is iets misgegaan..."
+      },
+      {
+        "type": "text",
+        "id": "error_name",
+        "label": "Text error for name",
+        "default": "Voer minimaal 2 tekens in"
+      },
+      {
+        "type": "text",
+        "id": "error_email",
+        "label": "Text error for email",
+        "default": "Voer een geldig e-mailadres in"
+      },
+      {
+        "type": "text",
+        "id": "error_letter_email",
+        "label": "Text error for newsletter",
+        "default": "Er is iets misgegaan..."
+      },
+      {
+        "type": "text",
+        "id": "error_phone",
+        "label": "Text error for phone number",
+        "default": "Voer minimaal 8 cijfers in"
+      },
+      {
+        "type": "text",
+        "id": "error_srvice",
+        "label": "Text error for srvice",
+        "default": "Selecteer servicetype"
+      },
+      {
+        "type": "text",
+        "id": "error_textarea",
+        "label": "Text error for messasge",
+        "default": "Voer minimaal 10 tekens in"
+      }
+    ]
+  },
+  {
+    "name": "Popup",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "popup_logo",
+        "label": "Logo for popup"
+      },
+      {
+        "type": "text",
+        "id": "popup_title",
+        "label": "Title for popup",
+        "default": "Uw aanvraag is succesvol verzonden"
+      },
+      {
+        "type": "richtext",
+        "id": "popup_description",
+        "label": "Description for popup",
+        "default": "<p>Bedankt voor uw aanvraag! Wij zullen u binnenkort antwoorden<\/p>"
+      },
+      {
+        "type": "text",
+        "id": "popup_button_title",
+        "label": "Button text for popup",
+        "default": "Ga terug naar webshop"
+      },
+      {
+        "type": "url",
+        "id": "popup_button_url",
+        "label": "Button URL for popup"
+      }
+    ]
+  }
+]

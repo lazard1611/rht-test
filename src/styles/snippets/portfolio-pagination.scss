@@ -1,0 +1,138 @@
+@use '../variables.scss' as *;
+@use '../mixins/_global-mixins.scss' as *;
+
+.portfolio-pagination {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    border: 3px solid $brown_light;
+    border-top: none;
+
+    @include break_points($desktop, min) {
+        padding: 45px 35px;
+    }
+
+    @include break_points($desktop, $laptop) {
+        padding: 35px 25px;
+    }
+
+    @include break_points($laptop, $tablet) {
+        padding: 25px 15px;
+    }
+
+    @include break_points($tablet) {
+        padding: 25px 15px;
+        width: 100%;
+    }
+}
+
+.portfolio-pagination__pagination-item {
+    padding: 12px 20px;
+    border: 1px solid $black;
+    border-right: none;
+    height: 100%;
+
+    &:last-child {
+        border-right: 1px solid $black;
+        border-left: none;
+    }
+
+    @include break_points($tablet, min) {
+        padding: 12px 20px;
+    }
+
+    @include break_points($tablet) {
+        padding: 12px 18px;
+    }
+}
+
+.portfolio-pagination__title {
+    font-weight: 700;
+    text-transform: uppercase;
+    background-color: $brown_light;
+}
+
+.portfolio-pagination__select {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    max-width: 300px;
+    cursor: pointer;
+
+    @include break_points($tablet, min) {
+        width: fit-content;
+    }
+
+    @include break_points($tablet) {
+        width: 100%;
+    }
+
+    &.active {
+        .portfolio-pagination__select__arrow svg {
+            rotate: 180deg;
+        }
+
+        .portfolio-pagination__select__options {
+            display: flex;
+        }
+    }
+}
+
+.portfolio-pagination__select__select-wrapper {
+    position: relative;
+}
+
+.portfolio-pagination__select__active-option {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    padding: 12px 20px;
+    border: 1px solid $black;
+    //border-right: none;
+}
+
+.portfolio-pagination__select__arrow {
+    width: 24px;
+    height: 24px;
+}
+
+.portfolio-pagination__select__options {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    border: 1px solid $black;
+    border-top: none;
+    box-shadow: 0 8px 8px 0 #00000047;
+    background-color: $gray_light;
+    z-index: 2;
+}
+
+.portfolio-pagination__select__option {
+    padding: 14px 20px;
+    cursor: pointer;
+
+    &.active {
+        background-color: $brown_light;
+    }
+}
+
+.portfolio-pagination__controller {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.portfolio-pagination__controller-title {
+    @include break_points($tablet) {
+        display: none;
+    }
+}
+
+.portfolio-pagination__controller-icon {
+    width: 18px;
+    height: 18px;
+}

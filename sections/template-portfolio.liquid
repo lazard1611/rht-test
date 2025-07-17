@@ -1,0 +1,161 @@
+<link rel="stylesheet" href="{{ "template-portfolio.css" | asset_url }}">
+{% render "set-sections-paddings", section_data: section, wrapper_class: "template-portfolio__header" %}
+
+{% assign typeIndex = 1 %}
+{% assign checkIndex = 1 %}
+{% assign current_url = canonical_url | replace: shop.secure_url, "" | split: "?" | first %}
+
+<div class="template-portfolio__wrapper">
+    <div class="inner-wrapper page_wrap page_wrap--without-paddings">
+        <div class="template-portfolio__header page_wrap page_wrap--border js-title-section">
+            <h1 class="template-portfolio__title h2 js-title-fade">{{ section.settings.title }}</h1>
+
+            <div class="template-portfolio__controllers desktop">
+                {% for block in section.blocks %}
+                    {% if block.settings.show_blog.articles.size > 0 %}
+                        <a class="template-portfolio__controller js-scale-fade-item {% if block.settings.show_blog.url == current_url %}active{% endif %}"
+                            href="{{ block.settings.show_blog.url }}">{{ block.settings.show_blog.title }}</a>
+                    {% endif %}
+                {% endfor %}
+            </div>
+
+            {% render "portfolio-blogs-select", class: "template-portfolio__controller-select", blogs: section.blocks %}
+        </div>
+
+        {% paginate blog.articles by 4 %}
+            <div class="template-portfolio__projects">
+                {% for project in blog.articles %}
+
+                    {% if checkIndex == 1 %}
+                        {% assign side = "right" %}
+                    {% else %}
+                        {% assign side = "left" %}
+                    {% endif %}
+
+                    {% render "project-card", class: "template-portfolio__project-card", project: project, index: typeIndex, side: side, read_more_button_title: section.settings.read_more_button_title %}
+
+                    {% assign checkIndex = checkIndex | plus: 1 %}
+                    {% assign typeIndex = typeIndex | plus: 1 %}
+
+                    {% if checkIndex > 2 %}
+                        {% assign checkIndex = 1 %}
+                    {% endif %}
+
+                    {% if typeIndex > 3 %}
+                        {% assign typeIndex = 1 %}
+                    {% endif %}
+                {% endfor %}
+            </div>
+
+            {% if paginate.parts.size > 1 %}
+                <div class="template-portfolio__pagination-controllers">
+                    {% render "portfolio-pagination", paginate: paginate, pagination_info_text: section.settings.pagination_info_text, pagination_prev_btn_title: section.settings.pagination_prev_btn_title, pagination_next_btn_title: section.settings.pagination_next_btn_title %}
+                </div>
+            {% endif %}
+        {% endpaginate %}
+    </div>
+</div>
+
+<script src="{{ "template-portfolio.js" | asset_url }}" type="module" defer></script>
+
+{% schema %}
+{
+    "name": "Portfolio",
+    "class": "template-portfolio",
+    "tag": "section",
+    "settings": [
+        {
+            "type": "range",
+            "id": "padding_top",
+            "min": 0,
+            "max": 200,
+            "step": 5,
+            "unit": "px",
+            "label": "Padding top",
+            "default": 0
+        },
+        {
+            "type": "range",
+            "id": "padding_bottom",
+            "min": 0,
+            "max": 200,
+            "step": 5,
+            "unit": "px",
+            "label": "Padding bottom",
+            "default": 0
+        },
+        {
+            "type": "range",
+            "id": "padding_top_mobile",
+            "min": 0,
+            "max": 100,
+            "step": 5,
+            "unit": "px",
+            "label": "Padding top mobile",
+            "default": 0
+        },
+        {
+            "type": "range",
+            "id": "padding_bottom_mobile",
+            "min": 0,
+            "max": 100,
+            "step": 5,
+            "unit": "px",
+            "label": "Padding bottom mobile",
+            "default": 0
+        },
+        {
+            "type": "text",
+            "id": "title",
+            "label": "Title"
+        },
+        {
+            "type": "text",
+            "id": "read_more_button_title",
+            "label": "Read more button title",
+            "default": "Lees meer"
+        },
+        {
+            "type": "text",
+            "id": "pagination_info_text",
+            "label": "Pagination info text",
+            "default": "Page"
+        },
+        {
+            "type": "text",
+            "id": "pagination_prev_btn_title",
+            "label": "Pagination previous button title",
+            "default": "Prev"
+        },
+        {
+            "type": "text",
+            "id": "pagination_next_btn_title",
+            "label": "Pagination next button title",
+            "default": "Next"
+        }
+    ],
+    "blocks": [
+        {
+            "name": "Blog",
+            "type": "blog",
+            "settings": [
+                {
+                    "type": "blog",
+                    "id": "show_blog",
+                    "label": "Show blog"
+                }
+            ]
+        }
+    ],
+    "presets": [
+        {
+            "name": "Portfolio"
+        }
+    ],
+    "enabled_on": {
+        "templates": [
+            "blog"
+        ]
+    }
+}
+{% endschema %}

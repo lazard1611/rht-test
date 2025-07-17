@@ -1,0 +1,89 @@
+<link rel="stylesheet" href="{{ "template-example.css" | asset_url }}">
+{% render "set-sections-paddings", section_data: section %}
+{% render "set-sections-borders", section_data: section, wrapper_class: "example__wrapper" %}
+
+<div class="example__wrapper">
+    <h2 class="example__title">{{ section.settings.title }}</h2>
+</div>
+
+<script src="{{ 'template-example.js' | asset_url }}" type="module" defer></script>
+
+{% schema %}
+{
+    "name": "Example",
+    "class": "example",
+    "tag": "section",
+    "settings": [
+        {
+            "type": "range",
+            "id": "padding_top",
+            "min": 0,
+            "max": 200,
+            "step": 5,
+            "unit": "px",
+            "label": "Padding top",
+            "default": 0
+        },
+        {
+            "type": "range",
+            "id": "padding_bottom",
+            "min": 0,
+            "max": 200,
+            "step": 5,
+            "unit": "px",
+            "label": "Padding bottom",
+            "default": 0
+        },
+        {
+            "type": "range",
+            "id": "padding_top_mobile",
+            "min": 0,
+            "max": 100,
+            "step": 5,
+            "unit": "px",
+            "label": "Padding top mobile",
+            "default": 0
+        },
+        {
+            "type": "range",
+            "id": "padding_bottom_mobile",
+            "min": 0,
+            "max": 100,
+            "step": 5,
+            "unit": "px",
+            "label": "Padding bottom mobile",
+            "default": 0
+        },
+        {
+            "type": "select",
+            "id": "section_horizontal_borders",
+            "label": "Section horizontal borders",
+            "options": [
+                {
+                    "value": "top",
+                    "label": "Top"
+                },
+                {
+                    "value": "bottom",
+                    "label": "Bottom"
+                },
+                {
+                    "value": "double",
+                    "label": "Double"
+                }
+            ],
+            "default": "top"
+        },
+        {
+            "type": "text",
+            "id": "title",
+            "label": "Title"
+        }
+    ],
+    "presets": [
+        {
+            "name": "Example"
+        }
+    ]
+}
+{% endschema %}

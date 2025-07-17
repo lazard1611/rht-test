@@ -1,0 +1,161 @@
+{
+    "sections": {
+        "template_service_detail_hero_mWDnWQ": {
+            "type": "template-service-detail-hero",
+            "settings": {
+                "padding_top": 25,
+                "padding_bottom": 35,
+                "padding_top_mobile": 35,
+                "padding_bottom_mobile": 35,
+                "first_text_block_title": "Hoe het werkt",
+                "first_block_content": "<p>Tijdens onze eerste ontmoeting bespreken we werkprincipes, tonen voorbeelden en beoordelen uw project om overeenstemming te bereiken over de voorwaarden. Na ondertekening van het contract meten we de ruimte op en bespreken we uw voorkeuren, de indeling van de kamer en materiaalkeuzes. We ontwikkelen en selecteren samen de beste planopties, maken vervolgens 3D-visualisaties voor de belangrijkste kamer en daarna voor de andere kamers. Tot slot produceren we gedetailleerde tekeningen voor de uitvoering.<\/p>",
+                "image": "shopify:\/\/shop_images\/slider-prev.webp",
+                "second_block_content": "<h3>VOLLEDIG INTERIEURONTWERPPROJECT<\/h3><p>Volledig meubelontwerp is een kunst die esthetiek, functionaliteit en vakmanschap combineert om stukken te creëren die leefruimtes verbeteren. Het omvat verschillende aspecten, van conceptvorming en materiaalselectie tot constructie en afwerking. Het proces begint vaak met inspiratie, geput uit de natuur, architectuur of zelfs historische ontwerpen, die dient als basis voor de eerste schetsen en ideeën.De laatste details, zoals beits, verf en vernissen, verbeteren de visuele aantrekkingskracht en beschermen het meubilair. Het eindproduct moet schoonheid in evenwicht brengen met praktisch nut, naadloos passend bij verschillende interieurstijlen.<\/p>",
+                "third_block_content": "<p>Volledig meubelontwerp is een kunst die esthetiek, functionaliteit en vakmanschap combineert om stukken te creëren die leefruimtes verbeteren. Het omvat verschillende aspecten, van conceptvorming en materiaalselectie tot constructie en afwerking. Het proces begint vaak met inspiratie, geput uit de natuur, architectuur of zelfs historische ontwerpen, die dient als basis voor de eerste schetsen en ideeën.De laatste details, zoals beits, verf en vernissen, verbeteren de visuele aantrekkingskracht en beschermen het meubilair. Het eindproduct moet schoonheid in evenwicht brengen met praktisch nut, naadloos passend bij verschillende interieurstijlen en tegelijkertijd zijn beoogde doel dienend.<\/p>"
+            }
+        },
+        "section_stages_VUGwBk": {
+            "type": "section-stages",
+            "blocks": {
+                "stage_REppPh": {
+                    "type": "stage",
+                    "settings": {
+                        "url": "shopify:\/\/pages\/orientation",
+                        "title": "Oriëntatie",
+                        "description": "Uw visie en behoeften begrijpen om een gepersonaliseerde aanpak te garanderen."
+                    }
+                },
+                "stage_jM7Gw4": {
+                    "type": "stage",
+                    "settings": {
+                        "url": "shopify:\/\/pages\/design",
+                        "title": "Ontwerp",
+                        "description": "Het creëren van innovatieve en functionele ontwerpen op maat van uw stijlvoorkeuren."
+                    }
+                },
+                "stage_fatitc": {
+                    "type": "stage",
+                    "settings": {
+                        "url": "shopify:\/\/pages\/planning",
+                        "title": "Planning",
+                        "description": "Gedetailleerde planning om het renovatieproces te stroomlijnen en effectief aan deadlines te voldoen."
+                    }
+                },
+                "stage_ia4NGT": {
+                    "type": "stage",
+                    "settings": {
+                        "url": "shopify:\/\/pages\/execution-implementation",
+                        "title": "UITVOERING \/ IMPLEMENTATIE",
+                        "description": "Deskundige uitvoering om uw visie met precisie en zorg tot leven te brengen."
+                    }
+                }
+            },
+            "block_order": [
+                "stage_REppPh",
+                "stage_jM7Gw4",
+                "stage_fatitc",
+                "stage_ia4NGT"
+            ],
+            "settings": {
+                "padding_top": 85,
+                "padding_bottom": 40,
+                "padding_top_mobile": 35,
+                "padding_bottom_mobile": 25,
+                "section_horizontal_borders": "bottom",
+                "header_vertical_borders": "true",
+                "title_limits": "true",
+                "button_color": "btn_base_brown",
+                "title": "ONZE werkfasenVerzoek om dienst",
+                "description": "",
+                "button_title": "Verzoek om dienst",
+                "button_url": "shopify:\/\/pages\/contact"
+            }
+        },
+        "section_our_showcases_7GdP4e": {
+            "type": "section-our-showcases",
+            "blocks": {
+                "article_t4mhpx": {
+                    "type": "article",
+                    "settings": {
+                        "project": "keuken\/ontwerp-en-realisatie-van-een-wellnessruimte-met-op-maat-gemaakte-ka-een-houten"
+                    }
+                },
+                "article_7MexAE": {
+                    "type": "article",
+                    "settings": {
+                        "project": "keuken\/ontweed-met-op-maat-gemaakte-kasten-en-een-houten"
+                    }
+                }
+            },
+            "block_order": [
+                "article_t4mhpx",
+                "article_7MexAE"
+            ],
+            "settings": {
+                "padding_top": 60,
+                "padding_bottom": 35,
+                "padding_top_mobile": 35,
+                "padding_bottom_mobile": 25,
+                "section_horizontal_borders": "bottom",
+                "title_limits": "false",
+                "button_color": "btn_base",
+                "title": "OUR showcases",
+                "description": "",
+                "button_title": "",
+                "button_url": "",
+                "read_more_button_title": "Lees meer"
+            }
+        },
+        "section_contact_wMPL8M": {
+            "type": "section-contact",
+            "blocks": {
+                "picture_cXzKF6": {
+                    "type": "picture",
+                    "settings": {
+                        "block_img": "shopify:\/\/shop_images\/cintact.webp"
+                    }
+                },
+                "form_hGPnA4": {
+                    "type": "form",
+                    "settings": {
+                        "block_form_title": "INQUIRE NOW",
+                        "block_form_richtext": "",
+                        "block_form_richtext_col_1": "",
+                        "block_form_richtext_col_2": "",
+                        "block_label_name": "First Name",
+                        "block_label_email": "Your email",
+                        "block_label_phone": "Phone number",
+                        "block_label_service": "Service type",
+                        "block_label_message": "Your requests",
+                        "block_checkbox_text": "I agree with",
+                        "block_link_text": "Privacy Policy",
+                        "block_link_url": "",
+                        "block_btn_text": "Submit"
+                    }
+                }
+            },
+            "block_order": [
+                "picture_cXzKF6",
+                "form_hGPnA4"
+            ],
+            "settings": {
+                "padding_top": 0,
+                "padding_bottom": 0,
+                "padding_top_mobile": 0,
+                "padding_bottom_mobile": 0,
+                "block_horizontal_borders": "double",
+                "title": "All about contact",
+                "description": "<p>U kunt uw verzoek achterlaten onder het contactformulier en we bellen u direct daarna!<\/p>",
+                "decor_line": false,
+                "button_title": "",
+                "button_url": ""
+            }
+        }
+    },
+    "order": [
+        "template_service_detail_hero_mWDnWQ",
+        "section_stages_VUGwBk",
+        "section_our_showcases_7GdP4e",
+        "section_contact_wMPL8M"
+    ]
+}

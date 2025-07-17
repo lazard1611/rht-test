@@ -1,0 +1,26 @@
+@use '../variables.scss' as *;
+
+@mixin form_el_checkbox {
+    display: block;			
+    position: relative;
+    padding-left: 30px;
+    font-size: 18px;
+    color: $black;
+	line-height: 1;		
+	transition: background-color 0.3s ease, color 0.3s ease;
+    cursor: pointer;   
+
+	&::before {
+		content: "";
+		position: absolute;
+		top: -2px;
+		left: 0;
+
+        display: block;
+		height: 18px;
+		width: 18px;
+
+		transition: 0.15s all ease-out;		
+		border: 2px solid $black;		
+	}
+}

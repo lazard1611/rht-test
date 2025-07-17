@@ -1,0 +1,36 @@
+{
+  "name": "header",
+  "type": "header",
+  "sections": {
+    "header": {
+      "type": "header",
+      "blocks": {
+        "account_hRL3gR": {
+          "type": "account",
+          "settings": {
+            "account": "Account"
+          }
+        },
+        "wishlist_LUpkXy": {
+          "type": "wishlist",
+          "settings": {
+            "wishlist": "Verlanglijst"
+          }
+        }
+      },
+      "block_order": [
+        "account_hRL3gR",
+        "wishlist_LUpkXy"
+      ],
+      "settings": {
+        "logo": "shopify:\/\/shop_images\/header-logo.svg",
+        "logo_secondary": "shopify:\/\/shop_images\/header-logo-alt.svg",
+        "header_fix": true,
+        "link_list_id": "main-menu"
+      }
+    }
+  },
+  "order": [
+    "header"
+  ]
+}

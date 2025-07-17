@@ -1,0 +1,200 @@
+{
+  "sections": {
+    "template_service_hero_E7AtPB": {
+      "type": "template-service-hero",
+      "settings": {
+        "image": "shopify:\/\/shop_images\/image_48.webp"
+      }
+    },
+    "section_richtext_jPggjb": {
+      "type": "section-richtext",
+      "settings": {
+        "padding_top": 80,
+        "padding_bottom": 35,
+        "padding_top_mobile": 35,
+        "padding_bottom_mobile": 25,
+        "section_horizontal_borders": "bottom",
+        "text": "<h2>Diensten die wij u kunnen aanbieden<\/h2><p>In onze eerste ontmoeting bespreken we werkprincipes, tonen voorbeelden en beoordelen uw project om overeenstemming te bereiken over de voorwaarden. Na ondertekening van het contract meten we de ruimte op en bespreken we uw voorkeuren, kamerindeling en materiaalkeuzes. We ontwikkelen en selecteren samen de beste planopties, maken en presenteren vervolgens 3D-visualisaties voor de belangrijkste ruimte, gevolgd door andere kamers.<\/p>",
+        "text_size": "large",
+        "text_position": "left"
+      }
+    },
+    "section_view_services_dmPWM7": {
+      "type": "section-view-services",
+      "blocks": {
+        "page_qPTJbP": {
+          "type": "page",
+          "settings": {
+            "background_image": "shopify:\/\/shop_images\/IMG_127.webp",
+            "title": "VOLLEDIGE INTERIEURONTWERP",
+            "description": "In onze eerste ontmoeting bespreken we werkprincipes, tonen voorbeelden en beoordelen uw project om overeenstemming te bereiken over de voorwaarden.",
+            "button_title": "Bekijk projecten",
+            "url": "shopify:\/\/pages\/contact",
+            "btn_color": ""
+          }
+        },
+        "page_8mVwtG": {
+          "type": "page",
+          "settings": {
+            "background_image": "shopify:\/\/shop_images\/IMG_12.webp",
+            "title": "Meubelontwerp",
+            "description": "Behoefte aan origineel, comfortabel meubilair dat bij uw stijl past? Ik maak op maat gemaakte stukken voor particuliere en zakelijke klanten.",
+            "button_title": "Bekijk projecten",
+            "url": "shopify:\/\/pages\/contact",
+            "btn_color": ""
+          }
+        },
+        "page_kNmXWV": {
+          "type": "page",
+          "settings": {
+            "background_image": "shopify:\/\/shop_images\/IMG_1.webp",
+            "title": "Installaties",
+            "description": "Behoefte aan origineel, comfortabel meubilair dat bij uw stijl past? Ik maak op maat gemaakte stukken voor particuliere en zakelijke klanten.",
+            "button_title": "Bekijk projecten",
+            "url": "shopify:\/\/pages\/contact",
+            "btn_color": ""
+          }
+        }
+      },
+      "block_order": [
+        "page_qPTJbP",
+        "page_8mVwtG",
+        "page_kNmXWV"
+      ],
+      "settings": {
+        "padding_top": 35,
+        "padding_bottom": 35,
+        "padding_top_mobile": 15,
+        "padding_bottom_mobile": 15,
+        "section_horizontal_borders": "bottom",
+        "fade_color": "#000000",
+        "fade_opacity": 0
+      }
+    },
+    "section_preview_project_MUieQk": {
+      "type": "section-preview-project",
+      "settings": {
+        "padding_top": 30,
+        "padding_bottom": 40,
+        "padding_top_mobile": 35,
+        "padding_bottom_mobile": 25,
+        "section_horizontal_borders": "bottom",
+        "title": "Herdefinieer het gebruikelijke tot het ongebruikelijke",
+        "description": "<p>Wij zorgen voor uw tevredenheid door stukken te creëren die zowel functioneel als uitnodigend zijn. Wij respecteren het oorspronkelijke karakter van oudere meubels en blijven uw constante aanspreekpunt voor, tijdens en na het project. U kunt Keukens, Meubels, Badkamers of Interieurdesign renoveren.<\/p>",
+        "project": "keuken\/ontweed-met-op-maat-gemaakte-kasten-en-een-houten",
+        "project_title": "Ons nieuwste project",
+        "project_description": "Een nieuwe look voor oude meubels is verfrissend voor de woonkamer"
+      }
+    },
+    "section_stages_VUGwBk": {
+      "type": "section-stages",
+      "blocks": {
+        "stage_REppPh": {
+          "type": "stage",
+          "settings": {
+            "url": "shopify:\/\/pages\/orientation",
+            "title": "Oriëntatie",
+            "description": "Uw visie en behoeften begrijpen om een gepersonaliseerde aanpak te garanderen."
+          }
+        },
+        "stage_jM7Gw4": {
+          "type": "stage",
+          "settings": {
+            "url": "shopify:\/\/pages\/design",
+            "title": "Ontwerp",
+            "description": "Het creëren van innovatieve en functionele ontwerpen op maat van uw stijlvoorkeuren."
+          }
+        },
+        "stage_fatitc": {
+          "type": "stage",
+          "settings": {
+            "url": "shopify:\/\/pages\/planning",
+            "title": "Planning",
+            "description": "Gedetailleerde planning om het renovatieproces te stroomlijnen en effectief aan deadlines te voldoen."
+          }
+        },
+        "stage_ia4NGT": {
+          "type": "stage",
+          "settings": {
+            "url": "shopify:\/\/pages\/execution-implementation",
+            "title": "UITVOERING \/ IMPLEMENTATIE",
+            "description": "Deskundige uitvoering om uw visie met precisie en zorg tot leven te brengen."
+          }
+        }
+      },
+      "block_order": [
+        "stage_REppPh",
+        "stage_jM7Gw4",
+        "stage_fatitc",
+        "stage_ia4NGT"
+      ],
+      "settings": {
+        "padding_top": 85,
+        "padding_bottom": 40,
+        "padding_top_mobile": 35,
+        "padding_bottom_mobile": 25,
+        "section_horizontal_borders": "bottom",
+        "header_vertical_borders": "true",
+        "title_limits": "true",
+        "button_color": "btn_base_brown",
+        "title": "ONZE werkfasen",
+        "description": "",
+        "button_title": "Verzoek om dienst",
+        "button_url": "shopify:\/\/pages\/contact"
+      }
+    },
+    "section_contact_wMPL8M": {
+      "type": "section-contact",
+      "blocks": {
+        "picture_cXzKF6": {
+          "type": "picture",
+          "settings": {
+            "block_img": "shopify:\/\/shop_images\/cintact.webp"
+          }
+        },
+        "form_hGPnA4": {
+          "type": "form",
+          "settings": {
+            "block_form_title": "INQUIRE NOW",
+            "block_form_richtext": "",
+            "block_form_richtext_col_1": "",
+            "block_form_richtext_col_2": "",
+            "block_label_name": "First Name",
+            "block_label_email": "Your email",
+            "block_label_phone": "Phone number",
+            "block_label_service": "Service type",
+            "block_label_message": "Your requests",
+            "block_checkbox_text": "I agree with",
+            "block_link_text": "Privacy Policy",
+            "block_link_url": "",
+            "block_btn_text": "Submit"
+          }
+        }
+      },
+      "block_order": [
+        "picture_cXzKF6",
+        "form_hGPnA4"
+      ],
+      "settings": {
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "padding_top_mobile": 0,
+        "padding_bottom_mobile": 35,
+        "block_horizontal_borders": "double",
+        "title": "All about contact",
+        "description": "<p>De pagina die u zoekt bestaat niet. Maar u kunt proberen te vinden wat u nodig heeft op onze collectiepagina.<\/p>",
+        "decor_line": false,
+        "button_title": "",
+        "button_url": ""
+      }
+    }
+  },
+  "order": [
+    "template_service_hero_E7AtPB",
+    "section_richtext_jPggjb",
+    "section_view_services_dmPWM7",
+    "section_preview_project_MUieQk",
+    "section_stages_VUGwBk",
+    "section_contact_wMPL8M"
+  ]
+}

@@ -1,0 +1,143 @@
+/*!*******************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].use[3]!./src/styles/sections/section-view-services.scss ***!
+  \*******************************************************************************************************************************************************************************************************************************************/
+/* ==================================================== ADAPTIVE =================================================== */
+/* ===================================================== FONTS ===================================================== */
+/* ===================================================== COLORS ==================================================== */
+/* ====================================================== FORM ===================================================== */
+@media screen and (min-width: 1440px) {
+  .section-view-services__inner-wrapper {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 35px;
+    gap: 35px;
+    padding-left: 35px !important;
+    padding-right: 35px !important;
+  }
+}
+@media (max-width: 1439px) and (min-width: 1200px) {
+  .section-view-services__inner-wrapper {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 25px;
+    gap: 25px;
+    padding-left: 25px !important;
+    padding-right: 25px !important;
+  }
+}
+@media screen and (max-width: 1199px) {
+  .section-view-services__inner-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+.section-view-services__service-card {
+  width: 100%;
+  height: 100%;
+}
+@media screen and (min-width: 1440px) {
+  .section-view-services__service-card {
+    padding-top: 35px;
+    padding-bottom: 35px;
+  }
+}
+@media (max-width: 1439px) and (min-width: 1200px) {
+  .section-view-services__service-card {
+    padding-top: 25px;
+    padding-bottom: 25px;
+  }
+}
+@media screen and (max-width: 1199px) {
+  .section-view-services__service-card {
+    padding: 15px;
+    border-bottom: 3px solid #E1DACD;
+  }
+}
+.section-view-services__service-card:last-of-type {
+  border-bottom: none;
+}
+
+.section-view-services__service-card-inner-wrapper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  width: 100%;
+  height: 100%;
+  max-height: 600px;
+  overflow: hidden;
+}
+@media screen and (min-width: 1200px) {
+  .section-view-services__service-card-inner-wrapper {
+    padding: 40px 24px;
+  }
+}
+@media (max-width: 1199px) and (min-width: 768px) {
+  .section-view-services__service-card-inner-wrapper {
+    aspect-ratio: 496/393;
+    padding: 80px 24px;
+  }
+}
+@media screen and (max-width: 767px) {
+  .section-view-services__service-card-inner-wrapper {
+    aspect-ratio: 345/393;
+    padding: 50px 20px;
+  }
+}
+
+.section-view-services__service-card-title,
+.section-view-services__service-card-description {
+  text-align: center;
+  color: #FFFFFF;
+}
+
+.section-view-services__service-card-title {
+  text-transform: uppercase;
+  font-weight: 700;
+}
+@media screen and (min-width: 1440px) {
+  .section-view-services__service-card-title {
+    font-size: 32px;
+  }
+}
+@media (max-width: 1439px) and (min-width: 1200px) {
+  .section-view-services__service-card-title {
+    font-size: 24px;
+  }
+}
+
+.section-view-services__service-card-description {
+  display: -webkit-box;
+  max-width: 100%;
+  -webkit-line-clamp: 5;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  max-width: 480px;
+  font-weight: 400;
+}
+
+.section-view-services__fade,
+.section-view-services__service-card-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.section-view-services__fade {
+  transition: 0.3s ease;
+  z-index: -1;
+}
+
+.section-view-services__service-card-image {
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: center;
+     object-position: center;
+  z-index: -2;
+}

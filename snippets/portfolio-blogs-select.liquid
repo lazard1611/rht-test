@@ -1,0 +1,28 @@
+{% assign current_url = canonical_url | replace: shop.secure_url, "" | split: "?" | first %}
+
+<div class="product-option-select {{ class }}" data-portfolio-blogs-select>
+    <div class="product-option-select__select-wrapper">
+        <div class="product-option-select__active-option" data-portfolio-blogs-select-active>
+            <span data-portfolio-blogs-select-active-title>
+                {% for block in blogs %}
+                    {% if block.settings.show_blog.url == current_url and block.settings.show_blog.articles.size > 0%}
+                        {{ block.settings.show_blog.title }}
+                    {% endif %}
+                {% endfor %}
+            </span>
+
+            <div class="product-option-select__arrow">
+                {% render "icons", filename: "arrow_down" %}
+            </div>
+        </div>
+
+        <ul class="product-option-select__options">
+            {% for block in blogs %}
+                {% if block.settings.show_blog.articles.size > 0 %}
+                    <a class="product-option-select__option {% if block.settings.show_blog.url == current_url %}active{% endif %}"
+                       href="{{ block.settings.show_blog.url }}">{{ block.settings.show_blog.title }}</a>
+                {% endif %}
+            {% endfor %}
+        </ul>
+    </div>
+</div>

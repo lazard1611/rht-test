@@ -1,0 +1,119 @@
+@use '../variables.scss' as *;
+@use '../mixins/_global-mixins.scss' as *;
+
+.product-card {
+    width: fit-content;
+    height: fit-content;
+
+    &:hover {
+        .product-card__image {
+            transform: scale(1.1);
+        }
+    }
+
+    .collection__products-container & {
+        opacity: 0;
+    }
+}
+
+.product-card__image-wrapper {
+    position: relative;
+    display: flex;
+    width: calc(100% + 3px);
+    margin-bottom: 25px;
+    overflow: hidden;
+}
+
+.product-card__image {
+    display: block;
+    width: 100%;
+    object-fit: cover;
+    aspect-ratio: 0.878/1;
+    transition: transform .5s ease;
+}
+
+.product-card__badge {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    right: 15px;
+    width: fit-content;
+    padding: 12px 18px;
+    font-size: 18px;
+    font-weight: 800;
+    line-height: .83;
+    text-transform: uppercase;
+    color: $white;
+    z-index: 1;
+
+    &.hand_picked {
+        background-color: $purple_dark;
+    }
+
+    &.limited_edition {
+        background-color: $brown;
+    }
+
+    &.sale {
+        background-color: $pink;
+    }
+}
+
+.product-card__info {
+    display: flex;
+    gap: 15px;
+    width: calc(100% + 3px);
+
+    @include break_points($tablet) {
+        flex-direction: column;
+    }
+}
+
+.product-card__title {
+    @include cut_string_rows(2, 100%);
+
+    @include break_points($tablet, min) {
+        font-size: 22px;
+        font-weight: 700;
+        line-height: 1.45;
+    }
+
+    @include break_points($tablet) {
+        font-size: 20px;
+        font-weight: 600;
+        line-height: 1.2;
+    }
+}
+
+.product-card__price-container {
+    display: flex;
+    gap: 15px;
+    white-space: nowrap;
+
+    @include break_points($tablet, min) {
+        margin-left: auto;
+    }
+}
+
+.product-card__price,
+.product-card__compare-price {
+    font-weight: 600;
+
+    @include break_points($tablet, min) {
+        font-size: 22px;
+        line-height: 1.45;
+    }
+
+    @include break_points($tablet) {
+        font-size: 20px;
+        line-height: 1.2;
+    }
+}
+
+.product-card__price {
+}
+
+.product-card__compare-price {
+    text-decoration-line: line-through;
+    color: $gray_second;
+}

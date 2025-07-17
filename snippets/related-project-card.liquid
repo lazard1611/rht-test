@@ -1,0 +1,21 @@
+<a class="related-project-card js-fade" href="{{ url }}">
+    <img class="related-project-card__image"
+         src="{{ image | image_url }}"
+         alt=""
+         width="auto"
+         height="auto"
+         loading="lazy"
+    >
+
+    {% if title != blank %}
+        <h4 class="related-project-card__title h4">
+            {{ title }}
+        </h4>
+    {% endif %}
+
+    {% if description != blank %}
+        <p class="related-project-card__description">
+            {{ description }}
+        </p>
+    {% endif %}
+</a>

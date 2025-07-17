@@ -1,0 +1,180 @@
+<link rel="stylesheet" href="{{ "section-view-services.css" | asset_url }}">
+{% render "set-sections-borders", section_data: section, wrapper_class: "section-view-services__wrapper" %}
+
+<div class="section-view-services__wrapper">
+    <div class="section-view-services__inner-wrapper js-title-section page_wrap page_wrap--border page_wrap--without-paddings">
+        {% for project in section.blocks %}
+            {% if project.settings != blank %}
+                <div class="section-view-services__service-card js-scale-fade-item">
+                    <div class="section-view-services__service-card-inner-wrapper">
+                        <h3 class="section-view-services__service-card-title h4">{{ project.settings.title }}</h3>
+                        <p class="section-view-services__service-card-description">{{ project.settings.description }}</p>
+
+                        {% render "buttons", link: project.settings.url, title: project.settings.button_title, class: "btn_base_with_bg", icon: true %}
+
+                        <div class="section-view-services__fade"
+                             style="opacity: {{ section.settings.fade_opacity }}%;background-color: {{ section.settings.fade_color }}">
+                        </div>
+
+                        <img class="section-view-services__service-card-image"
+                             src="{{ project.settings.background_image | image_url }}"
+                             alt=""
+                             width="auto"
+                             height="auto"
+                             loading="lazy"
+                        >
+                    </div>
+                </div>
+
+                {% if project.settings.btn_color %}
+                    <style>
+                        .section-view-services__service-card:nth-child({{ forloop.index }}) .btn_base_with_bg:not(:hover) {
+                            background-color: {{ project.settings.btn_color }};
+                            border-color: {{ project.settings.btn_color }};
+                        }
+
+                        .section-view-services__service-card:nth-child({{ forloop.index }}) .btn_base_with_bg:hover .btn__icon {
+                            color: {{ project.settings.btn_color }};
+                        }
+
+                        .section-view-services__service-card:nth-child({{ forloop.index }}) .btn_base_with_bg:hover {
+                            color: {{ project.settings.btn_color }};
+                            border-color: {{ project.settings.btn_color }};
+                        }
+                    </style>
+                {% endif %}
+            {% endif %}
+        {% endfor %}
+    </div>
+</div>
+
+<script src="{{ "section-view-services.js" | asset_url }}" type="module" defer></script>
+
+{% schema %}
+{
+    "name": "View service types",
+    "class": "section-view-services",
+    "tag": "section",
+    "settings": [
+        {
+            "type": "range",
+            "id": "padding_top",
+            "min": 0,
+            "max": 200,
+            "step": 5,
+            "unit": "px",
+            "label": "Padding top",
+            "default": 0
+        },
+        {
+            "type": "range",
+            "id": "padding_bottom",
+            "min": 0,
+            "max": 200,
+            "step": 5,
+            "unit": "px",
+            "label": "Padding bottom",
+            "default": 0
+        },
+        {
+            "type": "range",
+            "id": "padding_top_mobile",
+            "min": 0,
+            "max": 100,
+            "step": 5,
+            "unit": "px",
+            "label": "Padding top mobile",
+            "default": 0
+        },
+        {
+            "type": "range",
+            "id": "padding_bottom_mobile",
+            "min": 0,
+            "max": 100,
+            "step": 5,
+            "unit": "px",
+            "label": "Padding bottom mobile",
+            "default": 0
+        },
+        {
+            "type": "select",
+            "id": "section_horizontal_borders",
+            "label": "Section horizontal borders",
+            "options": [
+                {
+                    "value": "top",
+                    "label": "Top"
+                },
+                {
+                    "value": "bottom",
+                    "label": "Bottom"
+                },
+                {
+                    "value": "double",
+                    "label": "Double"
+                }
+            ],
+            "default": "top"
+        },
+        {
+            "type": "color",
+            "id": "fade_color",
+            "label": "Fade color"
+        },
+        {
+            "type": "range",
+            "id": "fade_opacity",
+            "min": 0,
+            "max": 100,
+            "step": 1,
+            "unit": "%",
+            "label": "Fade opacity",
+            "default": 0
+        }
+    ],
+    "blocks": [
+        {
+            "name": "Page",
+            "type": "page",
+            "limit": 3,
+            "settings": [
+                {
+                    "type": "image_picker",
+                    "id": "background_image",
+                    "label": "Background image"
+                },
+                {
+                    "type": "text",
+                    "id": "title",
+                    "label": "Title"
+                },
+                {
+                    "type": "text",
+                    "id": "description",
+                    "label": "Description"
+                },
+                {
+                    "type": "text",
+                    "id": "button_title",
+                    "label": "Button title"
+                },
+                {
+                    "type": "url",
+                    "id": "url",
+                    "label": "Button URL"
+                },
+                {
+                    "type": "color",
+                    "id": "btn_color",
+                    "label": "Button color"
+                }
+            ]
+        }
+    ],
+    "presets": [
+        {
+            "name": "View service types"
+        }
+    ]
+}
+{% endschema %}

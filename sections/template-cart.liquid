@@ -1,0 +1,203 @@
+<link rel="stylesheet" href="{{ "template-cart.css" | asset_url }}">
+{% render "set-sections-paddings", section_data: section %}
+
+<div class="cart__wrapper{% if cart.item_count > 0 %} loading{% endif %}" data-cart-wrapper>
+    <div class="cart__wrapper-main-container js-fade-section" data-cart-main-container>
+        {% if cart.item_count > 0 %}
+            <h2 class="cart__title page_title js-fade">{{ section.settings.title }}&nbsp;({{ cart.item_count }})</h2>
+            <div class="cart__products-container js-fade">
+                {% for line_item in cart.items %}
+                    {% render 'cart-product', line_item: line_item %}
+                {% endfor %}
+            </div>
+            <div class="cart__info-container js-fade">
+                <div class="cart__info-container-head">
+                    {{ section.settings.subtotal_title }}
+                    <span>{{ cart.total_price | money_without_trailing_zeros | replace: '€', '€ ' }}</span>
+                </div>
+                <div class="cart__info-container-textarea-container">
+                    <textarea 
+                        type="textarea" 
+                        class="cart__info-container-textarea" 
+                        placeholder="{{ section.settings.cart_note_placeholder }}"
+                        data-cart-note-textarea
+                    ></textarea>
+                </div>
+                <div class="cart__info-container-textarea-buttons">
+                    <a href="{{ section.settings.cart_btn_back_to_shop_url }}" class="btn_base_transparent">{{ section.settings.cart_btn_back_to_shop_title }}</a>
+                    <button class="cart__checkout-btn btn_base" data-cart-checkout-btn>
+                        <span class="cart__checkout-btn-title">{{ section.settings.cart_btn_checkout_title }}</span>
+                        {% render 'loading-spinner' %}
+                    </button>
+                </div>
+                {% render 'payments', classes: 'cart__info-container-textarea-payments' %}
+            </div>
+        {% else %}
+            <div class="cart__empty-block js-fade-section">
+                <h2 class="cart__empty-block-title js-fade">{{ section.settings.empty_block_title }} ({{ cart.item_count }})</h2>
+                <div class="cart__empty-block-description js-fade">{{ section.settings.empty_block_description }}</div>
+                <div class="cart__empty-block-buttons">
+                    <a 
+                        class="cart__empty-block-home-button js-fade btn_base" 
+                        href="{% if section.settings.empty_block_home_btn_url != blank %}{{ section.settings.empty_block_home_btn_url }}{% else %}/{% endif %}"
+                    >{{ section.settings.empty_block_home_btn_title }}</a>
+                    <a 
+                        class="cart__empty-block-collection-button js-fade btn_base_transparent" 
+                        href="{% if section.settings.empty_block_collection_btn_url != blank %}{{ section.settings.empty_block_collection_btn_url }}{% else %}/{% endif %}"
+                    >{{ section.settings.empty_block_collection_btn_title }}</a>
+                </div>
+            </div>
+        {% endif %}
+        <div class="cart__loader" data-cart-loader></div>
+    </div>
+</div>
+
+<script src="{{ 'template-cart.js' | asset_url }}" type="module" defer></script>
+
+{% schema %}
+{
+    "name": "Cart",
+    "class": "cart",
+    "tag": "section",
+    "settings": [
+        {
+            "type": "range",
+            "id": "padding_top",
+            "min": 0,
+            "max": 200,
+            "step": 5,
+            "unit": "px",
+            "label": "Padding top",
+            "default": 0
+        },
+        {
+            "type": "range",
+            "id": "padding_bottom",
+            "min": 0,
+            "max": 200,
+            "step": 5,
+            "unit": "px",
+            "label": "Padding bottom",
+            "default": 0
+        },
+        {
+            "type": "range",
+            "id": "padding_top_mobile",
+            "min": 0,
+            "max": 100,
+            "step": 5,
+            "unit": "px",
+            "label": "Padding top mobile",
+            "default": 0
+        },
+        {
+            "type": "range",
+            "id": "padding_bottom_mobile",
+            "min": 0,
+            "max": 100,
+            "step": 5,
+            "unit": "px",
+            "label": "Padding bottom mobile",
+            "default": 0
+        },
+        {
+            "type": "select",
+            "id": "section_horizontal_borders",
+            "label": "Section horizontal borders",
+            "options": [
+                {
+                    "value": "top",
+                    "label": "Top"
+                },
+                {
+                    "value": "bottom",
+                    "label": "Bottom"
+                },
+                {
+                    "value": "double",
+                    "label": "Double"
+                }
+            ],
+            "default": "top"
+        },
+        {
+            "type": "text",
+            "id": "title",
+            "label": "Title",
+            "default": "Winkelwagen"
+        },
+        {
+            "type": "text",
+            "id": "cart_line_item_remove_btn_text",
+            "label": "Product remove button title",
+            "default": "Verwijderen"
+        },
+        {
+            "type": "text",
+            "id": "subtotal_title",
+            "label": "Subtotal title",
+            "default": "Subtotaal"
+        },
+        {
+            "type": "text",
+            "id": "cart_note_placeholder",
+            "label": "Note textarea placeholder",
+            "default": "Uw bericht"
+        },
+        {
+            "type": "text",
+            "id": "cart_btn_back_to_shop_title",
+            "label": "Back to shop button title",
+            "default": "Verder winkelen"
+        },
+        {
+            "type": "url",
+            "id": "cart_btn_back_to_shop_url",
+            "label": "Back to shop button url"
+        },
+        {
+            "type": "text",
+            "id": "cart_btn_checkout_title",
+            "label": "Checkout button title",
+            "default": "Doorgaan naar afrekenen"
+        },
+        {
+            "type": "header",
+            "content": "Empty block"
+        },
+        {
+            "type": "text",
+            "id": "empty_block_title",
+            "label": "Title",
+            "default": "Winkelwagen"
+        },
+        {
+            "type": "richtext",
+            "id": "empty_block_description",
+            "label": "Description"
+        },
+        {
+            "type": "text",
+            "id": "empty_block_home_btn_title",
+            "label": "Home button title",
+            "default": "Ga naar de startpagina"
+        },
+        {
+            "type": "url",
+            "id": "empty_block_home_btn_url",
+            "label": "Home button url"
+        },
+        {
+            "type": "text",
+            "id": "empty_block_collection_btn_title",
+            "label": "Collection button title",
+            "default": "Bekijk verzamelpagina"
+        },
+        {
+            "type": "url",
+            "id": "empty_block_collection_btn_url",
+            "label": "Collection button url"
+        }
+    ]
+}
+{% endschema %}

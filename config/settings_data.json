@@ -1,0 +1,31 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "current": {
+    "favicon": "shopify://shop_images/faviocon.svg",
+    "body_bg_color": "#f0ede7",
+    "body_text_color": "#262625",
+    "body_link_color": "#571eff",
+    "form_text_color": "#000000",
+    "filter_colors": "black: #333333,\nblue: #007BFF,\ngreen: #228B22,\norange: #D2691E,\nred: #DC143C,\nsilver: #A9A9A9,\nyellow: #FFD700",
+    "phone": "06 523 000 40",
+    "email": "info@allaboutinterior.com",
+    "error_name": "Voer minimaal 2 tekens in",
+    "error_email": "Voer een geldig e-mailadres in (of voer een telefoonnummer in)",
+    "error_phone": "Voer minimaal 8 cijfers in (of voer uw e-mailadres in)",
+    "error_srvice": "Selecteer servicetype",
+    "error_textarea": "Voer minimaal 10 tekens in",
+    "form_borders_color": "#ff0000",
+    "form_background_color": "#FFFFFF",
+    "content_for_index": [
+
+    ]
+  }
+}

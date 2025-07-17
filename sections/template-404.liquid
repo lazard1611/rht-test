@@ -1,0 +1,111 @@
+<link rel="stylesheet" href="{{ "template-404.css" | asset_url }}">
+
+<style>
+	#shopify-section-{{ section.id }} {
+		.template-404__container {
+			@media screen and (min-width: 1024px) {
+				padding-top: {{ section.settings.padding_top }}px;
+				padding-bottom: {{ section.settings.padding_bottom }}px;
+			}
+
+			@media screen and (max-width: 1023px) {
+				padding-top: {{ section.settings.padding_top_mobile }}px;
+				padding-bottom: {{ section.settings.padding_bottom_mobile }}px;
+			}
+		}
+	}
+</style>
+
+<div class="template-404__wrapper">
+	<div class="template-404__container">
+		<div class="template-404__title ">
+			<span class="template-404__letter">4</span>
+			<div class="template-404__svg js-vase">
+				<div class="template-404__svg_vase">
+					{% render 'icons' filename: 'vase' %}
+				</div>
+				<div class="template-404__svg_splinter">
+					{% render 'icons' filename: 'splinter' %}
+				</div>
+			</div>
+			<span class="template-404__letter">4</span>
+		</div>
+		<p class="template-404__description js-fade">
+			{{ section.settings.description }}
+		</p>
+		<div class="template-404__buttons">
+			<a class="template-404__home-button btn_base js-fade" href="/">{{ section.settings.home_caption }}</a>
+			<a class="template-404__collection-button btn_base_transparent js-fade" href="/">{{ section.settings.collection_caption }}</a>
+		</div>
+	</div>
+</div>
+
+<script src="{{ 'template-404.js' | asset_url }}" type="module" defer></script>
+
+{% schema %}
+{
+	"name": "Template 404",
+	"class": "template-404 js-fade-section",
+	"tag": "section",
+	"settings": [
+		{
+			"type": "range",
+			"id": "padding_top",
+			"min": 0,
+			"max": 200,
+			"step": 5,
+			"unit": "px",
+			"label": "Padding top",
+			"default": 0
+		},
+		{
+			"type": "range",
+			"id": "padding_bottom",
+			"min": 0,
+			"max": 250,
+			"step": 5,
+			"unit": "px",
+			"label": "Padding bottom",
+			"default": 0
+		},
+		{
+			"type": "range",
+			"id": "padding_top_mobile",
+			"min": 0,
+			"max": 100,
+			"step": 5,
+			"unit": "px",
+			"label": "Padding top mobile",
+			"default": 0
+		},
+		{
+			"type": "range",
+			"id": "padding_bottom_mobile",
+			"min": 0,
+			"max": 100,
+			"step": 5,
+			"unit": "px",
+			"label": "Padding bottom mobile",
+			"default": 0
+		},
+		{
+			"type": "textarea",
+			"id": "description",
+			"label": "Description message",
+			"default": "The page you are looking for does not exist. But you can try to find what you need on our collection page."
+		},
+		{
+			"type": "text",
+			"id": "home_caption",
+			"label": "Home button caption",
+			"default": "Go to Homepage"
+		},
+		{
+			"type": "text",
+			"id": "collection_caption",
+			"label": "Collection button caption",
+			"default": "See collection page"
+		}
+	]
+}
+{% endschema %}

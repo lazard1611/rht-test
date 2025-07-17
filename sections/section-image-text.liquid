@@ -1,0 +1,210 @@
+<link rel="stylesheet" href="{{ 'section-image-text.css' | asset_url }}">
+
+{% render "set-sections-borders", section_data: section, wrapper_class: "image_text__grid" %}
+
+{% if section.settings.decor_line %}
+    {% assign borderMod = 'image_text__grid--border_mod' %}
+{% else %}
+    {% assign borderMod = '' %}  
+{% endif %}
+
+<style>
+    @media (min-width: 1023px) {
+        #shopify-section-{{ section.id }} .image_text__wrap {
+            padding-top: {{ section.settings.padding_top }}px;
+            padding-bottom: {{ section.settings.padding_bottom }}px;
+        }
+    }
+    @media (max-width: 1024px) {
+        #shopify-section-{{ section.id }} .image_text__wrap {
+            padding-top: {{ section.settings.padding_top_mobile }}px;
+            padding-bottom: {{ section.settings.padding_bottom_mobile }}px;
+        }
+    }  
+</style>
+
+<div class="page_wrap page_wrap--without-paddings page_wrap--border image_text__wrap">
+    {% if section.blocks.size > 0 %}
+        {% assign image_count = 0 %}
+        {% for block in section.blocks %}
+            {% if block.type == 'image' %}
+                {% assign image_count = image_count | plus: 1 %}
+            {% endif %}
+        {% endfor %}       
+        
+        <div class="image_text__grid {% if image_count > 1 %}image_text__grid--column_mod{% endif %} {{ borderMod }}">
+            {% for block in section.blocks %}
+                {% if block.type == 'image' %}
+                    <div class="image_text__grid_item js-fade">
+                        {% if block.settings.block_img %}
+                            {% assign borderPicMod =  ''%}                               
+                        {% else %}
+                            {% assign borderPicMod =  'image_text__pic--border_mod'%}
+                        {% endif %}         
+
+                        <picture class="image_text__pic {{ borderPicMod }}">
+                            {% if block.settings.block_img != blank %}
+                                <img width="auto" height="auto" src="{{ block.settings.block_img |  image_url }}" alt="picture" class="image_text__img">                                     
+                            {% else %}
+                                {{ 'collection-4' | placeholder_svg_tag: 'placeholder-svg placeholder-svg--cover' }}                                                                      
+                            {% endif %}                          
+                        </picture>
+                    </div>
+                {% elsif block.type == 'text' %}
+                    {% if block.settings.block_richtext_mobile %}
+                        {% assign textDesctopMod = 'image_text__grid_item--desctop' %}
+                        {% assign textMobileMod = 'image_text__grid_item--mobile' %}
+                    {% else %}                        
+                        {% assign textDesctopMod = '' %}
+                        {% assign textMobileMod = '' %}   
+                    {% endif %}
+                        {% if block.settings.block_richtext_mobile != blank %}
+                            <div class="image_text__grid_item js-fade {{ textMobileMod }}">
+                                <div class="image_text__description">
+                                    {{ block.settings.block_richtext_mobile |  replace: "<br>", "<br>" }}
+                                </div>                        
+                            </div>  
+                        {% endif %}
+
+                        {% if block.settings.block_richtext != blank %}
+                            <div class="image_text__grid_item js-fade {{ textDesctopMod }}">
+                                <div class="image_text__description">
+                                    {{ block.settings.block_richtext |  replace: "<br>", "<br>" }}
+                                </div>                        
+                            </div>  
+                        {% endif %}                    
+                {% endif %}          
+                
+            {% endfor %}
+        </div>
+    {% endif %}   
+</div>
+
+{% schema %}
+    {
+        "name": "Image with text",
+        "class": "image_text js-fade-section",
+        "tag": "section",
+        "settings": [
+            {
+                "type": "range",
+                "id": "padding_top",
+                "min": 0,
+                "max": 200,
+                "step": 5,
+                "unit": "px",
+                "label": "Padding top",
+                "default": 0
+            },
+            {
+                "type": "range",
+                "id": "padding_bottom",
+                "min": 0,
+                "max": 200,
+                "step": 5,
+                "unit": "px",
+                "label": "Padding bottom",
+                "default": 0
+            },
+            {
+                "type": "range",
+                "id": "padding_top_mobile",
+                "min": 0,
+                "max": 100,
+                "step": 5,
+                "unit": "px",
+                "label": "Padding top mobile",
+                "default": 0
+            },
+            {
+                "type": "range",
+                "id": "padding_bottom_mobile",
+                "min": 0,
+                "max": 100,
+                "step": 5,
+                "unit": "px",
+                "label": "Padding bottom mobile",
+                "default": 0
+            }, 
+            {
+                "type": "select",
+                "id": "section_horizontal_borders",
+                "label": "Section horizontal borders",
+                "options": [
+                        {
+                            "value": "top",
+                            "label": "Top"
+                        },
+                        {
+                            "value": "bottom",
+                            "label": "Bottom"
+                        },
+                        {
+                            "value": "double",
+                            "label": "Double"
+                        },
+                        {
+                            "value": "none",
+                            "label": "None"
+                        }
+                    ],
+                    "default": "double"
+            },                       
+            {
+                "type": "checkbox",
+                "id": "decor_line",
+                "label": "Separate decor line",
+                "default": true
+            }
+            
+        ],
+        "max_blocks": 3,
+        "blocks": [
+            {
+                "name": "Picture",
+                "type": "image",
+                "settings": [
+                    {
+                        "type": "image_picker",
+                        "id": "block_img",
+                        "label": "Select image"
+                    }
+                ]
+            },
+            {
+                "name": "Text",
+                "type": "text",
+                "settings": [
+                    {
+                        "type": "richtext",
+                        "id": "block_richtext",
+                        "label": "Description",
+                        "default": "<p>Some text</p>"                        
+                    },
+                    {
+                        "type": "richtext",
+                        "id": "block_richtext_mobile",
+                        "label": "Description for mobile",
+                        "default": "<p>Some text</p>"                        
+                    }                     
+                ]
+            }
+        ],
+        "presets": [
+            {
+                "name": "Image with text",
+                "blocks": [
+                    {
+                        "type": "image"
+                    },
+                    {
+                        "type": "image"
+                    },
+                    {
+                        "type": "text"
+                    }
+                ]
+            }
+        ]
+    }
+    {% endschema %}

@@ -1,0 +1,85 @@
+@use '../variables.scss' as *;
+@use '../mixins/form-checkbox.scss' as *;
+
+.form_checkbox__block {
+    display: block;
+}
+
+.form_checkbox__element {
+    display: none;
+}
+
+.form_checkbox__label {
+}
+
+.form_checkbox__span {
+    @include form_el_checkbox();
+
+    &.form_checkbox__span--mod {
+        &::before {
+            border-radius: 50%;
+        }
+    }
+
+    .contact & {
+        padding-left: 24px;
+    }
+
+    &::before {
+        .contact & {
+            width: 14px;
+            height: 14px;
+        }
+
+        .contact .error & {
+            border-color: $red;
+        }
+    }
+}
+
+.form_checkbox__svg {
+    z-index: 2;
+    position: absolute;
+    left: 4px;
+    top: 4px;
+
+    height: 0;
+    width: 14px;
+
+    color: $white;
+    stroke-dasharray: 20;
+
+    .contact & {
+        color: $black;
+        left: 2px;
+        top: 2px;
+    }
+}
+
+.form_checkbox__element:checked + .form_checkbox__svg {
+    height: 12px;
+    animation: draw-checkbox ease-in-out 0.3s forwards;
+}
+
+.form_checkbox__element:checked ~ .form_checkbox__span::before {
+    background-color: $purple;
+    color: $white;
+
+    .contact & {
+        background-color: transparent;
+    }
+}
+
+.form_checkbox__wrap {
+    position: relative;
+    display: inline-flex;
+}
+
+@keyframes draw-checkbox {
+    0% {
+        stroke-dashoffset: 20;
+    }
+    100% {
+        stroke-dashoffset: 0;
+    }
+}

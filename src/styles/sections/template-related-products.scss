@@ -1,0 +1,23 @@
+@use '../variables.scss' as *;
+@use '../mixins/_global-mixins.scss' as *;
+@use '../snippets/product-card.scss';
+
+.template-related-products__header {
+    border-bottom: 3px solid $brown_light;
+}
+
+.template-related-products__swiper {
+    min-height: clamp(494px, 29vw, 570px);
+
+    @include break_points($desktop, min) {
+        padding: 30px 35px;
+    }
+
+    @include break_points($desktop, $laptop) {
+        padding: 30px 30px;
+    }
+
+    @include break_points($laptop) {
+        padding: 25px;
+    }
+}

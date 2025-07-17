@@ -1,0 +1,207 @@
+@use '../variables.scss' as *;
+@use '../mixins/_global-mixins.scss' as *;
+
+@mixin st_btn {
+    display: inline-flex;
+    justify-content: space-between;
+    align-items: center;
+
+    text-align: center;
+    white-space: nowrap;
+    font-family: $font_montserrat;
+
+    cursor: pointer;
+    // border: transparent;
+
+    &[type='submit'] {
+        appearance: none;
+    }
+
+    &:hover {
+        text-decoration: none;
+
+        .btn__icon {
+            transform: rotate(45deg);
+        }
+    }
+
+    &:disabled {
+        cursor: default;
+        pointer-events: none;
+        background: $gray;
+        color: $white;
+    }
+
+    @include break_points($mobile) {
+        width: 100%;
+    }
+}
+
+//color mixins:
+@mixin btn_style_purple {
+    font-weight: 800;
+    color: $white;
+    background-color: $purple;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    border: 2px solid $purple;
+    text-transform: uppercase;
+
+    @include st_btn;
+
+    .btn__icon {
+        color: $white;
+    }
+
+    &:hover {
+        background-color: transparent;
+        color: $purple;
+
+        .btn__icon {
+            color: $purple;
+        }
+    }
+}
+
+@mixin btn_style_purple_with_bg {
+    font-weight: 800;
+    color: $white;
+    background-color: $purple;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    border: 2px solid $purple;
+    text-transform: uppercase;
+
+    @include st_btn;
+
+    .btn__icon {
+        color: $white;
+    }
+
+    &:hover {
+        background-color: var(--bg-body-color);
+        color: $purple;
+
+        .btn__icon {
+            color: $purple;
+        }
+    }
+}
+
+@mixin btn_style_transparent {
+    font-weight: 800;
+    color: var(--body-text-color);
+    background-color: transparent;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    border: 2px solid var(--body-text-color);
+    text-transform: uppercase;
+
+    @include st_btn;
+
+    .btn__icon {
+        color: var(--body-text-color);
+    }
+
+    &:hover {
+        background-color: var(--body-text-color);
+        color: var(--bg-body-color);
+
+        .btn__icon {
+            color: $white;
+        }
+    }
+}
+
+@mixin btn_style_brown {
+    font-weight: 800;
+    color: $white;
+    background-color: $purple_dark;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    border: 2px solid $purple_dark;
+    text-transform: uppercase;
+
+    .btn__icon {
+        color: $white;
+    }
+
+    @include st_btn;
+
+    &:hover {
+        background-color: transparent;
+        color: $purple_dark;
+
+        .btn__icon {
+            color: $purple_dark;
+        }
+    }
+}
+
+@mixin btn_style_text {
+    width: fit-content;
+    min-height: fit-content;
+    font-size: 22px;
+    line-height: 28px;
+    font-weight: 800;
+    transition: 0.2s;
+
+    @include st_btn;
+
+    &:focus,
+    &:hover {
+        background-color: transparent;
+        color: $purple_dark;
+
+        .btn__icon {
+            transform: rotate(0);
+            color: $purple_dark;
+        }
+    }
+
+    .btn__icon {
+        width: 24px;
+        height: 24px;
+    }
+}
+
+//size mixins:
+@mixin btn_size_normal {
+    & {
+        min-height: 28px;
+        padding: 0 20px;
+        font-size: 20px;
+        line-height: 48px;
+    }
+}
+
+@mixin btn_size_small {
+    & {
+        padding: 0 20px;
+        min-height: 28px;
+        line-height: 42px;
+        font-size: 20px;
+    }
+}
+
+@mixin link_hover {
+    position: relative;
+    display: inline-flex;    
+    
+    &::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+
+        display: block;
+        width: 100%;
+        height: 1px;
+        background-color: $black;
+        opacity: 1;
+        transition: opacity 0.3s ease;
+    }
+
+    &:hover {
+        &::after {
+            opacity: 0;
+        }
+    }
+}
+

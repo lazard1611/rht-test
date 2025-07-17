@@ -1,0 +1,48 @@
+@use 'sass:string';
+
+@mixin break_points($width, $value: max) {
+    @if $value == min {
+        @media screen and (min-width: $width) {
+            @content;
+        }
+    } @else if $value == max {
+        @media screen and (max-width: $width - 1) {
+            @content;
+        }
+    } @else {
+        @media (max-width: $width - 1) and (min-width: $value) {
+            @content;
+        }
+    }
+}
+
+@mixin font_face(
+    $file_name,
+    $font_name: $file_name,
+    $weight: normal,
+    $style: normal
+) {
+    @font-face {
+        font-family: string.quote($font_name);
+        src: url('../../assets/#{$file_name}.woff2') format('woff2'),
+            url('../../assets/#{$file_name}.woff') format('woff');
+        font-weight: $weight;
+        font-style: $style;
+        font-display: swap;
+    }
+}
+
+@mixin cut_string_rows($rows: 1, $maxSize: 100%) {
+    display: -webkit-box;
+    max-width: $maxSize;
+    -webkit-line-clamp: $rows;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+@mixin cut_string($maxSize: 100%) {
+    width: $maxSize;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}

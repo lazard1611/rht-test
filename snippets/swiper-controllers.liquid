@@ -1,0 +1,29 @@
+<div class="swiper-controllers {{ class }}">
+    <button aria-label="preview slide" class="swiper-controllers__controller disabled {{ prev }}" data-{{ parent_name }}-controller="prev">
+        <span>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M10.5 4.5L3 12M3 12L10.5 19.5M3 12H21" stroke="currentColor" stroke-width="3"
+                      stroke-linecap="square"/>
+            </svg>
+        </span>
+    </button>
+
+    {% if fraction %}
+        <div class="swiper-controllers__counter {{ fraction }}"></div> 
+    {% else %}
+        <div class="swiper-controllers__counter">
+            <span data-{{ parent_name }}-currnet-index>1</span>
+            / {{ size }}
+        </div> 
+    {% endif %}
+    
+
+    <button aria-label="next slide" class="swiper-controllers__controller {{ next }}" data-{{ parent_name }}-controller="next">
+        <span>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M13.5 4.5L21 12M21 12L13.5 19.5M21 12H3" stroke="currentColor" stroke-width="3"
+                      stroke-linecap="square"/>
+            </svg>
+        </span>
+    </button>
+</div>

@@ -1,0 +1,11 @@
+.payments {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    flex-wrap: wrap;
+}
+
+.payments__item {
+    width: 43px;
+    height: 25px;
+}

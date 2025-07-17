@@ -1,0 +1,228 @@
+{% if product.metafields.opk.description != blank or product.metafields.opk.manual != blank or product.metafields.opk.dimensions_parameters != blank or product.metafields.opk.dimensions_technical != blank %}
+    <link rel="stylesheet" href="{{ "template-product-details.css" | asset_url }}">
+    {% render "set-sections-paddings", section_data: section, wrapper_class: "template-product-details__inner-wrapper" %}
+    {% render "set-sections-borders", section_data: section, wrapper_class: "template-product-details__wrapper" %}
+
+    {% if section.settings.title_limits == "true" %}
+        {% assign title_limits = true %}
+    {% endif %}
+
+    <div class="template-product-details__wrapper" data-template-product-details>
+        <div class="template-product-details__inner-wrapper page_wrap page_wrap--border page_wrap--without-paddings">
+            {% render "section-header", section: section, parent_class: "template-product-details", limits: title_limits, button_color: section.settings.button_color %}
+
+            <div class="template-product-details__tabs page_wrap js-title-section">
+                {% if product.metafields.opk.description != blank %}
+                    <span role="button" class="template-product-details__tab active js-scale-fade-item"
+                          data-template-product-details-tab-controller="description">{{ section.settings.material_title }}</span>
+                {% endif %}
+
+                {% if product.metafields.opk.manual != blank %}
+                    <span role="button" class="template-product-details__tab js-scale-fade-item"
+                          data-template-product-details-tab-controller="dimensions">{{ section.settings.dimensions_title }}</span>
+                {% endif %}
+
+                {% if product.metafields.opk.dimensions_parameters != blank or product.metafields.opk.dimensions_technical != blank %}
+                    <span role="button" class="template-product-details__tab js-scale-fade-item"
+                          data-template-product-details-tab-controller="manual">{{ section.settings.manual_title }}</span>
+                {% endif %}
+            </div>
+
+            <div class="template-product-details__content_wrap js-fade-section">
+                {% if product.metafields.opk.description != blank %}
+                    <div class="template-product-details__content base_richtext large page_wrap active js-fade"
+                         data-template-product-details-tab-content="description">
+                        {{ product.metafields.opk.description | metafield_tag }}
+                    </div>
+                {% endif %}
+    
+                {% if product.metafields.opk.dimensions_parameters != blank or product.metafields.opk.dimensions_technical != blank %}
+                    <div class="template-product-details__content dimensions page_wrap js-fade"
+                         data-template-product-details-tab-content="dimensions">
+                        {% if product.metafields.opk.dimensions_parameters != blank %}
+                            <div class="template-product-details__dimension-item">
+                                <div class="template-product-details__dimension-title">Afmetingen</div>
+    
+                                {% for parameter in product.metafields.opk.dimensions_parameters.value %}
+                                    <div class="template-product-details__dimension-parameter">
+                                        <span>{{ parameter.title }}</span>
+                                        <span>{{ parameter.value }}</span>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+    
+                        {% if product.metafields.opk.dimensions_technical != blank %}
+                            <div class="template-product-details__dimension-item">
+                                <div class="template-product-details__dimension-title">Technische specificatie</div>
+                                {% for parameter in product.metafields.opk.dimensions_technical.value %}
+                                    <div class="template-product-details__dimension-parameter">
+                                        <span>{{ parameter.title }}</span>
+                                        <span>{{ parameter.value }}</span>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    </div>
+                {% endif %}
+    
+                {% if product.metafields.opk.manual != blank %}
+                    <div class="template-product-details__content manual base_richtext large page_wrap"
+                         data-template-product-details-tab-content="manual">
+                        <div class="template-product-details__manual-content">
+                            {{ product.metafields.opk.manual.value.content | metafield_tag }}
+                        </div>
+    
+                        <a href="{{ product.metafields.opk.manual.value.file.value.url }}" download target="_blank">
+                            {% render "icons", filename: "download" %}
+                            {{ product.metafields.opk.manual.value.file_title }}
+                        </a>
+                    </div>
+                {% endif %}
+            </div>
+            
+        </div>
+    </div>
+
+    <script src="{{ "template-product-details.js" | asset_url }}" type="module" defer></script>
+{% endif %}
+
+{% schema %}
+{
+    "name": "Product details",
+    "class": "template-product-details",
+    "tag": "section",
+    "settings": [
+        {
+            "type": "range",
+            "id": "padding_top",
+            "min": 0,
+            "max": 200,
+            "step": 5,
+            "unit": "px",
+            "label": "Padding top",
+            "default": 0
+        },
+        {
+            "type": "range",
+            "id": "padding_bottom",
+            "min": 0,
+            "max": 200,
+            "step": 5,
+            "unit": "px",
+            "label": "Padding bottom",
+            "default": 0
+        },
+        {
+            "type": "range",
+            "id": "padding_top_mobile",
+            "min": 0,
+            "max": 100,
+            "step": 5,
+            "unit": "px",
+            "label": "Padding top mobile",
+            "default": 0
+        },
+        {
+            "type": "range",
+            "id": "padding_bottom_mobile",
+            "min": 0,
+            "max": 100,
+            "step": 5,
+            "unit": "px",
+            "label": "Padding bottom mobile",
+            "default": 0
+        },
+        {
+            "type": "select",
+            "id": "section_horizontal_borders",
+            "label": "Section horizontal borders",
+            "options": [
+                {
+                    "value": "top",
+                    "label": "Top"
+                },
+                {
+                    "value": "bottom",
+                    "label": "Bottom"
+                },
+                {
+                    "value": "double",
+                    "label": "Double"
+                }
+            ],
+            "default": "top"
+        },
+        {
+            "type": "select",
+            "id": "title_limits",
+            "label": "Title limits",
+            "options": [
+                {
+                    "value": "true",
+                    "label": "True"
+                },
+                {
+                    "value": "false",
+                    "label": "False"
+                }
+            ],
+            "default": "false"
+        },
+        {
+            "type": "select",
+            "id": "button_color",
+            "label": "Button color",
+            "options": [
+                {
+                    "value": "btn_base_brown",
+                    "label": "Brown"
+                },
+                {
+                    "value": "btn_base",
+                    "label": "Base"
+                }
+            ],
+            "default": "btn_base"
+        },
+        {
+            "type": "text",
+            "id": "title",
+            "label": "Title"
+        },
+        {
+            "type": "text",
+            "id": "description",
+            "label": "Description"
+        },
+        {
+            "type": "text",
+            "id": "material_title",
+            "label": "Material title",
+            "default": "Materiaal"
+        },
+        {
+            "type": "text",
+            "id": "dimensions_title",
+            "label": "Dimensions title",
+            "default": "Maatvoering"
+        },
+        {
+            "type": "text",
+            "id": "manual_title",
+            "label": "Manual title",
+            "default": "Handleiding"
+        }
+    ],
+    "presets": [
+        {
+            "name": "Product details"
+        }
+    ],
+    "enabled_on": {
+        "templates": [
+            "product"
+        ]
+    }
+}
+{% endschema %}

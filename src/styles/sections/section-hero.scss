@@ -1,0 +1,86 @@
+@use '../variables.scss' as *;
+@use '../mixins/_global-mixins.scss' as *;
+
+.hero {
+    position: relative;
+    min-height: 735px;
+    display: flex;
+    align-items: center;
+
+    &::after {
+        content: '';
+        z-index: 1;
+        position: absolute;
+        top: 0;
+        left: 0;
+        display: block;
+        width: 100%;
+        height: 100%;
+
+        background-color: $black;
+    }
+
+    @include break_points($tablet, min) {
+        padding: 86px var(--gl-indent) 30px;
+    }
+
+    @include break_points($tablet) {
+        padding: 50px 0;
+    }
+}
+
+.hero__wrap {
+    display: flex;
+    position: static;
+}
+
+.hero__pic {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.hero__img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+
+    &.hero__img--desctop {
+        @include break_points($tablet) {
+            display: none;
+        }
+    }
+
+    &.hero__img--mobile {
+        @include break_points($tablet, min) {
+            display: none;
+        }
+    }
+}
+
+.hero__content {
+    z-index: 2;
+    position: relative;
+    max-width: 810px;
+}
+
+.hero__title {
+    font-weight: 700;
+    font-size: clamp(40px, 6vw, 70px);
+    line-height: 1;
+    text-transform: uppercase;
+
+    &:not(:last-child) {
+        @include break_points($tablet, min) {
+            margin-bottom: 38px;
+        }
+
+        @include break_points($tablet) {
+            margin-bottom: 15px;
+        }
+    }
+}

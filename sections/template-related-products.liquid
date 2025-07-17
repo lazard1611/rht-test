@@ -1,0 +1,174 @@
+<link rel="stylesheet" href="{{ "template-related-products.css" | asset_url }}">
+{% render "set-sections-paddings", section_data: section, wrapper_class: "template-related-products__header-wrapper" %}
+{% render "set-sections-borders", section_data: section, wrapper_class: "template-related-products__wrapper" %}
+
+{% assign productIdsWithBadge = "" %}
+
+{% if section.settings.title_limits == "true" %}
+    {% assign title_limits = true %}
+{% endif %}
+
+{% for checkProduct in collections["all"].products %}
+    {% if checkProduct.metafields.opk.product_badge %}
+        {% assign productIdsWithBadge = productIdsWithBadge | append: checkProduct.id | append: ":" | append: checkProduct.metafields.opk.product_badge | append: " | " %}
+    {% endif %}
+{% endfor %}
+
+<script>
+    window.localStorage.setItem("product-id", '{{ product.id }}')
+    window.localStorage.setItem("product-ids-with-badge", '{{ productIdsWithBadge }}')
+</script>
+
+<div class="template-related-products__wrapper">
+    {% render "section-header", section: section, parent_class: "template-related-products", borders: true, limits: title_limits, button_color: section.settings.button_color %}
+
+    {% if section.settings.collection.products.size > 0 %}
+        <div class="template-related-products__swiper swiper page_wrap page_wrap--border js-fade-section" data-template-related-products-swiper="{{ section.settings.collection.products.size }}">
+            <div class="swiper-wrapper" data-template-related-products-swiper-wrapper></div>
+        </div>
+    {% endif %}
+</div>
+
+<script src="{{ "template-related-products.js" | asset_url }}" type="module" defer></script>
+
+{% schema %}
+{
+    "name": "Related products",
+    "class": "template-related-products",
+    "tag": "section",
+    "settings": [
+        {
+            "type": "range",
+            "id": "padding_top",
+            "min": 0,
+            "max": 200,
+            "step": 5,
+            "unit": "px",
+            "label": "Padding top",
+            "default": 0
+        },
+        {
+            "type": "range",
+            "id": "padding_bottom",
+            "min": 0,
+            "max": 200,
+            "step": 5,
+            "unit": "px",
+            "label": "Padding bottom",
+            "default": 0
+        },
+        {
+            "type": "range",
+            "id": "padding_top_mobile",
+            "min": 0,
+            "max": 100,
+            "step": 5,
+            "unit": "px",
+            "label": "Padding top mobile",
+            "default": 0
+        },
+        {
+            "type": "range",
+            "id": "padding_bottom_mobile",
+            "min": 0,
+            "max": 100,
+            "step": 5,
+            "unit": "px",
+            "label": "Padding bottom mobile",
+            "default": 0
+        },
+        {
+            "type": "select",
+            "id": "section_horizontal_borders",
+            "label": "Section horizontal borders",
+            "options": [
+                {
+                    "value": "top",
+                    "label": "Top"
+                },
+                {
+                    "value": "bottom",
+                    "label": "Bottom"
+                },
+                {
+                    "value": "double",
+                    "label": "Double"
+                }
+            ],
+            "default": "top"
+        },
+        {
+            "type": "select",
+            "id": "title_limits",
+            "label": "Title limits",
+            "options": [
+                {
+                    "value": "true",
+                    "label": "True"
+                },
+                {
+                    "value": "false",
+                    "label": "False"
+                }
+            ],
+            "default": "false"
+        },
+        {
+            "type": "select",
+            "id": "button_color",
+            "label": "Button color",
+            "options": [
+                {
+                    "value": "btn_base_brown",
+                    "label": "Brown"
+                },
+                {
+                    "value": "btn_base",
+                    "label": "Base"
+                }
+            ],
+            "default": "btn_base"
+        },
+        {
+            "type": "text",
+            "id": "title",
+            "label": "Title"
+        },
+        {
+            "type": "text",
+            "id": "description",
+            "label": "Description"
+        },
+        {
+            "type": "text",
+            "id": "button_title",
+            "label": "Button title"
+        },
+        {
+            "type": "text",
+            "id": "button_title_mob",
+            "label": "Button title for mobile"
+        },
+        {
+            "type": "url",
+            "id": "button_url",
+            "label": "Button url"
+        },
+        {
+            "type": "collection",
+            "id": "collection",
+            "label": "Collection"
+        }
+    ],
+    "presets": [
+        {
+            "name": "Related products"
+        }
+    ],
+    "enabled_on": {
+        "templates": [
+            "product"
+        ]
+    }
+}
+{% endschema %}

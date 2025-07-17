@@ -1,0 +1,120 @@
+{% if content.type == "image-text-image-undertext" and content.second_content_field and content.second_image != blank %}
+    {% assign real_type = content.type %}
+
+{% elsif content.type == "image-image-undertext" and content.second_image != blank %}
+    {% assign real_type = content.type %}
+
+{% elsif content.type == "text-image-image" and content.second_image %}
+    {% assign real_type = content.type %}
+
+{% elsif content.type == "text-large-image" %}
+    {% assign real_type = content.type %}
+
+{% else %}
+    {% assign real_type = "text-image" %}
+
+{% endif %}
+
+<div class="portfolio-content-block js-fade-section {{ class }} {{ real_type }} {{ content.side }} page_wrap page_wrap--border page_wrap--without-paddings">
+    {% if real_type == "text-image" or real_type == "text-large-image" %}
+        <div class="portfolio-content-block__content portfolio-content-block__content-item page_wrap">
+            <div class="portfolio-content-block__content-rixtext js-fade">
+                {{ content.first_content_field | metafield_tag }}
+            </div>
+        </div>
+
+        <div class="portfolio-content-block__image-wrapper js-fade first portfolio-content-block__content-item page_wrap">
+            <img class="portfolio-content-block__image {% if real_type == "text-large-image" %}large{% else %}panoramic{% endif %}"
+                 src="{{ content.first_image | image_url }}"
+                 alt=""
+                 width="auto"
+                 height="auto"
+                 loading="lazy"
+            >
+        </div>
+
+    {% elsif real_type == "image-text-image-undertext" %}
+        <div class="portfolio-content-block__image-wrapper js-fade first portfolio-content-block__content-item page_wrap">
+            <img class="portfolio-content-block__image large-half"
+                 src="{{ content.second_image | image_url }}"
+                 alt=""
+                 width="auto"
+                 height="auto"
+                 loading="lazy"
+            >
+        </div>
+
+        <div class="portfolio-content-block__content js-fade portfolio-content-block__content-item page_wrap">
+            {{ content.first_content_field | metafield_tag }}
+        </div>
+
+        <div class="portfolio-content-block__image-wrapper js-fade second portfolio-content-block__content-item page_wrap">
+            <img class="portfolio-content-block__image small"
+                 src="{{ content.first_image | image_url }}"
+                 alt=""
+                 width="auto"
+                 height="auto"
+                 loading="lazy"
+            >
+
+            <div class="portfolio-content-block__undertext">
+                {{ content.second_content_field | metafield_tag }}
+            </div>
+        </div>
+
+    {% elsif real_type == "text-image-image" %}
+        <div class="portfolio-content-block__content portfolio-content-block__content-item page_wrap">
+            <div class="portfolio-content-block__content-rixtext js-fade">
+                {{ content.first_content_field | metafield_tag }}
+            </div>        
+        </div>
+
+        <div class="portfolio-content-block__image-wrapper first portfolio-content-block__content-item js-fade page_wrap">
+            <img class="portfolio-content-block__image {% if content.side == "left" %}small{% else %}large-half{% endif %}"
+                 src="{{ content.second_image | image_url }}"
+                 alt=""
+                 width="auto"
+                 height="auto"
+                 loading="lazy"
+            >
+        </div>
+
+        <div class="portfolio-content-block__image-wrapper second portfolio-content-block__content-item js-fade page_wrap">
+            <img class="portfolio-content-block__image {% if content.side == "left" %}large-half{% else %}small{% endif %}"
+                 src="{{ content.first_image | image_url }}"
+                 alt=""
+                 width="auto"
+                 height="auto"
+                 loading="lazy"
+            >
+        </div>
+
+    {% elsif real_type == "image-image-undertext" %}
+        <div class="portfolio-content-block__image-wrapper js-fade portfolio-content-block__content-item first page_wrap">
+            <img class="portfolio-content-block__image small"
+                 src="{{ content.second_image | image_url }}"
+                 alt=""
+                 width="auto"
+                 height="auto"
+                 loading="lazy"
+            >
+        </div>
+
+        <div class="portfolio-content-block__empty-block portfolio-content-block__content-item"></div>
+
+        <div class="portfolio-content-block__image-wrapper js-fade second portfolio-content-block__content-item page_wrap">
+            <img class="portfolio-content-block__image square"
+                 src="{{ content.first_image | image_url }}"
+                 alt=""
+                 width="auto"
+                 height="auto"
+                 loading="lazy"
+            >
+
+            <div class="portfolio-content-block__undertext">
+                {{ content.first_content_field | metafield_tag }}
+            </div>
+        </div>
+
+    {% endif %}
+</div>

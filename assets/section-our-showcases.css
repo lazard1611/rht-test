@@ -1,0 +1,140 @@
+/*!*******************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].use[3]!./src/styles/sections/section-our-showcases.scss ***!
+  \*******************************************************************************************************************************************************************************************************************************************/
+/* ==================================================== ADAPTIVE =================================================== */
+/* ===================================================== FONTS ===================================================== */
+/* ===================================================== COLORS ==================================================== */
+/* ====================================================== FORM ===================================================== */
+.section-our-showcases__header {
+  border-bottom: 3px solid #E1DACD;
+}
+
+.section-our-showcases__projects {
+  display: flex;
+  flex-direction: column;
+}
+
+.section-our-showcases__project {
+  border-bottom: 3px solid #E1DACD !important;
+}
+@media screen and (min-width: 1440px) {
+  .section-our-showcases__project {
+    display: grid;
+    grid-template-rows: 1fr;
+    grid-gap: 70px;
+    gap: 70px;
+    padding-top: 35px;
+    padding-bottom: 35px;
+  }
+  .section-our-showcases__project.left {
+    grid-template-columns: 23% auto;
+  }
+  .section-our-showcases__project.right {
+    grid-template-columns: auto 23%;
+  }
+  .section-our-showcases__project.right .section-our-showcases__content {
+    order: 2;
+  }
+  .section-our-showcases__project.right .section-our-showcases__image-wrapper {
+    order: 1;
+  }
+}
+@media (max-width: 1439px) and (min-width: 1024px) {
+  .section-our-showcases__project {
+    display: grid;
+    grid-template-rows: 1fr;
+    grid-gap: 50px;
+    gap: 50px;
+    padding-top: 35px;
+    padding-bottom: 35px;
+  }
+  .section-our-showcases__project.left {
+    grid-template-columns: 35% auto;
+  }
+  .section-our-showcases__project.right {
+    grid-template-columns: auto 35%;
+  }
+  .section-our-showcases__project.right .section-our-showcases__content {
+    order: 2;
+  }
+  .section-our-showcases__project.right .section-our-showcases__image-wrapper {
+    order: 1;
+  }
+}
+@media screen and (max-width: 1023px) {
+  .section-our-showcases__project {
+    display: flex;
+    flex-direction: column-reverse;
+    gap: 25px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+  }
+}
+.section-our-showcases__project:last-child {
+  border: none !important;
+}
+
+.section-our-showcases__content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 25px;
+  font-weight: 500;
+}
+
+.section-our-showcases__title-block {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+}
+@media screen and (min-width: 1200px) {
+  .section-our-showcases__title-block {
+    gap: 20px;
+  }
+}
+@media screen and (max-width: 1199px) {
+  .section-our-showcases__title-block {
+    gap: 14px;
+  }
+}
+
+.section-our-showcases__title {
+  font-size: 22px;
+  font-weight: 800;
+  line-height: 28px;
+  text-transform: uppercase;
+}
+
+.section-our-showcases__button {
+  font-weight: 500;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+.section-our-showcases__button .btn__icon {
+  width: 18px;
+  height: 18px;
+}
+
+.section-our-showcases__image-wrapper {
+  max-height: 800px;
+}
+
+.section-our-showcases__image {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: center;
+     object-position: center;
+}
+@media screen and (min-width: 1200px) {
+  .section-our-showcases__image {
+    aspect-ratio: 1127/600;
+  }
+}
+@media screen and (max-width: 1199px) {
+  .section-our-showcases__image {
+    aspect-ratio: 345/242;
+  }
+}

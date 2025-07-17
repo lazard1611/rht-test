@@ -1,0 +1,227 @@
+<link rel="stylesheet" href="{{ "section-preview-pages.css" | asset_url }}">
+
+{% render "set-sections-paddings", section_data: section, wrapper_class: "section-preview-pages__grid-item" %}
+{% render "set-sections-borders", section_data: section, wrapper_class: "section-preview-pages__wrapper" %}
+
+<div class="section-preview-pages__wrapper">
+    <div class="section-preview-pages__inner-wrapper page_wrap page_wrap--border page_wrap--without-paddings">
+        {% for block in section.blocks %}
+            {% if block.type == "page" and block.settings != blank %}
+
+                <div class="section-preview-pages__page-card js-fade section-preview-pages__grid-item page_wrap">
+                    <div class="section-preview-pages__page-card-wrapper">
+                        {% if block.settings.btn_color %}
+                            <style>
+                                .section-preview-pages__page-card:nth-child({{ forloop.index }}) .btn_base_with_bg:not(:hover) {
+                                    background-color: {{ block.settings.btn_color }};
+                                    border-color: {{ block.settings.btn_color }};
+                                }
+
+                                .section-preview-pages__page-card:nth-child({{ forloop.index }}) .btn_base_with_bg:hover .btn__icon {
+                                    color: {{ block.settings.btn_color }};
+                                }
+
+                                .section-preview-pages__page-card:nth-child({{ forloop.index }}) .btn_base_with_bg:hover {
+                                    color: {{ block.settings.btn_color }};
+                                    border-color: {{ block.settings.btn_color }};
+                                }
+                            </style>
+                        {% endif %}
+
+                        <h3 class="section-preview-pages__page-card-title h4">{{ block.settings.title }}</h3>
+                        <p class="section-preview-pages__page-card-description">{{ block.settings.description }}</p>                        
+                            
+                        {% render "buttons",
+                            link: block.settings.url,
+                            title: block.settings.button_title,
+                            mobile_title: block.settings.button_title_mobile,
+                            class: "btn_base_with_bg",
+                            icon: true
+                        %}                       
+
+                        <div class="section-preview-pages__fade"
+                            style="opacity: {{ section.settings.fade_opacity }}%;background-color: {{ section.settings.fade_color }}">
+                        </div>
+
+                        <img class="section-preview-pages__page-card-background"
+                            src="{{ block.settings.background_image | image_url }}"
+                            alt=""
+                            width="auto"
+                            height="auto"
+                            loading="lazy"
+                        >
+                    </div>
+                </div>
+
+            {% elsif block.type == "animation_frames" and block.settings != blank %}
+                <div class="section-preview-pages__frames-wrapper js-fade section-preview-pages__grid-item page_wrap">
+                    {% render "frames-animation", frames: block.settings %}
+                </div>
+
+            {% endif %}
+        {% endfor %}
+    </div>
+</div>
+
+<script src="{{ 'section-preview-pages.js' | asset_url }}" type="module" defer></script>
+
+{% schema %}
+{
+    "name": "Preview pages",
+    "class": "section-preview-pages js-fade-section",
+    "tag": "section",
+    "settings": [
+        {
+            "type": "range",
+            "id": "padding_top",
+            "min": 0,
+            "max": 200,
+            "step": 5,
+            "unit": "px",
+            "label": "Padding top",
+            "default": 0
+        },
+        {
+            "type": "range",
+            "id": "padding_bottom",
+            "min": 0,
+            "max": 200,
+            "step": 5,
+            "unit": "px",
+            "label": "Padding bottom",
+            "default": 0
+        },
+        {
+            "type": "range",
+            "id": "padding_top_mobile",
+            "min": 0,
+            "max": 100,
+            "step": 5,
+            "unit": "px",
+            "label": "Padding top mobile",
+            "default": 0
+        },
+        {
+            "type": "range",
+            "id": "padding_bottom_mobile",
+            "min": 0,
+            "max": 100,
+            "step": 5,
+            "unit": "px",
+            "label": "Padding bottom mobile",
+            "default": 0
+        },
+        {
+            "type": "select",
+            "id": "section_horizontal_borders",
+            "label": "Section horizontal borders",
+            "options": [
+                {
+                    "value": "top",
+                    "label": "Top"
+                },
+                {
+                    "value": "bottom",
+                    "label": "Bottom"
+                },
+                {
+                    "value": "double",
+                    "label": "Double"
+                }
+            ],
+            "default": "top"
+        },
+        {
+            "type": "color",
+            "id": "fade_color",
+            "label": "Fade color"
+        },
+        {
+            "type": "range",
+            "id": "fade_opacity",
+            "min": 0,
+            "max": 100,
+            "step": 1,
+            "unit": "%",
+            "label": "Fade opacity",
+            "default": 0
+        }
+    ],
+    "blocks": [
+        {
+            "name": "Page",
+            "type": "page",
+            "limit": 2,
+            "settings": [
+                {
+                    "type": "image_picker",
+                    "id": "background_image",
+                    "label": "Background image"
+                },
+                {
+                    "type": "text",
+                    "id": "title",
+                    "label": "Title"
+                },
+                {
+                    "type": "text",
+                    "id": "description",
+                    "label": "Description"
+                },
+                {
+                    "type": "text",
+                    "id": "button_title",
+                    "label": "Button title"
+                },
+                {
+                    "type": "text",
+                    "id": "button_title_mobile",
+                    "label": "Button title"
+                },
+                {
+                    "type": "url",
+                    "id": "url",
+                    "label": "Button URL"
+                },
+                {
+                    "type": "color",
+                    "id": "btn_color",
+                    "label": "Button color"
+                }
+            ]
+        },
+        {
+            "name": "Animation frames",
+            "type": "animation_frames",
+            "limit": 1,
+            "settings": [
+                {
+                    "type": "image_picker",
+                    "id": "frame_first",
+                    "label": "First frame"
+                },
+                {
+                    "type": "image_picker",
+                    "id": "frame_second",
+                    "label": "Second frame"
+                },
+                {
+                    "type": "image_picker",
+                    "id": "frame_third",
+                    "label": "Third frame"
+                },
+                {
+                    "type": "image_picker",
+                    "id": "frame_fourth",
+                    "label": "Fourth frame"
+                }
+            ]
+        }
+    ],
+    "presets": [
+        {
+            "name": "Preview pages"
+        }
+    ]
+}
+{% endschema %}

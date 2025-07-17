@@ -1,0 +1,252 @@
+{
+  "sections": {
+    "template": {
+      "type": "section-hero",
+      "settings": {
+        "bg": "shopify:\/\/shop_images\/hero_2949183a-7766-4a3d-914e-8a3d802bb4f2.webp",
+        "bg_mob": "shopify:\/\/shop_images\/hero-mob_1.jpg",
+        "title": "Over ons",
+        "description": "<p>Ik gedij op hands-on creativiteit en blijf kritisch totdat mijn ontwerpen gerealiseerd en verbeterd zijn. Deze drive was duidelijk in mijn carrière als timmerman, waar ik aanvankelijk voor een werkgever werkte voordat ik zelfstandig werd.<\/p>",
+        "position_content": "left",
+        "text_align": "left",
+        "text_color": "#ffffff",
+        "overlay": 20
+      }
+    },
+    "section_image_text_ncfnan": {
+      "type": "section-image-text",
+      "blocks": {
+        "image_P9XcFE": {
+          "type": "image",
+          "settings": {
+            "block_img": "shopify:\/\/shop_images\/image_20.jpg"
+          }
+        },
+        "text_3XBwfT": {
+          "type": "text",
+          "settings": {
+            "block_richtext": "<h4>INTRODUCTIE<\/h4><p>Creëren met mijn hoofd en handen is iets waar ik helemaal in op kan gaan. Ik ben niet snel tevreden en blijf kritisch totdat het ontwerp daadwerkelijk op papier is gerealiseerd. En bij voorkeur nog iets mooier of beter! Deze inspiratie manifesteerde zich ook in het beroep dat ik vroeger uitoefende. Na de middelbare school heb ik een opleiding tot timmerman gevolgd. Ik heb dat beroep geruime tijd uitgeoefend onder de vleugels van een werkgever, voordat ik voor mezelf begon.<\/p><p>Hallo, mijn naam is Bjorn van der Heijden. Ik ben een ontwerper en maker van interieurs, meubels en complete (her)bouwprojecten. Zowel voor binnen als buiten.<\/p><p>Of het nu nieuwbouw is of renovatie binnen het particuliere of zakelijke segment, ik ben niet tevreden totdat u dat bent. Een interieurproduct moet niet alleen functioneel zijn, maar ook een sfeer creëren waarin u zich prettig voelt. En vooral bij bestaande - vooral oudere - constructies, geloof ik dat respect voor de authenticiteit onmisbaar is. Om hoogwaardige interieurproducten te realiseren, werk ik samen met anderen. In de loop der tijd heb ik een netwerk opgebouwd bestaande uit professionals die mijn visie delen als het gaat om kwaliteit, duurzaamheid en innovatie.<\/p>",
+            "block_richtext_mobile": "<h4>INTRODUCTIE<\/h4><p>Hello, my name is Bjorn van der Heijden. I am a designer and maker of interiors, furniture and complete (re)construction projects. Both for inside and outside.<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "image_P9XcFE",
+        "text_3XBwfT"
+      ],
+      "settings": {
+        "padding_top": 35,
+        "padding_bottom": 0,
+        "padding_top_mobile": 25,
+        "padding_bottom_mobile": 20,
+        "section_horizontal_borders": "double",
+        "decor_line": false
+      }
+    },
+    "section_preview_project_z4gefH": {
+      "type": "section-preview-project",
+      "blocks": {
+        "animation_frames_4qMXRg": {
+          "type": "animation_frames",
+          "settings": {
+            "frame_first": "shopify:\/\/shop_images\/frame-1.svg",
+            "frame_second": "shopify:\/\/shop_images\/frame-4.svg",
+            "frame_third": "shopify:\/\/shop_images\/frame-3.svg",
+            "frame_fourth": "shopify:\/\/shop_images\/frame-2.svg"
+          }
+        }
+      },
+      "block_order": [
+        "animation_frames_4qMXRg"
+      ],
+      "settings": {
+        "padding_top": 30,
+        "padding_bottom": 40,
+        "padding_top_mobile": 35,
+        "padding_bottom_mobile": 25,
+        "section_horizontal_borders": "none",
+        "title": "hoe het begon",
+        "description": "<p>In 2007 koos ik ervoor om zelfstandig als timmerman te gaan werken, wat mijn vaardigheden verbeterde en me in staat stelde om meubels en keukens te bouwen. Deze beslissing leidde ertoe dat terwijl traditioneel timmerwerk beperkte creatieve mogelijkheden bood, specialiseren in interieurontwerp mijn creativiteit beter zou laten zien. Tegen 2012 voltooide ik een HBO-opleiding Interieurontwerp, waarbij ik mijn timmermansvaardigheden integreerde met ontwerpcreativiteit. Deze combinatie stelt me in staat om unieke, hoogwaardige interieurproducten op maat van de klanttevredenheid te leveren.<\/p>",
+        "project": "keuken\/ons-portfolio",
+        "project_title": "Ons portfolio",
+        "project_description": "Van meubels tot reconstructie"
+      }
+    },
+    "section_image_text_PDPjDW": {
+      "type": "section-image-text",
+      "blocks": {
+        "image_Ke6RCF": {
+          "type": "image",
+          "settings": {
+            "block_img": "shopify:\/\/shop_images\/image_31.webp"
+          }
+        },
+        "image_XQnEW6": {
+          "type": "image",
+          "settings": {
+            "block_img": "shopify:\/\/shop_images\/image_33.webp"
+          }
+        },
+        "text_9jcyct": {
+          "type": "text",
+          "settings": {
+            "block_richtext": "<h4>3D-ONTWERP<\/h4><p>Op basis van de verkregen informatie maken we een 3D-ontwerp van de te realiseren situatie. We presenteren dit ontwerp aan u, de klant, wat ons de mogelijkheid geeft om hier en daar wat aanpassingen te maken.<\/p>",
+            "block_richtext_mobile": "<h4>3D DESIGN<\/h4><p>Based on the information obtained, we create a 3D design of the situation to be realized. We present this design to you, the customer, which gives us the opportunity to make some adjustments here and there.<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "image_Ke6RCF",
+        "image_XQnEW6",
+        "text_9jcyct"
+      ],
+      "settings": {
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "padding_top_mobile": 0,
+        "padding_bottom_mobile": 20,
+        "section_horizontal_borders": "top",
+        "decor_line": true
+      }
+    },
+    "section_stages_q4UXmK": {
+      "type": "section-stages",
+      "blocks": {
+        "stage_nk7FJi": {
+          "type": "stage",
+          "settings": {
+            "url": "shopify:\/\/pages\/contact",
+            "title": "Oriëntatie",
+            "description": "Het begrijpen van jouw visie en behoeften om een gepersonaliseerde aanpak te garanderen."
+          }
+        },
+        "stage_fbxkc4": {
+          "type": "stage",
+          "settings": {
+            "url": "shopify:\/\/pages\/contact",
+            "title": "Ontwerp",
+            "description": "Het creëren van innovatieve en functionele ontwerpen op maat van jouw stijlvoorkeuren."
+          }
+        },
+        "stage_htibFG": {
+          "type": "stage",
+          "settings": {
+            "url": "shopify:\/\/pages\/contact",
+            "title": "Planning",
+            "description": "Gedetailleerde planning om het renovatieproces te stroomlijnen en effectief aan deadlines te voldoen."
+          }
+        },
+        "stage_jpXWAF": {
+          "type": "stage",
+          "settings": {
+            "url": "shopify:\/\/pages\/contact",
+            "title": "UITVOERING \/ IMPLEMENTATIE",
+            "description": "Deskundige uitvoering om uw visie met precisie en zorg tot leven te brengen."
+          }
+        }
+      },
+      "block_order": [
+        "stage_nk7FJi",
+        "stage_fbxkc4",
+        "stage_htibFG",
+        "stage_jpXWAF"
+      ],
+      "settings": {
+        "padding_top": 85,
+        "padding_bottom": 40,
+        "padding_top_mobile": 35,
+        "padding_bottom_mobile": 25,
+        "section_horizontal_borders": "double",
+        "header_vertical_borders": "false",
+        "title_limits": "false",
+        "button_color": "btn_base_brown",
+        "title": "ONZE stadia van werk",
+        "description": "",
+        "button_title": "Verzoek om service",
+        "button_url": "shopify:\/\/pages\/contact"
+      }
+    },
+    "section_contact_cEN6Cn": {
+      "type": "section-contact",
+      "blocks": {
+        "form_EcfVWk": {
+          "type": "form",
+          "settings": {
+            "block_form_title": "Geïnteresseerd?",
+            "block_form_richtext": "<p>U kunt uw verzoek achterlaten via het contactformulier hieronder en we bellen u direct daarna!<\/p>",
+            "block_form_richtext_col_1": "",
+            "block_form_richtext_col_2": "",
+            "block_label_name": "First Name",
+            "block_label_email": "Your email",
+            "block_label_phone": "Phone number",
+            "block_label_service": "Service type",
+            "block_label_message": "Your requests",
+            "block_checkbox_text": "I agree with",
+            "block_link_text": "Privacy Policy",
+            "block_link_url": "",
+            "block_btn_text": "Submit"
+          }
+        },
+        "picture_NfDCFE": {
+          "type": "picture",
+          "settings": {
+            "block_img": "shopify:\/\/shop_images\/cintact.webp"
+          }
+        }
+      },
+      "block_order": [
+        "form_EcfVWk",
+        "picture_NfDCFE"
+      ],
+      "settings": {
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "padding_top_mobile": 25,
+        "padding_bottom_mobile": 0,
+        "block_horizontal_borders": "none",
+        "title": "",
+        "description": "",
+        "decor_line": false,
+        "button_title": "",
+        "button_url": ""
+      }
+    },
+    "section_location_8e3etw": {
+      "type": "section-location",
+      "blocks": {
+        "text_HAqBJj": {
+          "type": "text",
+          "settings": {
+            "block_richtext": "<h4>LOCATIE<\/h4><p>Schutsboomstraat 45 <br> Schaijk<\/p><p>Openingstijden <br> 10:00-18:00<\/p>"
+          }
+        },
+        "map_MgHnP3": {
+          "type": "map",
+          "settings": {
+            "block_map": "<iframe src=\"https:\/\/www.google.com\/maps\/embed?pb=!1m18!1m12!1m3!1d2470.502456915846!2d5.6352068!3d51.7421351!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c702e8912b0c01%3A0x2659a1a0dc0fb50f!2zU2NodXRzYm9vbXN0cmFhdCA0NSwgNTM3NCBDQiBTY2hhaWprLCDQndGW0LTQtdGA0LvQsNC90LTQuA!5e0!3m2!1suk!2sua!4v1729146812970!5m2!1suk!2sua\" width=\"100%\" height=\"100%\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\" referrerpolicy=\"no-referrer-when-downgrade\"><\/iframe>"
+          }
+        }
+      },
+      "block_order": [
+        "text_HAqBJj",
+        "map_MgHnP3"
+      ],
+      "settings": {
+        "padding_top": 50,
+        "padding_bottom": 55,
+        "padding_top_mobile": 25,
+        "padding_bottom_mobile": 35,
+        "section_horizontal_borders": "double"
+      }
+    }
+  },
+  "order": [
+    "template",
+    "section_image_text_ncfnan",
+    "section_preview_project_z4gefH",
+    "section_image_text_PDPjDW",
+    "section_stages_q4UXmK",
+    "section_contact_cEN6Cn",
+    "section_location_8e3etw"
+  ]
+}

@@ -1,0 +1,63 @@
+@use '../variables.scss' as *;
+@use '../mixins/_global-mixins.scss' as *;
+
+.product-option-select {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+
+    @include break_points($laptop, min) {
+        display: none;
+    }
+
+    &.active {
+        .product-option-select__arrow svg {
+            rotate: 180deg;
+        }
+
+        .product-option-select__options {
+            display: flex;
+        }
+    }
+}
+
+.product-option-select__select-wrapper {
+    position: relative;
+}
+
+.product-option-select__active-option {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    padding: 10px 20px;
+    border: 1px solid $black;
+}
+
+.product-option-select__arrow {
+    width: 24px;
+    height: 24px;
+}
+
+.product-option-select__options {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    border: 1px solid $black;
+    border-top: none;
+    box-shadow: 0 8px 8px 0 #00000047;
+    background-color: $gray_light;
+    z-index: 2;
+}
+
+.product-option-select__option {
+    padding: 14px 20px;
+    cursor: pointer;
+
+    &.active {
+        background-color: $brown_light;
+    }
+}

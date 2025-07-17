@@ -1,0 +1,232 @@
+/*!************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].use[3]!./src/styles/sections/section-slider-with-previw.scss ***!
+  \************************************************************************************************************************************************************************************************************************************************/
+@charset "UTF-8";
+/* ==================================================== ADAPTIVE =================================================== */
+/* ===================================================== FONTS ===================================================== */
+/* ===================================================== COLORS ==================================================== */
+/* ====================================================== FORM ===================================================== */
+@media screen and (min-width: 1024px) {
+  :root {
+    --width-main-container: 74.8%;
+    --width-aside-container: 25.2%;
+  }
+}
+@media screen and (max-width: 1023px) {
+  :root {
+    --width-main-container: 100%;
+    --width-aside-container: 100%;
+  }
+}
+
+.slider_previw {
+  overflow: hidden;
+}
+
+.slider_previw__wrap_in {
+  position: relative;
+}
+.slider_previw__wrap_in::after, .slider_previw__wrap_in::before {
+  position: absolute;
+  top: 0;
+  display: block;
+  width: 3px;
+  height: 100%;
+  background-color: #E1DACD;
+}
+.slider_previw__wrap_in::before {
+  left: 0;
+}
+.slider_previw__wrap_in::after {
+  right: 0;
+}
+@media screen and (min-width: 1440px) {
+  .slider_previw__wrap_in::after, .slider_previw__wrap_in::before {
+    content: "";
+  }
+}
+
+.slider_previw__head {
+  position: relative;
+}
+.slider_previw__head:after {
+  position: absolute;
+  bottom: 0;
+  left: -35px;
+  display: block;
+  width: var(--main-wrapper);
+  height: 3px;
+  background-color: #E1DACD;
+  content: "";
+}
+@media screen and (min-width: 1024px) {
+  .slider_previw__head {
+    display: flex;
+    align-items: flex-end;
+    padding-bottom: 40px;
+  }
+}
+@media screen and (max-width: 1023px) {
+  .slider_previw__head {
+    padding-bottom: 25px;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .slider_previw__head_content {
+    ßwidth: 70%;
+    padding-right: 15px;
+  }
+}
+@media screen and (max-width: 1023px) {
+  .slider_previw__head_content {
+    margin-bottom: 18px;
+  }
+}
+
+.slider_previw__title {
+  font-weight: 800;
+}
+@media screen and (min-width: 768px) {
+  .slider_previw__title {
+    font-size: max(45px, min(6vw, 80px));
+    line-height: 1.27;
+  }
+}
+@media screen and (max-width: 767px) {
+  .slider_previw__title {
+    font-size: 32px;
+    line-height: 1;
+  }
+}
+.slider_previw__title {
+  text-transform: uppercase;
+  max-width: 1440px;
+}
+.slider_previw__title:not(:last-child) {
+  margin-bottom: 18px;
+}
+
+.slider_previw__description {
+  line-height: 1.27;
+  max-width: 1440px;
+}
+
+@media screen and (min-width: 1024px) {
+  .slider_previw__head_btn {
+    width: 30%;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .slider_previw__btn_wrap {
+    text-align: right;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .slider_previw__btn {
+    min-width: 300px;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .slider_previw__container {
+    display: flex;
+    align-items: flex-start;
+  }
+}
+@media screen and (max-width: 1023px) {
+  .slider_previw__container {
+    padding-top: 15px;
+  }
+}
+
+.slider_previw__container_main {
+  position: relative;
+  width: var(--width-main-container);
+}
+.slider_previw__container_main:after {
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: block;
+  width: 3px;
+  height: 100%;
+  background-color: #E1DACD;
+}
+@media screen and (min-width: 1024px) {
+  .slider_previw__container_main:after {
+    content: "";
+  }
+}
+@media screen and (min-width: 1024px) {
+  .slider_previw__container_main {
+    padding: 35px 35px 0 0;
+  }
+}
+@media screen and (max-width: 1023px) {
+  .slider_previw__container_main {
+    margin-bottom: 14px;
+  }
+}
+
+.slider_previw__swiper {
+  min-width: 0;
+}
+
+.slider_previw__swiper_wrap {
+  counter-reset: section;
+}
+
+.slider_previw__swiper_pic {
+  display: block;
+  aspect-ratio: 1126/600;
+}
+.slider_previw__swiper_pic:not(:last-child) {
+  margin-bottom: 22px;
+}
+
+.slider_previw__thimb_img,
+.slider_previw__swiper_img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.slider_previw__swiper_description {
+  font-weight: 800;
+}
+.slider_previw__swiper_description:before {
+  counter-increment: section;
+  content: counter(section, decimal-leading-zero) ".";
+}
+
+.slider_previw__container_thimb {
+  width: var(--width-aside-container);
+}
+@media screen and (min-width: 1024px) {
+  .slider_previw__container_thimb {
+    padding: 35px 0 0 35px;
+  }
+}
+
+.slider_previw__controls {
+  display: inline-flex;
+}
+
+.slider_previw__swiper_thimb:not(:last-child) {
+  margin-bottom: 22px;
+}
+@media screen and (max-width: 1023px) {
+  .slider_previw__swiper_thimb {
+    display: none;
+  }
+}
+
+.slider_previw__swiper_pic_thimb {
+  display: block;
+  aspect-ratio: 343/262;
+}

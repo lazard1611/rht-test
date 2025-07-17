@@ -1,0 +1,26 @@
+{
+  "sections": {
+    "template-collection": {
+      "type": "template-collection",
+      "settings": {
+        "contact_block_title": "Staat uw product er niet bij?",
+        "contact_block_message": "Neem contact met ons op voor maatwerk!",
+        "contact_block_link_text": "Maak een afspraak",
+        "contact_block_link_text_mobile": "Afspraak",
+        "contact_block_link_url": "\/",
+        "contact_block_photo": "shopify:\/\/shop_images\/header-logo.svg",
+        "clear_all_btn_title": "Alles wissen",
+        "filter_title": "Filter",
+        "view_btn_title": "Bekijk resultaten",
+        "from_to_text": "tot",
+        "no_products_text": "Geen producten gevonden...",
+        "pagination_info_text": "Pagina",
+        "pagination_prev_btn_title": "Vorig",
+        "pagination_next_btn_title": "Volgende"
+      }
+    }
+  },
+  "order": [
+    "template-collection"
+  ]
+}

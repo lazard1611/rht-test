@@ -1,0 +1,37 @@
+<div class="success__popup js-contact-popup">
+        <div class="success__popup_wrap js-contact-popup-wrap">
+            <div class="success__popup_item">
+                <button type="button" aria-label="close popup" class="success__popup_close js-contact-popup-close">
+                    <span>{% render 'icons', filename: 'close_2' %}</span>
+                </button>
+
+                {% if settings.popup_logo != blank %}
+                    <picture class="success__popup_logo">
+                        <img width="auto" height="auto" src="{{ settings.popup_logo | image_url }}" alt="logo" class="success__popup_logo_img">
+                    </picture>
+                {% else %}
+                    <div class="success__popup_logo">
+                        {% render 'logo-animate' %}
+                    </div>
+                {% endif %}
+
+                {% if settings.popup_title != blank %}
+                    <div class="success__popup_title h3">{{ settings.popup_title }}</div>
+                {% endif %}
+
+                {% if settings.popup_description != blank %}
+                    <div class="success__popup_description">{{ settings.popup_description }}</div>
+                {% endif %}
+
+                {% if settings.popup_button_title != blank %}
+                    {% render 'buttons',
+                            title: settings.popup_button_title,
+                            class: 'btn_base success__popup_btn',
+                            link: settings.popup_button_url,
+                            icon: false
+                    %}
+                {% endif %}
+
+            </div>
+        </div>
+    </div>

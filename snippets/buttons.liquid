@@ -1,0 +1,38 @@
+{% if filename == blank %}
+    {% assign filename = "arrow-btn" %}
+{% endif %}
+
+{% if link %}
+    <a href="{{ link }}" class="{{ class }}">
+        {% if mobile_title != blank %}
+            <span class="btn__pc-title">{{ title }}</span>
+            <span class="btn__mobile-title">{{ mobile_title }}</span>
+        {% else %}
+            {{ title }}
+        {% endif %}
+
+        {% if icon %}
+            <span class="btn__icon">
+                {% render "icons", filename: filename %}
+            </span>
+        {% endif %}
+
+    </a>
+
+{% else %}
+    <button type="button" aria-label="{{ title }}" class="{{ class }}" {{ attribute }}>
+        {% if mobile_title != blank %}
+            <span class="btn__pc-title">{{ title }}</span>
+            <span class="btn__mobile-title">{{ mobile_title }}</span>
+        {% else %}
+            {{ title }}
+        {% endif %}
+
+        {% if icon %}
+            <span class="btn__icon">
+                {% render "icons", filename: filename %}
+            </span>
+        {% endif %}
+
+    </button>
+{% endif %}

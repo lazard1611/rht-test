@@ -1,0 +1,46 @@
+<link rel="stylesheet" href="{{ "template-service-hero.css" | asset_url }}">
+
+<div class="template-service-hero__wrapper  js-title-section">
+    <div class="template-service-hero__header page_wrap page_wrap--border">
+        <h1 class="template-service-hero__title js-title-el h2 {% if limits %}limit{% endif %}">{{ page.title }}</h1>
+    </div>
+
+    <div class="template-service-hero__content">
+        <div class="template-service-hero__image-wrapper  page_wrap page_wrap--border">
+            <img class="template-service-hero__image js-scale-fade-item"
+                src="{{ section.settings.image | image_url }}"
+                alt=""
+                width="auto"
+                height="auto"
+                loading="lazy"
+            >
+        </div>
+    </div>
+</div>
+
+<script src="{{ "template-service-hero.js" | asset_url }}" type="module" defer></script>
+
+{% schema %}
+{
+    "name": "Service hero",
+    "class": "template-service-hero",
+    "tag": "section",
+    "settings": [
+        {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image"
+        }
+    ],
+    "presets": [
+        {
+            "name": "Service hero"
+        }
+    ],
+    "enabled_on": {
+        "templates": [
+            "page"
+        ]
+    }
+}
+{% endschema %}

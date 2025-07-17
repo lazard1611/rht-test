@@ -1,0 +1,67 @@
+@use '../variables.scss' as *;
+@use '../mixins/buttons.scss' as *;
+@use '../mixins/_global-mixins.scss' as *;
+
+.location {
+
+}
+
+.location__wrap {
+    @include break_points($tablet) {
+        border-color: transparent!important;
+    }
+}
+
+.location__grid {
+    display: grid;
+    gap: 35px;
+    
+    @include break_points($tabletXl, min) {
+        grid-template-columns: 1fr 4fr;
+    }
+
+    @include break_points($tabletXl) {
+
+    }
+}
+
+.location__map_wrap {
+
+}
+
+.location__map {
+    aspect-ratio: 1187/747;
+}
+
+.location__img {
+}
+
+.location__content {
+    @include break_points($tablet) {
+        grid-row: 1;
+    }
+}
+
+.location__description {
+    h4:not(:last-child) { 
+        margin-bottom: 0.4em; 
+    }
+
+    p:not(:last-child) { 
+        margin-bottom: 20px;
+    }
+
+    &:not(:last-child) { 
+        margin-bottom: 35px;
+    }
+}
+
+.location__link_wrap {
+    &:not(:last-child) { 
+        margin-bottom: 14px;
+    }
+}
+
+.location__link {
+    @include link_hover;    
+}

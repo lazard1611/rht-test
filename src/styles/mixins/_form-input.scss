@@ -1,0 +1,112 @@
+@use '../variables.scss' as *;
+@use '../mixins/_global-mixins.scss' as *;
+
+@mixin form_el_label {
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: translateY(12px);
+    font-size: $input_font_size;
+
+    display: block;
+    transition: font-size 0.3s ease, transform 0.3s ease;
+
+    pointer-events: none;
+    color: var(--form-text-color);
+
+    @include break_points($tablet) {
+        font-size: 22px;
+    }
+}
+
+@mixin form_el_default {
+    display: block;
+    width: 100%;
+    height: $input_height;
+    padding: 0 $input_offset;
+    font-size: $input_font_size;
+    font-family: $font_montserrat;
+    font-weight: 500;
+
+    color: var(--form-text-color);
+
+    caret-color: $input_radius;
+    border-bottom: 1px solid $input_border_color;
+    background-clip: padding-box;
+    background-color: transparent;
+    border-radius: $input_radius;
+    transition: border-color 0.3s ease 0s;
+    will-change: border-color;
+
+    .error & {
+        border-color: $red;
+    }
+
+    &::-webkit-input-placeholder {
+        color: $input_placeholder_color;
+    }
+
+    &::-moz-placeholder {
+        color: $input_placeholder_color;
+        opacity: 1;
+    }
+
+    &:-ms-input-placeholder {
+        color: $input_placeholder_color;
+    }
+
+    // HIDE USER ICON
+    &::-webkit-contacts-auto-fill-button {
+        visibility: hidden;
+        position: absolute;
+        right: 0;
+    }
+
+    &[type='search'] {
+        // HIDE CLEAR ICON
+        &::-ms-clear,
+        &::-ms-reveal {
+            display: none;
+        }
+
+        // HIDE SAFARI DEFAULT BROWSER DECORATIONS
+        &::-webkit-search-decoration,
+        &::-webkit-search-cancel-button,
+        &::-webkit-search-results-button,
+        &::-webkit-search-results-decoration {
+            display: none;
+        }
+    }
+
+    &[type='password'] {
+        padding-right: 50px;
+    }
+
+    &:-webkit-autofill {
+        -webkit-box-shadow: 0 0 0 $input_height var(--bg-body-color) inset;
+        -webkit-text-fill-color: var(--form-text-color);
+        font-size: 22px !important;
+    }
+
+    &:-webkit-autofill:focus {
+        -webkit-box-shadow: 0 0 0 $input_height var(--bg-body-color) inset;
+        -webkit-text-fill-color: var(--form-text-color);
+        font-size: 22px !important;
+    }
+
+    &[type='date'] {
+        // HIDE CALENDAR ICON
+        &::-webkit-calendar-picker-indicator {
+            opacity: 0;
+        }
+    }
+
+    @at-root {
+        // CLEAR DEFAULT SAFARI BG
+        select#{&} {
+            -webkit-tap-highlight-color: transparent;
+        }
+    }
+
+    appearance: none;
+}

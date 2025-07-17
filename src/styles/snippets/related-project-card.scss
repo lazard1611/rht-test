@@ -1,0 +1,41 @@
+@use '../variables.scss' as *;
+@use '../mixins/_global-mixins.scss' as *;
+
+.related-project-card {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+
+    @include break_points($laptop, min) {
+        padding: 35px;
+        border-right: 3px solid $brown_light !important;
+    }
+
+    @include break_points($laptop) {
+        padding: 15px 15px 25px;
+        border-bottom: 3px solid $brown_light !important;
+    }
+
+    &:last-child {
+        border: none !important;
+    }
+}
+
+.related-project-card__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+
+    @include break_points($laptop, min) {
+        aspect-ratio: 745 / 413;
+    }
+
+    @include break_points($laptop) {
+        aspect-ratio: 345 / 242;
+    }
+}
+
+.related-project-card__title {
+    text-transform: uppercase;
+}

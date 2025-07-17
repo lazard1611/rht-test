@@ -1,0 +1,401 @@
+{
+  "sections": {
+    "template_home_hero_7rLNdk": {
+      "type": "template-home-hero",
+      "blocks": {
+        "product_8jkyXm": {
+          "type": "product",
+          "settings": {
+            "product": "black-lamp",
+            "mobile_range_y": 65,
+            "range_y": 69,
+            "mobile_range_x": 12,
+            "range_x": 9,
+            "mobile_block_position": "left_top",
+            "block_position": "left_top"
+          }
+        },
+        "product_wFe6GE": {
+          "type": "product",
+          "settings": {
+            "product": "chair",
+            "mobile_range_y": 83,
+            "range_y": 80,
+            "mobile_range_x": 26,
+            "range_x": 65,
+            "mobile_block_position": "right_top",
+            "block_position": "right_bottom"
+          }
+        },
+        "product_zcWdzF": {
+          "type": "product",
+          "settings": {
+            "product": "",
+            "mobile_range_y": 0,
+            "range_y": 0,
+            "mobile_range_x": 0,
+            "range_x": 0,
+            "mobile_block_position": "left_top",
+            "block_position": "left_top"
+          }
+        }
+      },
+      "block_order": [
+        "product_8jkyXm",
+        "product_wFe6GE",
+        "product_zcWdzF"
+      ],
+      "settings": {
+        "title": "waar elegantie een rebelse ziel ontmoet",
+        "title_horizontal_position": "left",
+        "title_vertical_position": "center",
+        "background_image": "shopify:\/\/shop_images\/hero.webp",
+        "fade_color": "#000000",
+        "fade_opacity": 6
+      }
+    },
+    "section_richtext_Fwi46b": {
+      "type": "section-richtext",
+      "settings": {
+        "padding_top": 50,
+        "padding_bottom": 60,
+        "padding_top_mobile": 35,
+        "padding_bottom_mobile": 35,
+        "section_horizontal_borders": "bottom",
+        "text": "<p>Of het nu gaat om nieuwbouw of renovatie, we streven naar uw tevredenheid. Interieurs moeten functioneel zijn en een aangename sfeer creëren. Voor oudere gebouwen is het respecteren van hun authenticiteit cruciaal. We blijven uw constante aanspreekpunt voor, tijdens en na het project.<\/p>",
+        "text_size": "large",
+        "text_position": "left"
+      }
+    },
+    "section_preview_collections_kbhq63": {
+      "type": "section-preview-collections",
+      "blocks": {
+        "block_AER8r9": {
+          "type": "block",
+          "settings": {
+            "collection": "sofa"
+          }
+        },
+        "block_C9CarU": {
+          "type": "block",
+          "settings": {
+            "collection": "chair"
+          }
+        },
+        "block_UjbwUw": {
+          "type": "block",
+          "settings": {
+            "collection": "furniture"
+          }
+        },
+        "block_rqP8Ne": {
+          "type": "block",
+          "settings": {
+            "collection": "kitchen-sets"
+          }
+        },
+        "block_C4i4XY": {
+          "type": "block",
+          "settings": {
+            "collection": "lighting"
+          }
+        }
+      },
+      "block_order": [
+        "block_AER8r9",
+        "block_C9CarU",
+        "block_UjbwUw",
+        "block_rqP8Ne",
+        "block_C4i4XY"
+      ],
+      "settings": {
+        "padding_top": 35,
+        "padding_bottom": 35,
+        "padding_top_mobile": 35,
+        "padding_bottom_mobile": 35,
+        "section_horizontal_borders": "bottom"
+      }
+    },
+    "section_preview_pages_t3rqQf": {
+      "type": "section-preview-pages",
+      "blocks": {
+        "page_UTdUWL": {
+          "type": "page",
+          "settings": {
+            "background_image": "shopify:\/\/shop_images\/6.webp",
+            "title": "Verzameling",
+            "description": "Vind ontwerpmogelijkheden voor jouw levensstijl in onze nieuwste collecties van meubels.",
+            "button_title": "Bekijk onze producten",
+            "button_title_mobile": "Onze producten",
+            "url": "shopify:\/\/pages\/contact",
+            "btn_color": ""
+          }
+        },
+        "page_MNMzzh": {
+          "type": "page",
+          "settings": {
+            "background_image": "shopify:\/\/shop_images\/x1.webp",
+            "title": "Service",
+            "description": "Heb je originele, comfortabele meubels nodig die bij jouw stijl passen?",
+            "button_title": "Ga naar diensten",
+            "button_title_mobile": "Onze diensten",
+            "url": "shopify:\/\/pages\/contact",
+            "btn_color": "#513450"
+          }
+        },
+        "animation_frames_3WqpNz": {
+          "type": "animation_frames",
+          "settings": {
+            "frame_first": "shopify:\/\/shop_images\/frame-1.svg",
+            "frame_second": "shopify:\/\/shop_images\/frame-4.svg",
+            "frame_third": "shopify:\/\/shop_images\/frame-3.svg",
+            "frame_fourth": "shopify:\/\/shop_images\/frame-2.svg"
+          }
+        }
+      },
+      "block_order": [
+        "page_UTdUWL",
+        "page_MNMzzh",
+        "animation_frames_3WqpNz"
+      ],
+      "settings": {
+        "padding_top": 50,
+        "padding_bottom": 35,
+        "padding_top_mobile": 20,
+        "padding_bottom_mobile": 20,
+        "section_horizontal_borders": "bottom",
+        "fade_color": "",
+        "fade_opacity": 0
+      }
+    },
+    "section_preview_products_QgTYR3": {
+      "type": "section-preview-products",
+      "settings": {
+        "padding_top": 100,
+        "padding_bottom": 40,
+        "padding_top_mobile": 35,
+        "padding_bottom_mobile": 25,
+        "section_horizontal_borders": "bottom",
+        "title_limits": "false",
+        "button_color": "btn_base",
+        "title": "Nieuwe aankomsten",
+        "description": "Verlicht je ruimte met onze prachtige verlichtingscollectie. Van strakke moderne armaturen tot tijdloze klassiekers, ontdek verlichtingsoplossingen die elke hoek van je huis of kantoor verbeteren.",
+        "button_title": "Bekijk onze producten",
+        "button_url": "shopify:\/\/collections\/all",
+        "collection": "all"
+      }
+    },
+    "section_preview_project_4zWNRJ": {
+      "type": "section-preview-project",
+      "blocks": {
+        "animation_frames_4qMXRg": {
+          "type": "animation_frames",
+          "settings": {
+            "frame_first": "shopify:\/\/shop_images\/frame-1.svg",
+            "frame_second": "shopify:\/\/shop_images\/frame-4.svg",
+            "frame_third": "shopify:\/\/shop_images\/frame-3.svg",
+            "frame_fourth": "shopify:\/\/shop_images\/frame-2.svg"
+          }
+        }
+      },
+      "block_order": [
+        "animation_frames_4qMXRg"
+      ],
+      "settings": {
+        "padding_top": 30,
+        "padding_bottom": 40,
+        "padding_top_mobile": 35,
+        "padding_bottom_mobile": 25,
+        "section_horizontal_borders": "bottom",
+        "title": "Herdefinieer het gebruikelijke tot het ongebruikelijke",
+        "description": "<p>Wij zorgen voor uw tevredenheid door stukken te creëren die zowel functioneel als uitnodigend zijn. Wij respecteren het oorspronkelijke karakter van oudere meubels en blijven uw constante aanspreekpunt voor, tijdens en na het project. U kunt Keukens, Meubels, Badkamers of Interieurdesign renoveren.<\/p>",
+        "project": "keuken\/ons-portfolio",
+        "project_title": "Ons nieuwste project",
+        "project_description": "Een nieuwe look voor oude meubels is verfrissend voor de woonkamer"
+      }
+    },
+    "section_stages_F8F99m": {
+      "type": "section-stages",
+      "blocks": {
+        "stage_nk7FJi": {
+          "type": "stage",
+          "settings": {
+            "url": "shopify:\/\/pages\/orientation",
+            "title": "Oriëntatie",
+            "description": "Het begrijpen van jouw visie en behoeften om een gepersonaliseerde aanpak te garanderen."
+          }
+        },
+        "stage_fbxkc4": {
+          "type": "stage",
+          "settings": {
+            "url": "shopify:\/\/pages\/design",
+            "title": "Ontwerp",
+            "description": "Het creëren van innovatieve en functionele ontwerpen op maat van jouw stijlvoorkeuren."
+          }
+        },
+        "stage_htibFG": {
+          "type": "stage",
+          "settings": {
+            "url": "shopify:\/\/pages\/planning",
+            "title": "Planning",
+            "description": "Gedetailleerde planning om het renovatieproces te stroomlijnen en effectief aan deadlines te voldoen."
+          }
+        },
+        "stage_jpXWAF": {
+          "type": "stage",
+          "settings": {
+            "url": "shopify:\/\/pages\/execution-implementation",
+            "title": "UITVOERING \/ IMPLEMENTATIE",
+            "description": "Deskundige uitvoering om uw visie met precisie en zorg tot leven te brengen."
+          }
+        }
+      },
+      "block_order": [
+        "stage_nk7FJi",
+        "stage_fbxkc4",
+        "stage_htibFG",
+        "stage_jpXWAF"
+      ],
+      "settings": {
+        "padding_top": 85,
+        "padding_bottom": 40,
+        "padding_top_mobile": 35,
+        "padding_bottom_mobile": 25,
+        "section_horizontal_borders": "bottom",
+        "header_vertical_borders": "false",
+        "title_limits": "true",
+        "button_color": "btn_base_brown",
+        "title": "ONZE werkfasen",
+        "description": "",
+        "button_title": "Aanvraag voor service",
+        "button_url": "shopify:\/\/pages\/contact"
+      }
+    },
+    "section_about_furniture_czi8bJ": {
+      "type": "section-about-furniture",
+      "blocks": {
+        "product_QFwpzn": {
+          "type": "product",
+          "settings": {
+            "product": "black-lamp"
+          }
+        },
+        "product_AK7Fxp": {
+          "type": "product",
+          "settings": {
+            "product": "brown-wooden-table"
+          }
+        },
+        "product_xnJGkR": {
+          "type": "product",
+          "settings": {
+            "product": "chair"
+          }
+        },
+        "product_xaJbPx": {
+          "type": "product",
+          "settings": {
+            "product": "chairs"
+          }
+        },
+        "product_VXqgJ4": {
+          "type": "product",
+          "settings": {
+            "product": "vase"
+          }
+        },
+        "text_KWdwLD": {
+          "type": "text",
+          "settings": {
+            "title": "",
+            "description": "Kies meubels die een leven lang meegaan! Onze selectie is perfect om een ​​vleugje unieke flair en charme aan uw interieur toe te voegen. Deze stukken vallen op door hun eigentijdse rechte lijnen en imposante aanwezigheid, waardoor ze zowel functioneel als stijlvol zijn.",
+            "button_title": "Bekijk onze producten",
+            "button_url": "shopify:\/\/pages\/contact"
+          }
+        }
+      },
+      "block_order": [
+        "product_QFwpzn",
+        "product_AK7Fxp",
+        "product_xnJGkR",
+        "product_xaJbPx",
+        "product_VXqgJ4",
+        "text_KWdwLD"
+      ],
+      "settings": {
+        "padding_top": 100,
+        "padding_bottom": 35,
+        "padding_top_mobile": 35,
+        "padding_bottom_mobile": 25,
+        "section_horizontal_borders": "bottom",
+        "title_limits": "false",
+        "button_color": "btn_base",
+        "title": "Alles over meubels",
+        "description": "",
+        "button_title": "",
+        "button_url": ""
+      }
+    },
+    "section_slider_with_previw_9BbFHL": {
+      "type": "section-slider-with-previw",
+      "blocks": {
+        "block_FgXqWb": {
+          "type": "block",
+          "settings": {
+            "block_img": "shopify:\/\/shop_images\/hero.webp",
+            "block_text": "Design and realization of a wellness area with custom-made cabinets and a wooden."
+          }
+        },
+        "block_BEBPMn": {
+          "type": "block",
+          "settings": {
+            "block_img": "shopify:\/\/shop_images\/x1.webp",
+            "block_text": "Design and realization of a wellness area with custom-made cabinets and a wooden."
+          }
+        },
+        "block_Agiaxj": {
+          "type": "block",
+          "settings": {
+            "block_img": "shopify:\/\/shop_images\/cintact.webp",
+            "block_text": ""
+          }
+        },
+        "block_pcTHQi": {
+          "type": "block",
+          "settings": {
+            "block_img": "shopify:\/\/shop_images\/social-media-2.jpg",
+            "block_text": ""
+          }
+        }
+      },
+      "block_order": [
+        "block_FgXqWb",
+        "block_BEBPMn",
+        "block_Agiaxj",
+        "block_pcTHQi"
+      ],
+      "settings": {
+        "padding_top": 100,
+        "padding_bottom": 35,
+        "padding_top_mobile": 35,
+        "padding_bottom_mobile": 25,
+        "section_horizontal_borders": "bottom",
+        "title": "Onze nieuwste projecten",
+        "richtext": "<p>Verken onze portfolio voor een eerste blik op onze succesvolle verwezenlijkingen en case studies. Aanschouw de transformerende kracht van onze ontwerpen en oplossingen. Om meer van onze portfolio te bekijken, ga je naar onze website.<\/p>",
+        "btn_text": "Ga naar portfolio",
+        "btn_url": ""
+      }
+    }
+  },
+  "order": [
+    "template_home_hero_7rLNdk",
+    "section_richtext_Fwi46b",
+    "section_preview_collections_kbhq63",
+    "section_preview_pages_t3rqQf",
+    "section_preview_products_QgTYR3",
+    "section_preview_project_4zWNRJ",
+    "section_stages_F8F99m",
+    "section_about_furniture_czi8bJ",
+    "section_slider_with_previw_9BbFHL"
+  ]
+}

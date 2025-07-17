@@ -1,0 +1,255 @@
+<link rel="stylesheet" href="{{ "section-slider-with-previw.css" | asset_url }}">
+{% render "set-sections-paddings", section_data: section, wrapper_class: "slider_previw__wrap" %}
+{% render "set-sections-borders", section_data: section, wrapper_class: "slider_previw__wrap" %}
+
+<style>    
+    @media (min-width: 1023px) {
+        .slider_previw__container_main::after {
+            height: calc(100% + {{ section.settings.padding_bottom }}px);
+        }
+
+        .slider_previw__wrap_in::before,
+        .slider_previw__wrap_in::after {
+            top: calc({{ section.settings.padding_top }}px * -1);
+            height: calc(100% + {{ section.settings.padding_top }}px + {{ section.settings.padding_bottom }}px)
+            
+        }
+    }
+    @media (max-width: 1024px) {
+        .slider_previw__container_main::after {
+            height: calc(100% + {{ section.settings.padding_bottom_mobile }}px);
+        }
+
+        .slider_previw__wrap_in::before,
+        .slider_previw__wrap_in::after {
+            top: calc({{ section.settings.padding_top_mobile }}px * -1);
+            height: calc(100% + {{ section.settings.padding_top_mobile }}px + {{ section.settings.padding_bottom_mobile }}px)
+            
+        }
+    }
+</style>
+
+<div class="slider_previw__wrap js-fade-section">
+    <div class="page_wrap slider_previw__wrap_in">
+        <div class="slider_previw__head js-title-section">
+            <div class="slider_previw__head_content">
+                {% if section.settings.title != blank %}
+                    <div class="slider_previw__title js-title-fade">
+                        {{ section.settings.title | replace: '<br>', '<br>'  }}
+                    </div>
+                {% endif %} 
+            
+                {% if section.settings.richtext != blank %}
+                    <div class="slider_previw__description js-title-el">
+                        {{ section.settings.richtext | replace: '<br>', '<br>'  }}
+                    </div>
+                {% endif %} 
+            </div>
+            <div class="slider_previw__head_btn">
+                {% if section.settings.btn_text != blank %}
+                    <div class="slider_previw__btn_wrap js-title-el">
+                        {% render 'buttons',
+                            title: section.settings.btn_text,
+                            class: 'btn_base_brown slider_previw__btn',
+                            icon: true
+                        %}   
+                    </div>
+                {% endif %} 
+            </div>    
+    
+        </div>  
+        {% if section.blocks.size > 0 %}
+            <div class="slider_previw__container js-fade">
+                <div class="slider_previw__container_main">
+                    <div class="swiper js-slider-previw-main slider_previw__swiper">            
+                        <div class="swiper-wrapper slider_previw__swiper_wrap">     
+                            {% for block in section.blocks %}
+                                <div class="swiper-slide slider_previw__swiper_item ">
+                                    <picture class="slider_previw__swiper_pic">
+                                        {% if block.settings.block_img != blank %}
+                                            <img width="auto" height="auto" src="{{ block.settings.block_img |  image_url }}" alt="media" class="slider_previw__swiper_img js-slider-previw-main-img">                            
+                                        {% else %}
+                                            {% capture num %}{% cycle "1", "2", "3", "4", "5", "6" %}{% endcapture %}                                    
+                                            {{ 'collection-' | append: num | placeholder_svg_tag: 'js-slider-previw-main-img placeholder-svg placeholder-svg--cover ' }}                                                                  
+                                        {% endif %}                                                                                   
+                                    </picture>
+                                    {% if block.settings.block_text != blank %}
+                                        <div class="slider_previw__swiper_description">
+                                            {{ block.settings.block_text }}
+                                        </div> 
+                                    {% endif %}  
+                                </div>                        
+                            {% endfor %}                                            
+                        </div>                                                              
+                    </div>
+                </div>
+                <div class="slider_previw__container_thimb js-fade">
+                    <div class="swiper js-slider-previw-thimb slider_previw__swiper_thimb">            
+                        <div class="swiper-wrapper slider_previw__swiper_wrap">     
+                            {% for block in section.blocks %}
+                                <div class="swiper-slide slider_previw__swiper_item">
+                                    <picture class="slider_previw__swiper_pic_thimb">
+                                        {% if block.settings.block_img != blank %}
+                                            <img width="auto" height="auto" src="{{ block.settings.block_img |  image_url }}" alt="media" class="slider_previw__swiper_img js-slider-previw-main-img">                            
+                                        {% else %}
+                                            {% capture num %}{% cycle "1", "2", "3", "4", "5", "6" %}{% endcapture %}                                    
+                                            {{ 'collection-' | append: num | placeholder_svg_tag: 'js-slider-previw-main-img placeholder-svg placeholder-svg--cover ' }}                                                                  
+                                        {% endif %}                                                                                   
+                                    </picture>                                     
+                                </div>                        
+                            {% endfor %}                                            
+                        </div>                                                              
+                    </div>
+                    <div class="swiper-controllers slider_previw__controls">
+                        <button aria-label="preview slide" class="swiper-controllers__controller js-slider-previw-btn-prev">
+                            <span>
+                                {% render "icons", filename: "arrow_left" %}
+                            </span>
+                        </button>
+        
+                        <div class="swiper-controllers__counter js-slider-previw-fraction"></div>                
+        
+                        <button aria-label="next slide" class="swiper-controllers__controller js-slider-previw-btn-next">
+                            <span>
+                                {% render "icons", filename: "arrow_right" %}
+                            </span>
+                        </button>
+                    </div>                 
+                </div>            
+            </div>
+        {% endif %}
+        
+    </div>
+</div>
+
+<script src="{{ 'section-slider-with-previw.js' | asset_url }}" type="module" defer></script>
+
+{% schema %}
+    {
+        "name": "Slider with previw",
+        "class": "slider_previw js-section-slider-previw",
+        "tag": "section",
+        "settings": [
+            {
+            "type": "range",
+            "id": "padding_top",
+            "min": 0,
+            "max": 200,
+            "step": 5,
+            "unit": "px",
+            "label": "Padding top",
+            "default": 0
+        },
+        {
+            "type": "range",
+            "id": "padding_bottom",
+            "min": 0,
+            "max": 200,
+            "step": 5,
+            "unit": "px",
+            "label": "Padding bottom",
+            "default": 0
+        },
+        {
+            "type": "range",
+            "id": "padding_top_mobile",
+            "min": 0,
+            "max": 100,
+            "step": 5,
+            "unit": "px",
+            "label": "Padding top mobile",
+            "default": 0
+        },
+        {
+            "type": "range",
+            "id": "padding_bottom_mobile",
+            "min": 0,
+            "max": 100,
+            "step": 5,
+            "unit": "px",
+            "label": "Padding bottom mobile",
+            "default": 0
+        },
+        {
+            "type": "select",
+            "id": "section_horizontal_borders",
+            "label": "Section horizontal borders",
+            "options": [
+                {
+                    "value": "top",
+                    "label": "Top"
+                },
+                {
+                    "value": "bottom",
+                    "label": "Bottom"
+                },
+                {
+                    "value": "double",
+                    "label": "Double"
+                },
+                {
+                    "value": "none",
+                    "label": "None"
+                }
+            ],
+            "default": "top"
+        },               
+        {
+            "type": "text",
+            "id": "title",
+            "label": "Title",
+            "default": "Our latest projects"            
+        }, 
+        {
+            "type": "richtext",
+            "id": "richtext",
+            "label": "Description"             
+        },
+        {
+            "type": "text",
+            "id": "btn_text",
+            "label": "Button text"             
+        },
+        {
+            "type": "url",
+            "id": "btn_url",
+            "label": "Button URL"             
+        }                  
+        ],      
+
+        "blocks": [
+            {
+                "name": "Slider item",
+                "type": "block",
+                "settings": [
+                    {
+                        "type": "image_picker",
+                        "id": "block_img",
+                        "label": "Select image"                        
+                    },
+                    {
+                        "type": "text",
+                        "id": "block_text",
+                        "label": "Slide description"                        
+                    }
+                ]
+            }            
+        ],
+        "presets": [
+            {
+                "name": "Slider with previw",
+                "blocks": [
+                    {
+                        "type": "block"
+                    },
+                    {
+                        "type": "block"
+                    },
+                    {
+                        "type": "block"
+                    }
+                ]           
+            }
+        ]
+    }
+{% endschema %}

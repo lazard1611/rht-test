@@ -1,0 +1,54 @@
+@use '../mixins/buttons.scss' as *;
+@use '../variables.scss' as *;
+@use '../mixins/_global-mixins.scss' as *;
+
+.btn_base {
+    @include btn_style_purple;
+    @include btn_size_normal;
+}
+
+.btn_base_small {
+    @include btn_style_purple;
+    @include btn_size_small;
+}
+
+.btn_base_with_bg {
+    @include btn_style_purple_with_bg;
+    @include btn_size_normal;
+}
+
+.btn_base_brown {
+    @include btn_style_brown;
+    @include btn_size_normal;
+}
+
+.btn_base_transparent {
+    @include btn_style_transparent;
+    @include btn_size_normal;
+}
+
+.btn_base_text {
+    @include btn_style_text;
+}
+
+.btn__icon {
+    flex-shrink: 0;
+    display: block;
+    width: 16px;
+    height: 16px;
+    margin-left: 10px;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.btn__pc-title {
+    @include break_points($tablet) {
+        display: none;
+    }
+}
+
+.btn__mobile-title {
+    @include break_points($tablet, min) {
+        display: none;
+    }
+}
+

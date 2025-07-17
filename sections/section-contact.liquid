@@ -1,0 +1,367 @@
+<link rel="stylesheet" href="{{ "section-contact.css" | asset_url }}">
+
+{% render "set-sections-paddings", section_data: section, wrapper_class: "contact__wrap" %}
+
+{% if section.settings.decor_line %}
+    <style>
+        @media screen and (min-width: 1024px) {
+            #shopify-section-{{ section.id }} .contact__block:not(:first-child) {
+                border-left: 3px solid #E1DACD;
+            }
+        }
+    </style>
+{% endif %}
+    
+
+<style>
+    #shopify-section-{{ section.id }} .contact__blocks {                  
+        {% case section.settings.block_horizontal_borders %}
+            {% when 'top' %}
+                border-top: 3px solid #E1DACD;
+            {% when 'double' %}
+                border-top: 3px solid #E1DACD;    
+                border-bottom: 3px solid #E1DACD; 
+            {% when 'bottom' %}
+                border-bottom: 3px solid #E1DACD;
+        {% endcase %}
+    }
+
+</style>
+
+{% assign popupState = '' %}
+
+<div class="contact__wrap {{ popupState }}">
+    {% if section.settings.title != blank or  section.settings.description != blank%}    
+        {% render "section-header", section: section, parent_class: "contact", borders: true, h1: true %}
+    {% endif %}
+
+    {% if section.blocks.size > 0 %}
+        <div class="page_wrap page_wrap--border page_wrap--without-paddings contact__blocks">
+            {% for block in section.blocks %}
+                {% if block.type == 'picture' %}
+                    <div class="contact__block contact__block--pic js-fade">
+                        <picture class="contact__pic">
+                            {% if block.settings.block_img != blank %}
+                                <img width="auto" height="auto" src="{{ block.settings.block_img | image_url }}" alt="media" class="contact__img">
+                            {% else %}
+                                {{ 'collection-1' | placeholder_svg_tag: 'placeholder-svg placeholder-svg--cover ' }}
+                            {% endif %}
+                        </picture>
+                    </div>
+                {% elsif block.type == 'form' %}
+                    <div class="contact__block contact__block--form js-fade">
+                        {% if block.settings.block_form_title %}
+                            <h3 class="contact__form_title">{{ block.settings.block_form_title }}</h3>
+                        {% endif %}
+
+                        {% if block.settings.block_form_richtext %}
+                            <div class="contact__form_description">{{ block.settings.block_form_richtext }}</div>
+                        {% endif %}
+
+                        {% if block.settings.block_form_richtext_col_1 or block.settings.block_form_richtext_col_2 %}
+                            <div class="contact__form_description_grid">
+                                {% if block.settings.block_form_richtext_col_1 %}
+                                    <div class="contact__form_description_item">{{ block.settings.block_form_richtext_col_1 }}</div>
+                                {% endif %}
+                                {% if block.settings.block_form_richtext_col_2 %}
+                                    <div class="contact__form_description_item">{{ block.settings.block_form_richtext_col_2 }}</div>
+                                {% endif %}
+                            </div>
+                        {% endif %}
+
+                        {% form 'contact', class: 'contact__form js-contact-form' %}
+
+                            {% if form.posted_successfully? %}
+                                {% assign popupState = 'popup-open' %}
+                                {% render 'success-popup' %}
+                            {% endif %}
+
+
+                            <div class="form_el js-form-element-wrap">
+                                <input type="text" name="contact[name]"
+                                    class="form_el__input js-form-element js-input-field">
+                                <label class="form_el__label">{{ block.settings.block_label_name }}</label>
+                                <p class="error_message">{{ settings.error_name }}</p>
+                                
+                            </div>
+
+                            <div class="form_el js-form-element-wrap">
+                                <input type="email" name="contact[email]" class="form_el__input js-form-element js-input-field">           
+                                <label class="form_el__label">{{ block.settings.block_label_email }}</label>                                
+                                <p class="error_message">{{ settings.error_email }}</p>                                
+                            </div>
+
+                            <div class="form_el js-form-element-wrap">
+                                <input type="tel" name="contact[phone]"
+                                    class="form_el__input js-form-element js-input-field">
+                                <label class="form_el__label">{{ block.settings.block_label_phone }}</label>
+                                <p class="error_message">{{ settings.error_phone }}</p>
+                            </div>
+
+                            <div class="form_el js-form-element-wrap">
+                                <div class="dropdown js-dropdown">
+                                    <button class="dropdown__head js-dropdown-head" type="button">
+                                        <span type="select" class="js-form-element" name="contact[option]">{{ block.settings.block_label_service }}</span>
+                                        <span class="dropdown__head_icon">
+                                            {% render 'icons', filename: 'chevron' %}
+                                        </span>
+                                    </button>
+                                    <div class="dropdown__body js-dropdown-body">
+                                        <ul class="dropdown__list js-dropdown-list">
+                                            {% for service in page.metafields.opk.service_type.value %}
+                                                <li class="dropdown__item">
+                                                    <label class="dropdown__label">
+                                                        <input class="dropdown__input" value="Some text 1"
+                                                            name="options-1" type="radio"/>
+                                                        <span class="dropdown__text js-dropdown-text">{{ service }}</span>
+                                                    </label>
+                                                </li>
+                                            {% endfor %}
+                                        </ul>
+                                    </div>
+                                </div>
+                                <p class="error_message">{{ settings.error_srvice }}</p>
+                            </div>
+
+                            <div class="form_textarea__wrap js-form-element-wrap contact__form_textarea">
+                                <textarea name="contact[body]" type="textarea" class="form_textarea js-form-element" placeholder="{{ block.settings.block_label_message }}"></textarea>                                
+                                <p class="error_message">{{ settings.error_textarea }}</p>
+                            </div>
+
+                            <div class="contact__form_consent js-form-element-wrap">
+                                {% render 'default-checkbox',
+                                        label: block.settings.block_checkbox_text,
+                                        classEl: 'js-form-element'
+                                %}
+
+                                {% if block.settings.block_link_text != blank %}
+                                    <a href="{{ block.settings.block_link_url }}"
+                                    class="contact__form_consent_link">{{ block.settings.block_link_text }}</a>
+                                {% endif %}
+                            </div>
+
+                            <div class="contact__form_btn_wrap">
+                                <button type="submit" aria-label="submit" class="btn_base_brown contact__form_btn">
+                                    <span>{{ block.settings.block_btn_text }}</span>
+                                    <span class="btn__icon">
+                                        {% render "icons", filename: "arrow_link" %}
+                                    </span>
+                                </button>
+                            </div>
+                        {% endform %}
+                    </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+    {% endif %}
+</div>
+
+<script src="{{ 'section-contact.js' | asset_url }}" type="module" defer></script>
+
+{% schema %}
+{
+    "name": "Contact",
+    "class": "contact js-fade-section",
+    "tag": "section",
+    "settings": [
+        {
+            "type": "range",
+            "id": "padding_top",
+            "min": 0,
+            "max": 200,
+            "step": 5,
+            "unit": "px",
+            "label": "Padding top",
+            "default": 0
+        },
+        {
+            "type": "range",
+            "id": "padding_bottom",
+            "min": 0,
+            "max": 200,
+            "step": 5,
+            "unit": "px",
+            "label": "Padding bottom",
+            "default": 0
+        },
+        {
+            "type": "range",
+            "id": "padding_top_mobile",
+            "min": 0,
+            "max": 100,
+            "step": 5,
+            "unit": "px",
+            "label": "Padding top mobile",
+            "default": 0
+        },
+        {
+            "type": "range",
+            "id": "padding_bottom_mobile",
+            "min": 0,
+            "max": 100,
+            "step": 5,
+            "unit": "px",
+            "label": "Padding bottom mobile",
+            "default": 0
+        },
+        {
+            "type": "select",
+            "id": "block_horizontal_borders",
+            "label": "Block horizontal borders",
+            "options": [
+                    {
+                        "value": "top",
+                        "label": "Top"
+                    },
+                    {
+                        "value": "bottom",
+                        "label": "Bottom"
+                    },
+                    {
+                        "value": "double",
+                        "label": "Double"
+                    },
+                    {
+                        "value": "none",
+                        "label": "None"
+                    }
+                ],
+                "default": "double"
+        },
+        {
+            "type": "text",
+            "id": "title",
+            "label": "Title",
+            "default": "All about contact"
+        },
+        {
+            "type": "richtext",
+            "id": "description",
+            "label": "Description"
+        },
+        {
+            "type": "checkbox",
+            "id": "decor_line",
+            "label": "Separate decor line"
+        },
+        {
+            "type": "text",
+            "id": "button_title",
+            "label": "Button text"
+        },
+        {
+            "type": "url",
+            "id": "button_url",
+            "label": "Button URL"
+        }     
+        
+    ],
+    "max_blocks": 2,
+    "blocks": [
+        {
+            "name": "Picture",
+            "type": "picture",
+            "settings": [
+                {
+                    "type": "image_picker",
+                    "id": "block_img",
+                    "label": "Select image"
+                }
+            ]
+        },
+        {
+            "name": "Form",
+            "type": "form",
+            "settings": [
+                {
+                    "type": "text",
+                    "id": "block_form_title",
+                    "label": "Title",
+                    "default": "INQUIRE NOW"
+                },
+                {
+                    "type": "richtext",
+                    "id": "block_form_richtext",
+                    "label": "Description"
+                },
+                {
+                    "type": "richtext",
+                    "id": "block_form_richtext_col_1",
+                    "label": "Description column 1"
+                },
+                {
+                    "type": "richtext",
+                    "id": "block_form_richtext_col_2",
+                    "label": "Description column 2"
+                },
+                {
+                    "type": "text",
+                    "id": "block_label_name",
+                    "label": "Label for name",
+                    "default": "First Name"
+                },
+                {
+                    "type": "text",
+                    "id": "block_label_email",
+                    "label": "Label for email",
+                    "default": "Your email"
+                },
+                {
+                    "type": "text",
+                    "id": "block_label_phone",
+                    "label": "Label for phone number",
+                    "default": "Phone number"
+                },
+                {
+                    "type": "text",
+                    "id": "block_label_service",
+                    "label": "Label for service type",
+                    "default": "Service type"
+                },
+                {
+                    "type": "text",
+                    "id": "block_label_message",
+                    "label": "Label for message",
+                    "default": "Your requests"
+                },
+                {
+                    "type": "text",
+                    "id": "block_checkbox_text",
+                    "label": "Label for checkbox",
+                    "default": "I agree with"
+                },
+                {
+                    "type": "text",
+                    "id": "block_link_text",
+                    "label": "Label for link",
+                    "default": "Privacy Policy"
+                },
+                {
+                    "type": "url",
+                    "id": "block_link_url",
+                    "label": "Link URL"
+                },
+                {
+                    "type": "text",
+                    "id": "block_btn_text",
+                    "label": "Button text",
+                    "default": "Submit"
+                }
+            ]
+        }
+    ],
+    "presets": [
+        {
+            "name": "Contact",
+            "blocks": [
+                {
+                    "type": "picture"
+                },
+                {
+                    "type": "form"
+                }
+            ]
+        }
+    ]
+}
+{% endschema %}

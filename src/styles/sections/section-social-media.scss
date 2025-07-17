@@ -1,0 +1,91 @@
+@use '../variables.scss' as *;
+@use '../mixins/_global-mixins.scss' as *;
+
+.social_media {
+    overflow: hidden;
+}
+
+.social_media__wrap {
+}
+
+.social_media__title {
+    font-weight: 900;
+    text-transform: uppercase;
+
+    span {
+        display: inline-flex;
+        flex-wrap: nowrap;
+        align-items: baseline;
+    }
+
+    &.social_media__title--desctop {
+        @include break_points($tablet) {
+            display: none;
+        }
+    }
+
+    &.social_media__title--mobile {
+        @include break_points($tablet, min) {
+            display: none;
+        }
+    }
+
+    @include break_points($mobile, min) {
+        font-size: clamp(40px, 13vw, 160px);
+    }
+
+    @include break_points($mobile) {
+        font-size: 40px;
+    }
+}
+
+.social_media__ticker {
+    display: flex;
+
+    @include break_points($tablet, min) {
+        padding: 100px 0;
+    }
+
+    @include break_points($tablet) {
+        padding: 25px 0;
+    }
+}
+
+.social_media__ticker {
+    width: 100vw;
+
+    &.social_media__ticker--mobile_hidden {
+        @include break_points($tablet) {
+            display: none;
+        }
+    }
+}
+
+.social_media__list {
+    display: flex;
+    align-items: center;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    gap: 20px;
+}
+
+.social_media__pic {
+    display: block;
+
+    @include break_points($tablet, min) {
+        width: 406px;
+        height: 396px;
+    }
+
+    @include break_points($tablet) {
+        width: 345px;
+        height: 345px;
+    }
+}
+
+.social_media__img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}

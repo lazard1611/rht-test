@@ -1,0 +1,53 @@
+@use '../variables.scss' as *;
+
+.button-quantity {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-content: center;
+    align-items: center;
+    width: 100%;
+    height: 48px;
+    border-top: 1px solid $black;
+    border-bottom: 1px solid $black;
+    font-size: 20px;
+    font-weight: 800;
+    background-clip: padding-box;
+}
+
+.button-quantity__control-element {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 100%;
+    border-left: 1px solid $black;
+    border-right: 1px solid $black;
+    font-weight: 800;
+    background-color: transparent;
+    color: $black;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    cursor: pointer;
+    user-select: none;
+
+    &:focus,
+    &:hover {
+        background-color: $brown_light;
+    }
+
+    &.disabled {
+        background-color: $gray_second;
+        pointer-events: none;
+        opacity: 0.7;
+    }
+}
+
+.button-quantity__value {
+    min-width: 60px;
+    height: 100%;
+    font-family: $font_montserrat;
+    font-weight: 800;
+    font-size: 20px;
+    line-height: 48px;
+    text-align: center;
+}

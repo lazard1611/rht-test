@@ -1,0 +1,39 @@
+{
+  "sections": {
+    "portfolio_detail_hero_nCp7ad": {
+      "type": "section-portfolio-detail-hero",
+      "settings": {
+        "title_horizontal_position": "left",
+        "title_vertical_position": "center",
+        "fade_color": "",
+        "fade_opacity": 0
+      }
+    },
+    "template_portfolio_content_wWPLYw": {
+      "type": "template-portfolio-content",
+      "settings": {
+      }
+    },
+    "template_related_projects_iL3Pf3": {
+      "type": "template-related-projects",
+      "settings": {
+        "padding_top": 100,
+        "padding_bottom": 35,
+        "padding_top_mobile": 35,
+        "padding_bottom_mobile": 25,
+        "section_horizontal_borders": "bottom",
+        "title_limits": "false",
+        "button_color": "btn_base",
+        "title": "Gerelateerde projecten",
+        "description": "Verlicht uw ruimte met onze voortreffelijke verlichtingscollectie. Van strakke moderne armaturen tot tijdloze klassiekers, ontdek verlichtingsoplossingen die elke hoek van uw huis of kantoor verbeteren.",
+        "button_title": "Bekijk onze projecten",
+        "button_url": "shopify:\/\/blogs\/keuken"
+      }
+    }
+  },
+  "order": [
+    "portfolio_detail_hero_nCp7ad",
+    "template_portfolio_content_wWPLYw",
+    "template_related_projects_iL3Pf3"
+  ]
+}

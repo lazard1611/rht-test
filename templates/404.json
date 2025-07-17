@@ -1,0 +1,19 @@
+{
+  "sections": {
+    "main": {
+      "type": "template-404",
+      "settings": {
+        "padding_top": 55,
+        "padding_bottom": 220,
+        "padding_top_mobile": 35,
+        "padding_bottom_mobile": 35,
+        "description": "De pagina die u zoekt bestaat niet. Maar u kunt proberen te vinden wat u nodig heeft op onze collectiepagina.",
+        "home_caption": "Ga naar Startpagina",
+        "collection_caption": "Zie collectiepagina"
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

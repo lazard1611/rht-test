@@ -1,0 +1,160 @@
+<link rel="stylesheet" href="{{ "section-location.css" | asset_url }}">
+
+{% render "set-sections-borders", section_data: section, wrapper_class: "location__wrap" %}
+{% render "set-sections-paddings", section_data: section, wrapper_class: "location__wrap_container" %}
+
+<div class="location__wrap">
+    <div class="page_wrap page_wrap--border location__wrap_container">
+        {% if section.blocks.size > 0 %}             
+            <div class="location__grid">
+                {% for block in section.blocks %}
+                    {% if block.type == 'map' %}
+                        <div class="location__map_wrap js-fade">                    
+                            {% if block.settings.block_map != blank %}
+                                <div class="location__map">{{ block.settings.block_map }}</div>
+                            {% else %}
+                                {{ 'collection-4' | placeholder_svg_tag: 'placeholder-svg placeholder-svg--cover' }}                                                                      
+                            {% endif %}
+                        </div>
+                    {% elsif block.type == 'text' %}     
+                        <div class="location__content js-fade">
+                            {% if block.settings.block_richtext != blank %}
+                                <div class="location__description">
+                                    {{ block.settings.block_richtext | replace: '<br>', '<br>'}}
+                                </div>                            
+                            {% endif %}
+        
+                            {% if settings.phone != blank %}
+                                <div class="location__link_wrap">
+                                    <a href="tel:{{ settings.phone | replace: "-", "" }}" class="location__link">
+                                        {{ settings.phone }}
+                                    </a>  
+                                </div>                                
+                            {% endif %} 
+                            {% if settings.email != blank %}
+                                <div class="location__link_wrap">
+                                    <a href="mailto:{{ settings.email }}" class="location__link">
+                                        {{ settings.email }}
+                                    </a> 
+                                </div>                                 
+                            {% endif %} 
+                        </div>                                                    
+                    {% endif %}                          
+                {% endfor %}
+            </div>
+        {% endif %}   
+    </div>    
+</div>
+
+{% schema %}
+    {
+        "name": "Location",
+        "class": "location js-fade-section",
+        "tag": "section",
+        "settings": [
+            {
+                "type": "range",
+                "id": "padding_top",
+                "min": 0,
+                "max": 200,
+                "step": 5,
+                "unit": "px",
+                "label": "Padding top",
+                "default": 0
+            },
+            {
+                "type": "range",
+                "id": "padding_bottom",
+                "min": 0,
+                "max": 200,
+                "step": 5,
+                "unit": "px",
+                "label": "Padding bottom",
+                "default": 0
+            },
+            {
+                "type": "range",
+                "id": "padding_top_mobile",
+                "min": 0,
+                "max": 100,
+                "step": 5,
+                "unit": "px",
+                "label": "Padding top mobile",
+                "default": 0
+            },
+            {
+                "type": "range",
+                "id": "padding_bottom_mobile",
+                "min": 0,
+                "max": 100,
+                "step": 5,
+                "unit": "px",
+                "label": "Padding bottom mobile",
+                "default": 0
+            }, 
+            {
+                "type": "select",
+                "id": "section_horizontal_borders",
+                "label": "Section horizontal borders",
+                "options": [
+                        {
+                            "value": "top",
+                            "label": "Top"
+                        },
+                        {
+                            "value": "bottom",
+                            "label": "Bottom"
+                        },
+                        {
+                            "value": "double",
+                            "label": "Double"
+                        },
+                        {
+                            "value": "none",
+                            "label": "None"
+                        }
+                    ],
+                    "default": "double"
+            }                                 
+        ],
+        "max_blocks": 2,
+        "blocks": [
+            {
+                "name": "Map",
+                "type": "map",
+                "settings": [
+                    {
+                        "type": "html",
+                        "id": "block_map",
+                        "label": "Add iframe"
+                    }
+                ]
+            },
+            {
+                "name": "Info",
+                "type": "text",
+                "settings": [
+                    {
+                        "type": "richtext",
+                        "id": "block_richtext",
+                        "label": "Text",
+                        "default": "<p>Some text</p>"                        
+                    }                
+                ]
+            }
+        ],
+        "presets": [
+            {
+                "name": "Location",
+                "blocks": [
+                    {
+                        "type": "text"
+                    },                    
+                    {
+                        "type": "map"
+                    }
+                ]
+            }
+        ]
+    }
+    {% endschema %}

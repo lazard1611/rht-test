@@ -1,0 +1,309 @@
+@use '../variables.scss' as *;
+@use '../mixins/_global-mixins.scss' as *;
+@use '../snippets/cart-product.scss';
+
+//=====================================================================================================================
+
+.cart {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+
+    @include break_points($tabletXl, min) {
+        padding: 0 var(--gl-indent);
+    }
+}
+
+.cart__wrapper {
+    width: 100%;
+    max-width: 1630px;
+
+    @include break_points($tabletXl, min) {
+        border: 3px solid $brown_light;
+        border-top: none;
+    }
+
+    @include break_points($tabletXl) {
+        border-bottom: 3px solid $brown_light;
+    }
+
+
+    &.loading {
+        .cart__loader {
+            opacity: .7;
+            visibility: visible;
+        }
+    }
+}
+
+.cart__wrapper-main-container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.cart__loader {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    background-color: var(--bg-body-color);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity .3s ease-in-out, visibility .3s ease-in-out;
+}
+
+.cart__title {
+    width: 100%;
+    padding: 40px 35px 35px;
+    border-bottom: 3px solid $brown_light;
+    text-transform: uppercase;
+
+    @include break_points($tabletXl, min) {
+        padding: 40px 35px 35px;
+    }
+
+    @include break_points($tabletXl) {
+        padding: 35px 15px;
+        font-size: 32px;
+    }
+}
+
+.cart__products-container {
+    width: 100%;
+}
+
+.cart__info-container {
+    width: 100%;
+
+    @include break_points($tabletXl, min) {
+        max-width: 820px;
+        margin-left: auto;
+        border-left: 3px solid $brown_light;
+    }
+}
+
+.cart__info-container-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    border-bottom: 3px solid $brown_light;
+    font-weight: 600;
+
+    @include break_points($tabletXl, min) {
+        padding: 35px 35px 30px;
+        font-size: 42px;
+        line-height: 1.24;
+    }
+
+    @include break_points($tabletXl) {
+        padding: 15px;
+        font-size: 28px;
+        line-height: 1.28;
+    }
+}
+
+.cart__info-container-textarea-container {
+    width: 100%;
+    margin-bottom: 35px;
+
+    @include break_points($tabletXl, min) {
+        padding: 35px 35px 0;
+    }
+
+    @include break_points($tabletXl) {
+        padding: 25px 15px 0;
+    }
+}
+
+.cart__info-container-textarea {
+    appearance: none;
+    resize: none;
+    width: 100%;
+    border: none;
+    border-bottom: 1px solid $black;
+    font-family: $font_montserrat;
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 1.2;
+    background: transparent;
+    color: $black;
+
+    &::placeholder {
+        color: $black;
+    }
+
+    @include break_points($tabletXl, min) {
+        height: 125px;
+        padding: 2px 0;
+    }
+
+    @include break_points($tabletXl) {
+        height: 85px;
+        padding: 5px 0;
+    }
+}
+
+.cart__info-container-textarea-buttons {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    a {
+        width: 100%;
+        justify-content: center;
+    }
+
+    @include break_points($tabletXl, min) {
+        margin-bottom: 35px;
+        padding: 0 35px;
+    }
+
+    @include break_points($tabletXl) {
+        margin-bottom: 25px;
+        padding: 0 15px;
+    }
+
+    @include break_points($tablet, min) {
+        gap: 30px;
+    }
+
+    @include break_points($tablet) {
+        flex-direction: column;
+        gap: 15px;
+    }
+}
+
+.cart__checkout-btn {
+    position: relative;
+    width: 100%;
+    height: 52px;
+
+    .loading-spinner {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        display: none;
+        width: 50px;
+        height: 50px;
+        transform: translate(-50%, -50%);
+    }
+
+    .loading-spinner__circle {
+        top: 50%;
+        left: 50%;
+        width: 25px;
+        height: 25px;
+        border: 3px solid $white;
+        border-top-color: transparent;
+        transition: border-color .2s ease;
+    }
+
+    &.loading {
+        .cart__checkout-btn-title {
+            display: none;
+        }
+
+        .loading-spinner {
+            display: flex;
+        }
+    }
+
+    &:hover {
+        .loading-spinner__circle {
+            border-color: $purple;
+            border-top-color: transparent;
+        }
+    }
+}
+
+.cart__checkout-btn-title {
+
+}
+
+.cart__info-container-textarea-payments {
+    width: 100%;
+    padding: 0 30px;
+
+    @include break_points($tabletXl, min) {
+        justify-content: flex-end;
+        margin-bottom: 50px;
+    }
+
+    @include break_points($tabletXl) {
+        justify-content: center;
+        margin-bottom: 40px;
+        padding: 0 15px;
+    }
+}
+
+.cart__empty-block {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    @include break_points($tablet, min) {
+        gap: 50px;
+        padding: 170px 35px 245px;
+    }
+
+    @include break_points($tablet) {
+        gap: 35px;
+        padding: 35px 15px;
+    }
+}
+
+.cart__empty-block-title {
+    font-weight: 800;
+    line-height: 1.13;
+    text-transform: uppercase;
+
+    @include break_points($laptop, min) {
+        font-size: 80px;
+    }
+
+    @include break_points($laptop, $tablet) {
+        font-size: 60px;
+    }
+
+    @include break_points($tablet) {
+        font-size: 32px;
+    }
+}
+
+.cart__empty-block-description {
+    
+}
+
+.cart__empty-block-buttons {
+    display: flex;
+    align-items: center;
+
+    @include break_points($tablet, min) {
+        gap: 30px;
+    }
+
+    @include break_points($tablet) {
+        flex-direction: column;
+        gap: 15px;
+    }
+}
+
+.cart__empty-block-home-button {
+
+}
+
+.cart__empty-block-collection-button {
+
+}

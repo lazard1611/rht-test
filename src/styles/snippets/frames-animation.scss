@@ -1,0 +1,114 @@
+@use '../variables.scss' as *;
+@use '../mixins/_global-mixins.scss' as *;
+
+@keyframes frame-1-animation {
+    0% {
+        opacity: 1;
+    }
+    24% {
+        opacity: 1;
+    }
+    25% {
+        opacity: 0;
+    }
+}
+
+@keyframes frame-2-animation {
+    0% {
+        opacity: 0;
+    }
+    24.9% {
+        opacity: 0;
+    }
+    25% {
+        opacity: 1;
+    }
+    49.9% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0;
+    }
+}
+
+@keyframes frame-3-animation {
+    0% {
+        opacity: 0;
+    }
+    49.9% {
+        opacity: 0;
+    }
+    50% {
+        opacity: 1;
+    }
+    74.9% {
+        opacity: 1;
+    }
+    75% {
+        opacity: 0;
+    }
+}
+
+@keyframes frame-4-animation {
+    0% {
+        opacity: 0;
+    }
+    74.9% {
+        opacity: 0;
+    }
+    75% {
+        opacity: 1;
+    }
+    99.9% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+.frames-animation {
+    position: relative;
+
+    .frames-animation__frame {
+        position: absolute;
+        top: 0;
+        left: 0;
+
+        @include break_points($desktop, min) {
+            max-width: 165px;
+            max-height: 100px;
+        }
+
+        @include break_points($desktop, $tablet) {
+            max-width: 140px;
+            max-height: 80px;
+        }
+
+        @include break_points($tablet) {
+            max-width: 90px;
+            max-height: 50px;
+        }
+
+        &:nth-child(1) {
+            position: relative;
+            opacity: 0;
+            animation: frame-1-animation 3s infinite;
+        }
+
+        &:nth-child(2) {
+            opacity: 0;
+            animation: frame-2-animation 3s infinite;
+        }
+
+        &:nth-child(3) {
+            opacity: 0;
+            animation: frame-3-animation 3s infinite;
+        }
+
+        &:nth-child(4) {
+            opacity: 0;
+            animation: frame-4-animation 3s infinite;
+        }
+    }
+}

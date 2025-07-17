@@ -1,0 +1,28 @@
+{% if btn_class %}
+    {% assign btnClass = btn_class %}
+{% else %}
+    {% assign btnClass = "btn_base" %}     
+{% endif %}
+<div class="section-header js-title-section {{ parent_class }}__header">
+    <div class="section-header__header-wrapper {{ parent_class }}__header-wrapper page_wrap {% if borders == true %}page_wrap--border{% endif %}">
+        <div class="section-header__title-block">
+            {% if h1 %}
+                <h1 class="section-header__title js-title-fade h2 {% if limits == true %}limit{% endif %}">{{ section.settings.title }}</h1>
+            {% else %}
+                <h2 class="section-header__title js-title-fade h2 {% if limits == true %}limit{% endif %}">{{ section.settings.title }}</h2>
+            {% endif %}
+
+            {% if section.settings.description != blank %}
+                <div class="section-header__description js-title-el">{{ section.settings.description }}</div>
+            {% endif %}
+        </div>
+
+        {% if section.settings.button_url != blank and section.settings.button_title != blank %}
+            {% assign button_class = "section-header__button " | append: section.settings.button_color %}
+
+            <div class="section-header__btn-wrap js-title-el {% if section.settings.description == blank %}with-title{% endif %}">
+                {% render "buttons", link: section.settings.button_url, mobile_title: section.settings.button_title_mob, title: section.settings.button_title, class: button_class, icon: true %}
+            </div>
+        {% endif %}
+    </div>
+</div>

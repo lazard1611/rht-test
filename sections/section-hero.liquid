@@ -1,0 +1,137 @@
+
+<link rel="stylesheet" href="{{ 'section-hero.css' | asset_url }}">
+
+{% if section.settings.text_color != blank %}
+    <style>
+        .hero__content {
+            color: {{ section.settings.text_color }};
+        }
+    </style>    
+{% endif %}
+
+<style>
+    .hero__wrap {
+        justify-content: {{ section.settings.position_content }};
+    }
+
+    .hero__content {
+        text-align: {{ section.settings.text_align }};
+    }
+
+    .hero:after {
+        opacity: {{ section.settings.overlay }}%;
+    }
+</style>
+
+<div class="page_wrap hero__wrap">
+
+    <picture class="hero__pic ">
+        {% if section.settings.bg != blank %}
+            <img width="auto" height="auto" src="{{ section.settings.bg |  image_url }}" alt="media}" class="hero__img {% if section.settings.bg_mob %}hero__img--desctop{% endif %} ">                                     
+        {% else %}
+            {{ 'collection-3' | placeholder_svg_tag: 'placeholder-svg placeholder-svg--cover' }}                                                                              
+        {% endif %}  
+
+        {% if section.settings.bg_mob != blank %}
+            <img width="auto" height="auto" src="{{ section.settings.bg_mob |  image_url }}" alt="media}" class="hero__img hero__img--mobile">
+        {% endif %}  
+    </picture>
+
+    <div class="hero__content">
+        {% if section.settings.title != blank %}
+            <h1 class="hero__title js-title-fade">{{ section.settings.title }}</h1>
+        {% endif %}
+        
+        {% if section.settings.description != blank %}
+            <div class="hero__description base_richtext js-title-el">{{ section.settings.description |  replace: '<br>', '<br>' }}</div>
+        {% endif %}   
+    </div>                
+
+</div>
+
+
+{% schema %}
+    {
+        "name": "Hero",
+        "class": "hero js-title-section",
+        "tag": "section",
+        "settings": [
+            {
+                "type": "image_picker",
+                "id": "bg",
+                "label": "Image"
+            },
+            {
+                "type": "image_picker",
+                "id": "bg_mob",
+                "label": "Image for mibile"
+            },
+            {
+                "type": "text",
+                "id": "title",
+                "label": "Title",
+                "default": "Over ons"
+            },
+            {
+                "type": "richtext",
+                "id": "description",
+                "label": "Description"
+            },
+            {
+                "type": "select",
+                "id": "position_content",
+                "label": "Position content",
+                "options": [
+                    {
+                        "value": "left",
+                        "label": "Left"
+                    },
+                    {
+                        "value": "center",
+                        "label": "Center"
+                    },                    
+                    {
+                        "value": "right",
+                        "label": "Right"
+                    }
+                ],
+                "default": "left"
+            },
+            {
+                "type": "select",
+                "id": "text_align",
+                "label": "text_align",
+                "options": [
+                    {
+                        "value": "left",
+                        "label": "Left"
+                    },
+                    {
+                        "value": "center",
+                        "label": "Center"
+                    },                    
+                    {
+                        "value": "right",
+                        "label": "Right"
+                    }
+                ],
+                "default": "left"
+            },
+            {
+                "type": "color",
+                "id": "text_color",
+                "label": "Text color"
+            },
+            {
+                "type": "range",
+                "min": 0,
+                "max": 100,
+                "step": 1,
+                "id": "overlay",
+                "label": "Overlay",
+                "default": 0
+            }
+        ]
+    }
+    {% endschema %}
+    

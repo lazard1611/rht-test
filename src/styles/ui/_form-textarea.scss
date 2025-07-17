@@ -1,0 +1,14 @@
+@use '../mixins/form-input.scss' as *;
+
+.form_textarea__wrap {
+}
+
+.form_textarea {
+    border: 0;
+    @include form_el_default;
+
+    & {
+        resize: none;
+        height: 124px;
+    }
+}

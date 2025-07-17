@@ -1,0 +1,240 @@
+<link rel="stylesheet" href="{{ "template-home-hero.css" | asset_url }}">
+
+<div class="template-home-hero__wrapper page_wrap horizontal--{{ section.settings.title_horizontal_position }} vertical--{{ section.settings.title_vertical_position }}">
+    {% if section.settings.title != blank %}
+        <h1 class="template-home-hero__title h1 js-title-fade">{{ section.settings.title }}</h1>
+    {% endif %}
+
+    {% for block in section.blocks %}
+        {% if block.settings.product != blank %}
+            <a class="template-home-hero__product js-scale-fade-item template-home-hero__product--{{ forloop.index }}"
+                href="{{ block.settings.product.url }}">
+                <h4 class="template-home-hero__product-title">{{ block.settings.product.title }}</h4>
+                <p class="template-home-hero__product-price">{% if shop.currency == "USD" %}${% elsif shop.currency == "EUR" %}€{% endif %} {{ block.settings.product.price | money_without_currency | split: ',' | first }}</p>
+
+                <div class="template-home-hero__product-tail desktop-block-position--{{ block.settings.block_position }} mobile-block-position--{{ block.settings.mobile_block_position }}">
+                    {% render "hero-tail-elements", mobile_position: block.settings.mobile_block_position, position: block.settings.block_position %}
+                </div>
+
+                <style>
+                    .template-home-hero__product--{{ forloop.index }} {
+                        top: {{ block.settings.mobile_range_y }}%;
+                        left: {{ block.settings.mobile_range_x }}vw;
+                    }
+
+                    @media screen and (min-width: 400px) {
+                        .template-home-hero__product--{{ forloop.index }} {
+                            top: {{ block.settings.mobile_range_y }}%;
+                            left: calc({{ block.settings.mobile_range_x }}% + 3vw);
+                        }
+                    }
+    
+                    @media screen and (min-width: 768px) {
+                        .template-home-hero__product--{{ forloop.index }} {
+                            top: {{ block.settings.range_y }}%;
+                            left: {{ block.settings.range_x }}%;
+                        }
+                    }
+                </style>
+            </a>
+        {% endif %}
+    {% endfor %}    
+
+    <div class="template-home-hero__fade" style="opacity: {{ section.settings.fade_opacity }}%; background-color: {{ section.settings.fade_color }}"></div>
+
+    <img class="template-home-hero__background-image"
+        src="{{ section.settings.background_image | image_url }}"
+        width="auto"
+        height="auto"
+        loading="eager"
+    >
+</div>
+
+<script src="{{ 'template-home-hero.js' | asset_url }}" type="module" defer></script>
+
+{% schema %}
+{
+    "name": "Home hero",
+    "class": "template-home-hero js-title-section js-flicker-section",
+    "tag": "section",
+    "settings": [
+        {
+            "type": "text",
+            "id": "title",
+            "label": "Title"
+        },
+        {
+            "type": "select",
+            "id": "title_horizontal_position",
+            "label": "Title horizontal position",
+            "options": [
+                {
+                    "value": "left",
+                    "label": "Left"
+                },
+                {
+                    "value": "center",
+                    "label": "Center"
+                },
+                {
+                    "value": "right",
+                    "label": "Right"
+                }
+            ],
+            "default": "left"
+        },
+        {
+            "type": "select",
+            "id": "title_vertical_position",
+            "label": "Title vertical position",
+            "options": [
+                {
+                    "value": "top",
+                    "label": "Top"
+                },
+                {
+                    "value": "center",
+                    "label": "Center"
+                },
+                {
+                    "value": "bottom",
+                    "label": "Bottom"
+                }
+            ],
+            "default": "center"
+        },
+        {
+            "type": "image_picker",
+            "id": "background_image",
+            "label": "Background image"
+        },
+        {
+            "type": "color",
+            "id": "fade_color",
+            "label": "Fade color"
+        },
+        {
+            "type": "range",
+            "id": "fade_opacity",
+            "min": 0,
+            "max": 100,
+            "step": 1,
+            "unit": "%",
+            "label": "Fade opacity",
+            "default": 0
+        }
+    ],
+    "blocks": [
+        {
+            "name": "Product",
+            "type": "product",
+            "settings": [
+                {
+                    "type": "product",
+                    "id": "product",
+                    "label": "Product"
+                },
+                {
+                    "type": "range",
+                    "id": "mobile_range_y",
+                    "min": 0,
+                    "max": 100,
+                    "step": 1,
+                    "unit": "%",
+                    "label": "Mobile Y Range",
+                    "default": 0
+                },
+                {
+                    "type": "range",
+                    "id": "range_y",
+                    "min": 0,
+                    "max": 100,
+                    "step": 1,
+                    "unit": "%",
+                    "label": "Y Range",
+                    "default": 0
+                },
+                {
+                    "type": "range",
+                    "id": "mobile_range_x",
+                    "min": 0,
+                    "max": 100,
+                    "step": 1,
+                    "unit": "%",
+                    "label": "Mobile X Range",
+                    "default": 0
+                },
+                {
+                    "type": "range",
+                    "id": "range_x",
+                    "min": 0,
+                    "max": 100,
+                    "step": 1,
+                    "unit": "%",
+                    "label": "X Range",
+                    "default": 0
+                },
+                {
+                    "type": "select",
+                    "id": "mobile_block_position",
+                    "label": "Mobile block position",
+                    "options": [
+                        {
+                            "value": "left_top",
+                            "label": "Left top"
+                        },
+                        {
+                            "value": "right_top",
+                            "label": "Right top"
+                        },
+                        {
+                            "value": "left_bottom",
+                            "label": "Left bottom"
+                        },
+                        {
+                            "value": "right_bottom",
+                            "label": "Right bottom"
+                        }
+                    ],
+                    "default": "left_top"
+                },
+                {
+                    "type": "select",
+                    "id": "block_position",
+                    "label": "Block position",
+                    "options": [
+                        {
+                            "value": "left_top",
+                            "label": "Left top"
+                        },
+                        {
+                            "value": "right_top",
+                            "label": "Right top"
+                        },
+                        {
+                            "value": "left_bottom",
+                            "label": "Left bottom"
+                        },
+                        {
+                            "value": "right_bottom",
+                            "label": "Right bottom"
+                        }
+                    ],
+                    "default": "left_top"
+                }
+            ]
+        }
+    ],
+    "presets": [
+        {
+            "name": "Home hero"
+        }
+    ],
+    "enabled_on": {
+        "templates": [
+            "index"
+        ]
+    }
+}
+{% endschema %}
+

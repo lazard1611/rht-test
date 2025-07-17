@@ -1,0 +1,134 @@
+{
+  "name": "footer",
+  "type": "footer",
+  "sections": {
+    "section_social_media_7LUcxC": {
+      "type": "section-social-media",
+      "blocks": {
+        "text_q8NtHn": {
+          "type": "text",
+          "settings": {
+            "img": "shopify:\/\/shop_images\/social-media-1.jpg"
+          }
+        },
+        "text_qtKadU": {
+          "type": "text",
+          "settings": {
+            "img": "shopify:\/\/shop_images\/social-media-2.jpg"
+          }
+        },
+        "text_tUDAhf": {
+          "type": "text",
+          "settings": {
+            "img": "shopify:\/\/shop_images\/social-media-3.jpg"
+          }
+        },
+        "text_mA6Q8Y": {
+          "type": "text",
+          "settings": {
+            "img": "shopify:\/\/shop_images\/social-media-4.jpg"
+          }
+        }
+      },
+      "block_order": [
+        "text_q8NtHn",
+        "text_qtKadU",
+        "text_tUDAhf",
+        "text_mA6Q8Y"
+      ],
+      "settings": {
+        "padding_top": 100,
+        "padding_bottom": 0,
+        "padding_top_mobile": 35,
+        "padding_bottom_mobile": 25,
+        "section_horizontal_borders": "none",
+        "direction_ticker": "left",
+        "speed_ticker": 20,
+        "title": "Alles over <span>soc<i>ale<\/i><\/span> media",
+        "title_mobile": "Alles over <span>soc<i>ale<\/i><\/span> <span>med<i>a<\/i><\/span>",
+        "hide_mobile": true
+      }
+    },
+    "social": {
+      "type": "section-social",
+      "blocks": {
+        "text_YEHnTc": {
+          "type": "text",
+          "settings": {
+            "social_type": "instagram"
+          }
+        },
+        "text_NNjWTU": {
+          "type": "text",
+          "settings": {
+            "social_type": "facebook"
+          }
+        },
+        "text_McJ7cU": {
+          "type": "text",
+          "settings": {
+            "social_type": "pinterest"
+          }
+        }
+      },
+      "block_order": [
+        "text_YEHnTc",
+        "text_NNjWTU",
+        "text_McJ7cU"
+      ],
+      "settings": {
+      }
+    },
+    "footer": {
+      "type": "footer",
+      "blocks": {
+        "logo_bh9aFY": {
+          "type": "logo",
+          "settings": {
+          }
+        },
+        "newsletter_QGmcL4": {
+          "type": "newsletter",
+          "settings": {
+            "newsletter_title": "Mis je kans op een speciale korting en meer niet!",
+            "newsletter_success": "Bedankt voor je inschrijving!"
+          }
+        },
+        "navigation_yULixA": {
+          "type": "navigation",
+          "settings": {
+            "link_list_first": "footer"
+          }
+        },
+        "navigation_secondary_z9V8JH": {
+          "type": "navigation_secondary",
+          "settings": {
+            "link_list_secondary": "footer-menu-secondary"
+          }
+        },
+        "richtext_wEiJeq": {
+          "type": "richtext",
+          "settings": {
+            "richtext": "<p><strong>locatie<\/strong><\/p><p>Schutsboomstraat 45\u2028Schaijk<\/p><p>Openinghours 10:00-18:00<\/p>",
+            "richtext_hidden": true
+          }
+        }
+      },
+      "block_order": [
+        "logo_bh9aFY",
+        "newsletter_QGmcL4",
+        "navigation_yULixA",
+        "navigation_secondary_z9V8JH",
+        "richtext_wEiJeq"
+      ],
+      "settings": {
+        "copyright": "Alles over interieur, alle rechten voorbehouden"
+      }
+    }
+  },
+  "order": [
+    "section_social_media_7LUcxC",
+    "social",
+    "footer"
+  ]
+}

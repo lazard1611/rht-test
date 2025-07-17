@@ -1,0 +1,102 @@
+@use '../variables.scss' as *;
+@use '../mixins/_global-mixins.scss' as *;
+@use '../snippets/drop-menu.scss';
+
+.template-404 {
+    padding: 0 var(--gl-indent);
+}
+
+.template-404__container {
+    @include break_points($tablet, min) {
+        border-left: 3px solid $brown_light;
+        border-right: 3px solid $brown_light;
+        max-width: 1085px;
+        margin: 0 auto;
+    }
+}
+
+.template-404__title {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+    max-width: 330px;
+    margin: 0 auto 35px;
+
+    @include break_points($tablet, min) {
+        margin: 0 auto 5px;
+    }
+
+    @include break_points($laptop, min) {
+        max-width: 512px;
+    }
+
+    span {
+        font-size: 130px;
+        font-weight: 800;
+        color: $black;
+        text-transform: uppercase;
+
+        @include break_points($laptop, min) {
+            font-size: 237px;
+        }
+    }
+}
+
+.template-404__svg {
+    height: 186px;
+    width: 130px;
+    color: $black;
+    position: relative;
+}
+
+.template-404__svg_vase {
+
+}
+
+.template-404__svg_splinter {
+    position: absolute;
+    top: 42px;
+    right: 0;
+    width: 64px;
+
+    path {
+        fill: var(--bg-body-color);
+    }
+}
+
+.template-404__description {
+    text-align: center;
+    font-size: 22px;
+    font-weight: 500;
+    line-height: 1.45;
+    margin-bottom: 35px;
+
+    @include break_points($tablet, min) {
+        max-width: 700px;
+        margin: 0 auto 50px;
+    }
+}
+
+.template-404__buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+
+    @include break_points($tablet, min) {
+        flex-direction: row;
+        gap: 28px;
+        max-width: 590px;
+        margin: 0 auto;
+    }
+}
+
+.template-404__home-button,
+.template-404__collection-button {
+    @include break_points($tablet, min) {
+        width: 50%;
+    }
+
+    @include break_points($tablet) {
+        justify-content: center;
+    }
+}

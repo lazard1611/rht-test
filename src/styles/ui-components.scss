@@ -1,0 +1,40 @@
+@use './variables.scss';
+@use '../mixins/_global-mixins.scss' as *;
+@use './snippets/quantity.scss';
+
+.ui_components {
+    padding: var(--heigth-header) var(--gl-indent);
+    overflow: hidden;
+}
+
+.ui_components__wrap {
+    max-width: var(--main-wrapper);
+    margin: 0 auto;
+    width: 100%;
+}
+
+.ui_components__block {
+    &:not(:last-child) {
+        margin-bottom: 30px;
+    }
+}
+
+.ui_components__title {
+    text-align: center;
+    font-size: 30px;
+    font-weight: 700;
+
+    &:not(:last-child) {
+        margin-bottom: 20px;
+    }
+}
+
+.ui_components__row {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.ui_components__item {
+}

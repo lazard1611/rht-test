@@ -1,0 +1,18 @@
+<div class="portfolio-parameters js-fade-section page_wrap page_wrap--border page_wrap--without-paddings {% if article.metafields.opk.portfolio_parameters_content == blank or article.metafields.opk.portfolio_parameters == blank %}one-field{% endif %}">
+    {% if article.metafields.opk.portfolio_parameters %}
+        <div class="portfolio-parameters__richtext-block  parameters page_wrap">
+            {% for parameter in article.metafields.opk.portfolio_parameters.value %}
+                <div class="portfolio-parameters__parameter js-fade">
+                    <span class="portfolio-parameters__parameter-title">{{ parameter.title }}</span>
+                    <span>{{ parameter.content }}</span>
+                </div>
+            {% endfor %}
+        </div>
+
+    {% endif %}
+
+    {% if article.metafields.opk.portfolio_parameters_content %}
+        <div class="portfolio-parameters__richtext-block js-fade page_wrap base_richtext normal">{{ article.metafields.opk.portfolio_parameters_content | metafield_tag }}</div>
+
+    {% endif %}
+</div>

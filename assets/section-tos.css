@@ -1,0 +1,40 @@
+/*!*********************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].use[3]!./src/styles/sections/section-tos.scss ***!
+  \*********************************************************************************************************************************************************************************************************************************/
+/* ==================================================== ADAPTIVE =================================================== */
+/* ===================================================== FONTS ===================================================== */
+/* ===================================================== COLORS ==================================================== */
+/* ====================================================== FORM ===================================================== */
+@media screen and (min-width: 768px) {
+  .tos__header {
+    padding: 26px 0 40px;
+  }
+}
+@media screen and (max-width: 767px) {
+  .tos__header {
+    padding: 30px 0;
+  }
+}
+
+.tos__header-wrapper {
+  border-left-color: transparent !important;
+  border-right-color: transparent !important;
+}
+
+.tos__header-wrapper,
+.tos__container {
+  max-width: 1082px;
+}
+
+.tos__content {
+  line-height: 1.45;
+}
+.tos__content h5 {
+  counter-reset: section;
+}
+.tos__content p:not(:last-of-type) {
+  margin-bottom: 40px;
+}
+.tos__content h4:not(:last-child) {
+  margin-bottom: 4px;
+}

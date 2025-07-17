@@ -1,0 +1,222 @@
+/* ==================================================== IMPORTS ==================================================== */
+//application
+@use './variables.scss' as *;
+@use './mixins/_global-mixins.scss' as *;
+@use './mixins/_typography.scss' as *;
+@use './normalize.scss';
+@use './fonts.scss';
+@use './ui/buttons.scss';
+@use './ui/typography.scss';
+@use './ui/form-input.scss';
+@use './ui/form-checkbox.scss';
+@use './ui/form-textarea.scss';
+@use './snippets/dropdown.scss';
+@use './snippets/section-header.scss';
+
+/* ====================================================== ROOT ===================================================== */
+:root {
+    @include break_points($laptop, min) {
+        --gl-indent: 40px;
+        --heigth-header: 100px;
+    }
+
+    @include break_points($laptop) {
+        --gl-indent: 15px;
+        --heigth-header: 80px;
+    }
+}
+
+/* ===================================================== COMMON ==================================================== */
+html {
+    height: 100%;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    font-family: $font_montserrat;
+    font-weight: 500;
+    font-size: 22px;
+    background-color: var(--bg-body-color);
+    color: var(--body-text-color);
+
+    &.body--open_menu_state,
+    &.scroll-hidden {
+        overflow: hidden;
+    }
+}
+
+.preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: var(--bg-body-color);
+
+    opacity: 1;
+    transition: opacity 0.3s;
+
+    z-index: 1000;
+
+    .body--loaded & {
+        pointer-events: none;
+        opacity: 0;
+    }
+}
+
+main {
+    flex: 1 0 auto;
+}
+
+footer {
+    flex: 0 0 auto;
+}
+
+.page_wrap {
+    width: 100%;
+    max-width: var(--main-wrapper);
+    margin: 0 auto;
+
+    @include break_points($tabletXl, min) {
+        padding: 0 35px;
+    }
+
+    @include break_points($tabletXl) {
+        padding: 0 15px;
+    }
+
+    &.page_wrap--border {
+        @include break_points($desktop, min) {
+
+            border-right: 3px solid $brown_light;
+            border-left: 3px solid $brown_light;
+        }
+    }
+
+    &.page_wrap--without-paddings {
+        padding: 0;
+    }
+}
+
+.horizontal-line {
+    width: 100%;
+    height: 3px;
+    background-color: $brown_light;
+
+    &.full-width {
+        width: calc(100% + (var(--gl-indent) * 2));
+        margin-left: calc(var(--gl-indent) * -1);
+    }
+}
+
+.letter_animate {
+    svg:not(.active) {
+        display: none;
+    }
+}
+
+.letter_animate {
+    height: 0.72em;
+    width: 0.36em;
+    display: inline-block;
+}
+
+.base_richtext {
+    font-weight: 500;
+
+    &.large {
+        p,
+        a,
+        strong,
+        li {
+            @include h3;
+        }
+
+        * + * {
+            margin-top: 40px;
+        }
+    }
+
+    &.normal {
+        * + * {
+            margin-top: 20px;
+        }
+    }
+
+    &.small {
+        h4, h3 {
+            padding-top: 15px;
+
+            &:first-child {
+                padding: 0;
+            }
+        }
+
+        * + * {
+            margin-top: 10px;
+        }
+    }
+
+    h1 {
+        @include h1;
+
+        & {
+            text-transform: uppercase;
+        }
+    }
+
+    h2 {
+        @include h2;
+
+        & {
+            text-transform: uppercase;
+        }
+    }
+
+    a {
+        text-decoration: underline;
+        display: inline-block;
+    }
+
+    strong {
+        font-weight: 700;
+    }
+
+    ul {
+        @include break_points($tabletXl, min) {
+            border-left: 6px solid $purple;
+            padding-left: 34px;
+        }
+
+        @include break_points($tabletXl) {
+            border-left: 4px solid $purple;
+            padding-left: 24px;
+        }
+    }
+
+    ol {
+        margin-left: 2px;
+        font-weight: 400;
+
+        @include break_points($tabletXl, min) {
+            padding-left: 31px;
+        }
+
+        @include break_points($tabletXl) {
+            padding-left: 26px;
+        }
+
+        li + li {
+            margin-top: 5px !important;
+        }
+    }
+
+    svg {
+        width: 32px;
+        min-width: 32px;
+        height: 32px;
+        min-height: 32px;
+    }
+}

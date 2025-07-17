@@ -1,0 +1,7 @@
+<div class="portfolio-richtext js-fade-section page_wrap page_wrap--border page_wrap--without-paddings {{ class }} {% if content.second_field == blank %}one-field{% endif %}">
+    <div class="portfolio-richtext__richtext-block page_wrap js-fade base_richtext normal">{{ content.first_field | metafield_tag }}</div>
+
+    {% if content.second_field != blank %}
+        <div class="portfolio-richtext__richtext-block page_wrap js-fade base_richtext normal">{{ content.second_field | metafield_tag }}</div>
+    {% endif %}
+</div>

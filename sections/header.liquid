@@ -1,0 +1,267 @@
+<link rel="stylesheet" href="{{ 'header.css' | asset_url }}">
+{% assign current_path = canonical_url | replace: shop.url, '' %}
+
+{% if canonical_url contains "/en" %}
+    {% assign active_state_en = 'checked' %} 
+    {% assign active_state_nl = '' %} 
+{% else %}
+    {% assign active_state_en = '' %}
+    {% assign active_state_nl = 'checked' %} 
+{% endif %}   
+
+{% assign languages = 'en' %}  
+
+<script>      
+    {% if template.name == 'index' %}
+        {% assign langUrl = '/en' %}
+    {% else %}
+        {% assign langUrl = '/en/' %}
+    {% endif %}
+
+    window.nlPath = '{{ canonical_url | replace: langUrl, '/' }}';
+
+    {% if canonical_url contains langUrl %}        
+        window.enPath = '{{ shop.url | append: current_path }}';
+    {% else %}        
+        window.enPath = '{{ shop.url | append: '/en' | append: current_path }}';
+    {% endif %}  
+</script>
+
+{% if template.name != "index" or section.settings.header_fix == false %}
+    {% assign header_mod = '' %}        
+{% else %}
+    {% assign header_mod = 'header__wrapper--mod' %}
+{% endif %}
+
+{% if section.settings.header_fix %}
+    <style>
+        .header {
+            z-index: 100;
+            position: fixed;
+            top: 0;
+            left: 0;
+        }
+
+        {% if template.name != "index" %}
+            .main {
+                padding-top: var(--heigth-header);
+            }
+        {% else %}
+            .header {
+                background-color: transparent;
+            }
+
+        {% endif %}
+    </style>
+{% endif %}
+
+<div class="header__wrapper {{ header_mod }}">
+    <div class="header__row">
+        <a href="{{ routes.root_url }}" class="header__logo">
+            {%- if section.settings.logo != blank or section.settings.logo_secondary != blank -%}
+                <img loading="lazy" width="auto" height="auto" src="{{ section.settings.logo | image_url }}"
+                    alt="{{ shop.name }}" class="header__logo_img header__logo_img--first">
+
+                {% if section.settings.logo_secondary != blank %}
+                    <img loading="lazy" width="auto" height="auto" src="{{ section.settings.logo_secondary | image_url }}"
+                    alt="{{ shop.name }}" class="header__logo_img header__logo_img--secondary">
+                {% endif %}                
+            {%- else -%}
+                <span class="header__logo_text">{{ shop.name }}</span>
+            {%- endif -%}
+        </a>
+
+        <div class="header__nav_wrap">
+            <div class="header__nav_wrap_in">
+                <nav class="header__nav">
+                    <ul class="header__nav_list">
+                        {% for link in section.settings.link_list_id.links %}
+                            {% if link.title != blank %}
+                                <li class="header__nav_item">
+                                    {% if link.links.size == 0 %}
+                                        <a class='header__nav_link' href='{{ link.url }}'>{{ link.title }}</a>
+                                    {% else %}
+                                        <div class='drop js-drop-menu'>
+                                            <button class='drop__btn' type="button">
+                                                <span class='drop__btn_text'>{{ link.title }}</span>
+                                                <span class='drop__btn_icon'>{% render 'icons', filename: 'chevron' %}</span>
+                                            </button>
+                                            <div class='drop_menu'>
+                                                <ul class='drop_menu__list'>
+                                                    {% for child_link in link.links %}
+                                                        <li class='drop_menu__item'>
+                                                            <a class='drop_menu__link'
+                                                                href='{{ child_link.url }}'>{{ child_link.title }}</a>
+                                                        </li>
+                                                    {% endfor %}
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    {% endif %}
+                                </li>
+                            {% endif %}
+                        {% endfor %}
+                    </ul>
+                </nav>
+
+                <div class="header__language header__language--mobile">
+                    <div class="header__language_title header__nav_link">Language</div>                 
+
+                    <ul class="header__language_list js-language-list">
+                        <li class="header__language_item">
+                            <label class="form_checkbox__wrap">
+                                <input {{ active_state_en }} class="form_checkbox__element" value="EN" name="language-mobile" type="radio"/>
+                                {% render 'icons', filename: 'check_form' %}                                
+                                <span class="form_checkbox__span js-dropdown-text">EN</span>
+                            </label>
+                        </li>
+                        
+                        <li class="header__language_item">
+                            <label class="form_checkbox__wrap">
+                                <input {{ active_state_nl }} class="form_checkbox__element" value="NL" name="language-mobile" type="radio"/>
+                                {% render 'icons', filename: 'check_form' %}                                
+                                <span class="form_checkbox__span js-dropdown-text">NL</span>
+                            </label>
+                        </li>                                                                             
+                    </ul>
+                </div>   
+    
+                <div class="header__aside_list_wrap">
+                    {% if section.blocks.size > 0 %}
+                        <ul class="header__aside_list">
+                            {% for block in section.blocks %}
+                                {% if block.type == 'account' %}
+                                    <li class="header__aside_item">
+                                        <a href="{{ routes.account_url }}" class="header__aside_link">
+                                            {{ block.settings.account }}
+                                        </a>
+                                    </li>
+                                {% elsif block.type == 'wishlist' %}
+                                    <li class="header__aside_item">
+                                        <a href="#" class="header__aside_link">
+                                            {{ block.settings.wishlist }}
+                                        </a>
+                                    </li>  
+                                {% endif %}
+                            {% endfor %}                                                                     
+                        </ul>
+                    {% endif %}                    
+                </div>
+    
+            </div>
+        </div>        
+
+        <div class="header__aside">         
+            <a href="{{ routes.cart_url }}" class="header__aside_link header__aside_link--cart">
+                <span>{{ section.settings.cart }} (</span>
+                <span class="header__aside_prod_count" data-item-count>
+                    {% assign totalCount = 0 %}
+                    {% for item in cart.items %}
+                        {% if item.properties._type == blank or item.properties._type == 'main' or item.properties._type == 'box' %}
+                            {% assign totalCount = totalCount | plus: item.quantity %}
+                        {% endif %}
+                    {% endfor %}
+                    {{ totalCount }}
+                </span>
+                <span>)</span>
+            </a>
+
+            <div class="dropdown js-dropdown header__language header__language--desctop header__aside_link">
+                <button class="dropdown__head js-dropdown-head" type="button">
+                    <span></span>
+                    <span class="header__language_icon">
+                        {% render 'icons', filename: 'check' %}
+                    </span>
+                </button>
+                <div class="dropdown__body js-dropdown-body">
+                    <ul class="dropdown__list js-dropdown-list js-language-list">
+                        <li class="dropdown__item">
+                            <label class="form_checkbox__wrap">
+                                <input {{ active_state_en }} class="form_checkbox__element" value="EN" name="language" type="radio"/>
+                                {% render 'icons', filename: 'check_form' %}
+                                <span class="form_checkbox__span js-dropdown-text">EN</span>
+                            </label>
+                        </li>
+                        
+                        <li class="dropdown__item">
+                            <label class="form_checkbox__wrap">
+                                <input {{ active_state_nl }} class="form_checkbox__element" value="NL" name="language" type="radio"/>
+                                {% render 'icons', filename: 'check_form' %}
+                                <span class="form_checkbox__span js-dropdown-text">NL</span>
+                            </label>
+                        </li>                                                                             
+                    </ul>
+                </div>
+            </div>
+            
+            <button class="header__menu_trigger js-header-trigger" type="button" aria-label="Toggle menu"><span></span>
+            </button>
+        </div>
+    </div>
+</div>
+
+<script type="module" src="{{ 'header.js' | asset_url }}"></script>
+
+{% schema %}
+{
+    "name": "Header",
+    "class": "header js-header",
+    "tag": "header",
+    "settings": [
+        {
+            "type": "image_picker",
+            "id": "logo",
+            "label": "Header main logo"
+        },
+        {
+            "type": "image_picker",
+            "id": "logo_secondary",
+            "label": "Header secondary logo"
+        },
+        {
+            "type": "checkbox",
+            "id": "header_fix",
+            "label": "Fix header",
+            "default": true
+        },
+        {
+            "type": "link_list",
+            "id": "link_list_id",
+            "label": "Navigation header"
+        },
+        {
+            "type": "text",
+            "id": "cart",
+            "label": "Cart",
+            "default": "Winkelwagen"
+        }
+    ],
+    "max_blocks": 2,
+	"blocks": [
+		{
+			"name": "Account",
+			"type": "account",
+			"settings": [
+				{
+					"type": "text",
+					"id": "account",
+					"label": "Account",
+                    "default": "Account"
+				}
+			]
+		},
+		{
+			"name": "Wishlist",
+			"type": "wishlist",
+			"settings": [
+				{
+					"type": "text",
+					"id": "wishlist",
+					"label": "Wishlist",
+                    "default": "Verlanglijst"
+				}
+			]
+		}		
+	]	
+}
+{% endschema %}

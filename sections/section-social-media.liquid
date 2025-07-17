@@ -1,0 +1,194 @@
+<link rel="stylesheet" href="{{ 'section-social-media.css' | asset_url }}">
+
+{% render "set-sections-paddings", section_data: section,  wrapper_class: "social_media__wrap"  %}
+{% render "set-sections-borders", section_data: section, wrapper_class: 'social_media__wrap' %}
+
+{% capture iLetter %}
+    {% render 'i-letter-svg' %}
+{% endcapture %}
+
+{% if section.settings.title_mobile != blank %}
+    {% assign isMobile = 'social_media__title--mobile' %}
+    {% assign isDesctop = 'social_media__title--desctop' %}
+{% else %}
+    {% assign isMobile = '' %}
+    {% assign isDesctop = '' %}        
+{% endif %}
+
+{% if template.name != '404' %}
+    <div class="social_media__wrap">
+        {% if section.settings.title != blank %}
+            <div class="page_wrap">
+                <div class="social_media__title js-fade {{ isDesctop }}">
+                    {{ section.settings.title | replace: '<i>', iLetter | replace: '<span>', '<span>' | replace: '</span>', '</span>' | replace: '<br>', '<br>'  }}
+                </div>
+            </div>
+        {% endif %}  
+        
+        {% if section.settings.title_mobile != blank %}
+            <div class="page_wrap">
+                <div class="social_media__title js-fade {{ isMobile }}">
+                    {{ section.settings.title_mobile | replace: '<i>', iLetter | replace: '<span>', '<span>' | replace: '</span>', '</span>' | replace: '<br>', '<br>' }}
+                </div>
+            </div>
+        {% endif %} 
+        
+        <div class="social_media__ticker {% if section.settings.hide_mobile %}social_media__ticker--mobile_hidden{% endif %}">
+            {% if section.blocks.size > 0 %}
+                <ul class="social_media__list js-ticker-list" data-speed="{{ section.settings.speed_ticker }}" data-direction="{{ section.settings.direction_ticker }}">            
+                    {% for block in section.blocks %} 
+                        <li class="social_media__item js-ticker-item">
+                            <picture class="social_media__pic ">
+                                {% if block.settings.img != blank %}
+                                    <img width="auto" height="auto" src="{{ block.settings.img |  image_url }}" alt="media}" class="social_media__img">                            
+                                {% else %}
+                                    {{ 'collection-3' | placeholder_svg_tag: 'placeholder-svg placeholder-svg--cover' }}                                                                              
+                                {% endif %}                              
+                            </picture>
+                        </li>                                                              
+                    {% endfor %}
+                </ul>       
+            {% endif %}       
+        </div>    
+    </div>
+{% endif %}
+
+
+
+{% schema %}
+    {
+        "name": "Social media",
+        "class": "social_media js-ticker-section js-fade-section",
+        "tag": "section",
+        "settings": [
+            {
+            "type": "range",
+            "id": "padding_top",
+            "min": 0,
+            "max": 200,
+            "step": 5,
+            "unit": "px",
+            "label": "Padding top",
+            "default": 0
+        },
+        {
+            "type": "range",
+            "id": "padding_bottom",
+            "min": 0,
+            "max": 200,
+            "step": 5,
+            "unit": "px",
+            "label": "Padding bottom",
+            "default": 0
+        },
+        {
+            "type": "range",
+            "id": "padding_top_mobile",
+            "min": 0,
+            "max": 100,
+            "step": 5,
+            "unit": "px",
+            "label": "Padding top mobile",
+            "default": 0
+        },
+        {
+            "type": "range",
+            "id": "padding_bottom_mobile",
+            "min": 0,
+            "max": 100,
+            "step": 5,
+            "unit": "px",
+            "label": "Padding bottom mobile",
+            "default": 0
+        },
+        {
+            "type": "select",
+            "id": "section_horizontal_borders",
+            "label": "Section horizontal borders",
+            "options": [
+                {
+                    "value": "top",
+                    "label": "Top"
+                },
+                {
+                    "value": "bottom",
+                    "label": "Bottom"
+                },
+                {
+                    "value": "double",
+                    "label": "Double"
+                },
+                {
+                    "value": "none",
+                    "label": "None"
+                }
+            ],
+            "default": "top"
+        },
+        {
+            "type": "select",
+            "id": "direction_ticker",
+            "label": "Direction ticker",
+            "options": [
+                {
+                    "value": "right",
+                    "label": "Right"
+                },
+                {
+                    "value": "left",
+                    "label": "Left"
+                }
+            ],
+            "default": "right"
+        },
+        {
+            "type": "range",
+            "id": "speed_ticker",
+            "min": 0,
+            "max": 30,
+            "step": 1,            
+            "label": "Slowness of speed ticker",
+            "default": 8
+        },
+        {
+            "type": "text",
+            "id": "title",
+            "label": "Title",
+            "default": "All about social medai",
+            "info": "if you want to animate the letter 'i', wrap the word in <span></span> and replace the letter with <i>. For example '<span>An<i>mate</span>'"
+        },
+        {
+            "type": "text",
+            "id": "title_mobile",
+            "label": "Title for mobile",
+            "info": "if you want to animate the letter 'i', wrap the word in <span></span> and replace the letter with <i>. For example '<span>An<i>mate</span>'"            
+        },
+        {
+            "type": "checkbox",
+            "id": "hide_mobile",
+            "label": "Gallery mobile hidden",
+            "default": true
+        }
+        ],      
+
+        "blocks": [
+            {
+                "name": "Social item",
+                "type": "text",
+                "settings": [
+                    {
+                        "type": "image_picker",
+                        "id": "img",
+                        "label": "Select image"                        
+                    }
+                ]
+            }            
+        ],
+        "presets": [
+            {
+                "name": "Social media"           
+            }
+        ]
+    }
+{% endschema %}
+    

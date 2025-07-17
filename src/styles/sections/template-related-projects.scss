@@ -1,0 +1,19 @@
+@use '../variables.scss' as *;
+@use '../mixins/_global-mixins.scss' as *;
+@use '../snippets/related-project-card.scss';
+
+.template-related-projects__header {
+    border-bottom: 3px solid $brown_light !important;
+}
+
+.template-related-projects__content {
+    @include break_points($tabletXl, min) {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    @include break_points($tabletXl) {
+        display: flex;
+        flex-direction: column;
+    }
+}

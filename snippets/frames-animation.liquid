@@ -1,0 +1,41 @@
+<div class="frames-animation" data-frames-animation-block>
+    {% if frames.frame_first %}
+        <img class="frames-animation__frame" src="{{ frames.frame_first | image_url }}"
+             alt=""
+             width="auto"
+             height="auto"
+             loading="lazy"
+             data-frames-animation-frame
+        >
+    {% endif %}
+
+    {% if frames.frame_second %}
+        <img class="frames-animation__frame" src="{{ frames.frame_second | image_url }}"
+             alt=""
+             width="auto"
+             height="auto"
+             loading="lazy"
+             data-frames-animation-frame
+        >
+    {% endif %}
+
+    {% if frames.frame_third %}
+        <img class="frames-animation__frame" src="{{ frames.frame_third | image_url }}"
+             alt=""
+             width="auto"
+             height="auto"
+             loading="lazy"
+             data-frames-animation-frame
+        >
+    {% endif %}
+
+    {% if frames.frame_fourth %}
+        <img class="frames-animation__frame" src="{{ frames.frame_fourth | image_url }}"
+             alt=""
+             width="auto"
+             height="auto"
+             loading="lazy"
+             data-frames-animation-frame
+        >
+    {% endif %}
+</div>

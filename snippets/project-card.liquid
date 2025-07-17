@@ -1,0 +1,59 @@
+<div class="project-card js-fade-section type-{{ index }} {{ side }} {{ class }}">
+    {% if index == 2 and side == "left" %}
+        <div class="project-card__empty-block"></div>
+    {% endif %}
+
+    <div class="project-card__content js-fade">
+        <div class="project-card__title-block">
+            <h3 class="project-card__title">{{ project.title }}</h3>
+
+            {% if project.metafields.opk.fast_description != blank %}
+                <div class="project-card__description  base_richtext small">{{ project.metafields.opk.fast_description | metafield_tag }}</div>
+            {% endif %}
+        </div>
+
+        {% render "buttons", link: project.url, title: read_more_button_title, class: "project-card__button btn_base_text", attribute: "data-template-product-details-button", icon: true %}
+    </div>
+
+    {% if project.metafields.opk.additional_images != blank and index == 3 and side == "left" %}
+        {% assign images = project.metafields.opk.additional_images %}
+
+        <div class="project-card__additional-images js-fade">
+            {% for image in project.metafields.opk.additional_images.value %}
+                <img class="project-card__additional-image" src="{{ image | image_url }}"
+                     alt=""
+                     width="auto"
+                     height="auto"
+                     loading="lazy"
+                >
+            {% endfor %}
+        </div>
+    {% endif %}
+
+    <a class="project-card__image-wrapper js-fade"
+       href="{{ project.url }}">
+        <img class="project-card__image" src="{{ project.image | image_url }}"
+             alt=""
+             width="auto"
+             height="auto"
+             loading="lazy"
+        >
+    </a>
+
+    {% if project.metafields.opk.additional_images != blank and index == 3 and side == "right" %}
+        {% assign images = project.metafields.opk.additional_images %}
+
+        <a class="project-card__additional-images js-fade" href="{{ project.url }}">
+            {% for image in project.metafields.opk.additional_images.value %}
+                <div class="project-card__additional-image-wrapper">
+                    <img class="project-card__additional-image" src="{{ image | image_url }}"
+                         alt=""
+                         width="auto"
+                         height="auto"
+                         loading="lazy"
+                    >
+                </div>
+            {% endfor %}
+        </a>
+    {% endif %}
+</div>

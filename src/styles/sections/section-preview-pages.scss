@@ -1,0 +1,143 @@
+@use '../variables.scss' as *;
+@use '../mixins/_global-mixins.scss' as *;
+@use '../snippets/frames-animation.scss';
+
+.section-preview-pages__inner-wrapper {
+    @include break_points($desktop, min) {
+        display: grid;
+        grid-template-columns: repeat(2, 43.1%) auto;
+    }
+
+    @include break_points($desktop, $laptop) {
+        display: grid;
+        grid-template-columns: repeat(2, 42%) auto;
+        grid-template-rows: auto auto;
+    }
+
+    @include break_points($laptop, $tabletXl) {
+        display: grid;
+        grid-template-columns: repeat(2, 50%);
+    }
+
+    @include break_points($tabletXl) {
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+.section-preview-pages__page-card {
+    @include break_points($laptop, min) {
+        aspect-ratio: 632 / 485;
+        border-right: 3px solid $brown_light;
+    }
+
+    @include break_points($laptop, $tabletXl) {
+        aspect-ratio: 345 / 315;
+        border-bottom: 3px solid $brown_light;
+
+        &:first-child {
+            border-right: 3px solid $brown_light;
+        }
+    }
+
+    @include break_points($tabletXl, $mobile) {
+        aspect-ratio: 1.2 / 1;
+        border-bottom: 3px solid $brown_light;
+    }
+
+    @include break_points($mobile) {
+        aspect-ratio: 345 / 315;
+        border-bottom: 3px solid $brown_light;
+    }
+}
+
+.section-preview-pages__page-card-wrapper {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+
+    @include break_points($laptop, min) {
+        padding: 60px;
+    }
+
+    @include break_points($laptop, $tablet) {
+        padding: 40px 30px;
+    }
+
+    @include break_points($tablet) {
+        padding: 20px 25px;
+    }
+}
+
+.section-preview-pages__page-card-title,
+.section-preview-pages__page-card-description {
+    text-align: center;
+    color: $white;
+}
+
+.section-preview-pages__page-card-title {
+    text-transform: uppercase;
+    font-weight: 700;
+
+    @include break_points($laptop, min) {
+        font-size: 32px;
+    }
+}
+
+.section-preview-pages__page-card-description {
+    max-width: 480px;
+    font-weight: 400;
+    line-height: 1.27;
+}
+
+.section-preview-pages__fade,
+.section-preview-pages__page-card-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.section-preview-pages__fade {
+    transition: 0.3s ease;
+    z-index: -1;
+}
+
+.section-preview-pages__page-card-background {
+    object-fit: cover;
+    object-position: center;
+    z-index: -2;
+}
+
+.section-preview-pages__frames-wrapper {
+    position: relative;
+    height: 100%;
+
+    @include break_points($laptop, min) {
+        display: flex;
+        justify-content: center;
+        padding-left: 25px;
+        padding-right: 25px;
+    }
+
+    @include break_points($laptop) {
+        display: flex;
+        justify-content: flex-start;
+    }
+
+    .frames-animation {
+        @include break_points($laptop, min) {
+            height: min-content;
+            position: sticky;
+            top: 50%;
+            bottom: 0;
+        }
+    }
+}

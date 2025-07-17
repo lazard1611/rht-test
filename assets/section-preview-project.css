@@ -1,0 +1,277 @@
+/*!*********************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].use[3]!./src/styles/sections/section-preview-project.scss ***!
+  \*********************************************************************************************************************************************************************************************************************************************/
+/* ==================================================== ADAPTIVE =================================================== */
+/* ===================================================== FONTS ===================================================== */
+/* ===================================================== COLORS ==================================================== */
+/* ====================================================== FORM ===================================================== */
+@keyframes frame-1-animation {
+  0% {
+    opacity: 1;
+  }
+  24% {
+    opacity: 1;
+  }
+  25% {
+    opacity: 0;
+  }
+}
+@keyframes frame-2-animation {
+  0% {
+    opacity: 0;
+  }
+  24.9% {
+    opacity: 0;
+  }
+  25% {
+    opacity: 1;
+  }
+  49.9% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+@keyframes frame-3-animation {
+  0% {
+    opacity: 0;
+  }
+  49.9% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  74.9% {
+    opacity: 1;
+  }
+  75% {
+    opacity: 0;
+  }
+}
+@keyframes frame-4-animation {
+  0% {
+    opacity: 0;
+  }
+  74.9% {
+    opacity: 0;
+  }
+  75% {
+    opacity: 1;
+  }
+  99.9% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+.frames-animation {
+  position: relative;
+}
+.frames-animation .frames-animation__frame {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+@media screen and (min-width: 1440px) {
+  .frames-animation .frames-animation__frame {
+    max-width: 165px;
+    max-height: 100px;
+  }
+}
+@media (max-width: 1439px) and (min-width: 768px) {
+  .frames-animation .frames-animation__frame {
+    max-width: 140px;
+    max-height: 80px;
+  }
+}
+@media screen and (max-width: 767px) {
+  .frames-animation .frames-animation__frame {
+    max-width: 90px;
+    max-height: 50px;
+  }
+}
+.frames-animation .frames-animation__frame:nth-child(1) {
+  position: relative;
+  opacity: 0;
+  animation: frame-1-animation 3s infinite;
+}
+.frames-animation .frames-animation__frame:nth-child(2) {
+  opacity: 0;
+  animation: frame-2-animation 3s infinite;
+}
+.frames-animation .frames-animation__frame:nth-child(3) {
+  opacity: 0;
+  animation: frame-3-animation 3s infinite;
+}
+.frames-animation .frames-animation__frame:nth-child(4) {
+  opacity: 0;
+  animation: frame-4-animation 3s infinite;
+}
+
+@media screen and (min-width: 1800px) {
+  .section-preview-project__inner-wrapper {
+    display: grid;
+    grid-template-columns: 32% 13.8% auto;
+  }
+}
+@media (max-width: 1799px) and (min-width: 1440px) {
+  .section-preview-project__inner-wrapper {
+    display: grid;
+    grid-template-columns: 35% 15% auto;
+  }
+}
+@media (max-width: 1439px) and (min-width: 1200px) {
+  .section-preview-project__inner-wrapper {
+    display: grid;
+    grid-template-columns: 45% auto;
+  }
+}
+@media screen and (max-width: 1199px) {
+  .section-preview-project__inner-wrapper {
+    display: flex;
+    flex-direction: column;
+  }
+}
+@media screen and (min-width: 1440px) {
+  .section-preview-project__inner-wrapper.without-frames {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media screen and (max-width: 1439px) {
+  .section-preview-project__inner-wrapper.without-frames {
+    display: flex;
+    flex-direction: column;
+  }
+}
+.section-preview-project__inner-wrapper.without-frames .section-preview-project__about {
+  justify-content: initial;
+}
+.section-preview-project__inner-wrapper.without-frames .section-preview-project__about-wrapper {
+  height: 100%;
+  border-top: none;
+}
+
+@media screen and (min-width: 1200px) {
+  .section-preview-project__about,
+  .section-preview-project__frames-wrapper {
+    border-right: 3px solid #E1DACD;
+  }
+}
+@media screen and (max-width: 1199px) {
+  .section-preview-project__about,
+  .section-preview-project__frames-wrapper {
+    border-bottom: 3px solid #E1DACD;
+  }
+}
+
+.section-preview-project__about {
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+}
+
+.section-preview-project__about-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+@media screen and (min-width: 1200px) {
+  .section-preview-project__about-wrapper {
+    border-top: 3px solid #E1DACD;
+  }
+}
+
+.section-preview-project__about-title {
+  text-transform: uppercase;
+}
+@media screen and (min-width: 1200px) {
+  .section-preview-project__about-title {
+    font-size: 42px;
+  }
+}
+
+.section-preview-project__about-description {
+  line-height: 1.27;
+}
+
+.section-preview-project__frames-wrapper {
+  position: relative;
+  height: 100%;
+}
+@media screen and (min-width: 1440px) {
+  .section-preview-project__frames-wrapper {
+    display: flex;
+    justify-content: center;
+  }
+}
+@media screen and (max-width: 1439px) {
+  .section-preview-project__frames-wrapper {
+    display: none;
+  }
+}
+@media screen and (min-width: 1440px) {
+  .section-preview-project__frames-wrapper .frames-animation {
+    height: -moz-min-content;
+    height: min-content;
+    position: sticky;
+    top: 50%;
+    bottom: 0;
+  }
+}
+
+.section-preview-project__project {
+  display: flex;
+  flex-direction: column;
+}
+.section-preview-project__project:hover .section-preview-project__project-icon {
+  transform: rotate(45deg);
+}
+.section-preview-project__project:hover .section-preview-project__project-image {
+  transform: scale(1.05);
+}
+
+.section-preview-project__project-image-wrapper {
+  aspect-ratio: 810/716;
+  max-width: 100%;
+  overflow: hidden;
+}
+@media screen and (max-width: 1439px) {
+  .section-preview-project__project-image-wrapper {
+    max-height: 700px;
+  }
+}
+
+.section-preview-project__project-image {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: center;
+     object-position: center;
+  transition: transform 0.5s ease;
+}
+
+.section-preview-project__project-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 22px;
+}
+
+.section-preview-project__project-title {
+  text-transform: uppercase;
+}
+
+.section-preview-project__project-icon {
+  width: 18px;
+  height: 18px;
+  transition: 0.3s;
+}
+
+.section-preview-project__project-description {
+  padding-top: 12px;
+}

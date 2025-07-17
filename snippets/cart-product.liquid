@@ -1,0 +1,33 @@
+<div class="cart-product" data-cart-product="{{ line_item.key }}">
+    <a href="{{ line_item.url }}" class="cart-product__image-wrapper">
+        {% if line_item.featured_image.url %}
+            <img class="cart-product__image" src="{{ line_item.featured_image.url | image_url }}" alt="{{ line_item.title }}" width="auto" height="auto" loading="lazy">
+        {% else %}
+            <img class="cart-product__image" src="{{ line_item.image | image_url }}" alt="{{ line_item.title }}" width="auto" height="auto" loading="lazy">
+        {% endif %}
+    </a>
+    <a href="{{ line_item.url }}" class="cart-product__info">
+        <h3 class="cart-product__title">{{ line_item.title }}</h3>
+        <div class="cart-product__options">
+            {% for option in line_item.variant.options %}
+                {{ option.name }} {{ option.value }}
+            {% endfor %}
+            Black
+        </div>
+    </a>
+    {% for variant in line_item.product.variants %}
+        {% if line_item.id == variant.id %}
+            {% render 'quantity', default_value: line_item.quantity, max: variant.inventory_quantity %}
+        {% endif %}
+    {% endfor %}
+    <a href="{{ line_item.url }}" class="cart-product__price-container">
+        {% if line_item.variant.compare_at_price > 0 %}
+            <div class="cart-product__compare-price">{{ line_item.variant.compare_at_price | times: line_item.quantity | money_without_trailing_zeros | replace: '€', '€ ' }}</div>
+        {% endif %}
+        <div class="cart-product__price">{{ line_item.price | times: line_item.quantity | money_without_trailing_zeros | replace: '€', '€ ' }}</div>
+    </a>
+    <button class="cart-product__remove-btn" data-cart-product-remove-btn>
+        <span class="cart-product__remove-btn-text">{{ section.settings.cart_line_item_remove_btn_text }}</span>
+        {% render 'icons', filename: 'close_1' %}
+    </button>
+</div>

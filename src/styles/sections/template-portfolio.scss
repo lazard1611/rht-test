@@ -1,0 +1,82 @@
+@use '../variables.scss' as *;
+@use '../mixins/global-mixins.scss' as *;
+@use '../snippets/project-card.scss';
+@use '../snippets/product-options-select.scss';
+@use '../snippets/portfolio-pagination';
+
+.template-portfolio {
+    border-top: 3px solid $brown_light;
+}
+
+.template-portfolio__header {
+    display: flex;
+    flex-direction: column;
+    border-bottom: 3px solid $brown_light;
+
+    @include break_points($laptop, min) {
+        gap: 40px;
+    }
+
+    @include break_points($laptop) {
+        gap: 25px;
+    }
+}
+
+.template-portfolio__title {
+    text-transform: uppercase;
+}
+
+.template-portfolio__controllers {
+    @include break_points($tabletXl, min) {
+        display: flex;
+        align-items: center;
+        gap: 35px;
+    }
+
+    @include break_points($tabletXl) {
+        display: none;
+    }
+}
+
+.template-portfolio__controller-select {
+    display: block;
+    width: 100%;
+    max-width: 500px;
+
+    @include break_points($tabletXl, min) {
+        display: none;
+    }
+}
+
+.template-portfolio__controller {
+    @include break_points($laptop, min) {
+        padding-bottom: 10px;
+    }
+
+    &.active {
+        @include break_points($laptop, min) {
+            border-bottom: 3px solid $black;
+        }
+    }
+}
+
+.template-portfolio__projects {
+    display: flex;
+    flex-direction: column;
+    border: 3px solid $brown_light;
+    border-top: none;
+}
+
+.template-portfolio__project-card {
+    border-bottom: 3px solid $brown_light;
+
+}
+
+.template-portfolio__pagination-controllers {
+    display: flex;
+    justify-content: flex-end;
+
+    @include break_points($tablet) {
+        width: 100%;
+    }
+}

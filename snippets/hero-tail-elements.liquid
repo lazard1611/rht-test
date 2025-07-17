@@ -1,0 +1,63 @@
+{% if position == 'left_top' or position == 'left_bottom' %}
+    <div class="template-home-hero__product-tail-body desktop">
+        <div class="template-home-hero__product-tail-svg-line">
+            <svg viewBox="0 0 117 55" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M0 53H60.5V2H116.5" stroke="white" stroke-width="3"/>
+            </svg>
+        </div>
+        <div class="template-home-hero__product-tail-circle-wrap">
+            <svg  viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle class="js-flicker-halo" cx="24" cy="24" r="15.5" fill="white" fill-opacity="0.5" stroke="white" stroke-width="3"/>
+                <circle class="js-flicker-center" cx="24" cy="24" r="10" fill="white"/>
+            </svg>
+        </div>
+    </div>
+
+{% else %}
+    <div class="template-home-hero__product-tail-body desktop">
+        <div class="template-home-hero__product-tail-svg-line">
+            <svg viewBox="0 0 117 55" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M117 2H56.5V53H0.5" stroke="white" stroke-width="3"/>
+            </svg>
+        </div>
+        <div class="template-home-hero__product-tail-circle-wrap">
+            <svg  viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle class="js-flicker-halo" cx="24" cy="24" r="15.5" fill="white" fill-opacity="0.5" stroke="white" stroke-width="3"/>
+                <circle class="js-flicker-center" cx="24" cy="24" r="10" fill="white"/>
+            </svg>
+        </div>
+
+    </div>
+
+
+{% endif %}
+
+{% if mobile_position == 'left_top' or mobile_position == 'left_bottom' %}
+    <div class="template-home-hero__product-tail-body mobile">
+        <div class="template-home-hero__product-tail-svg-line">
+            <svg viewBox="0 0 45 33" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M1.38581e-06 31H23.3691V2H45" stroke="white" stroke-width="3"/>
+            </svg>
+        </div>
+        <div class="template-home-hero__product-tail-circle-wrap">
+            <svg  viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle class="js-flicker-halo" cx="24" cy="24" r="15.5" fill="white" fill-opacity="0.5" stroke="white" stroke-width="3"/>
+                <circle class="js-flicker-center" cx="24" cy="24" r="10" fill="white"/>
+            </svg>
+        </div>
+    </div>
+{% else %}
+    <div class="template-home-hero__product-tail-body mobile">
+        <div class="template-home-hero__product-tail-svg-line">
+            <svg width="45" height="33" viewBox="0 0 45 33" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M45 31H21.6309V2H0" stroke="white" stroke-width="3"/>
+            </svg>
+        </div>
+        <div class="template-home-hero__product-tail-circle-wrap">
+            <svg  viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle class="js-flicker-halo" cx="24" cy="24" r="15.5" fill="white" fill-opacity="0.5" stroke="white" stroke-width="3"/>
+                <circle class="js-flicker-center" cx="24" cy="24" r="10" fill="white"/>
+            </svg>
+        </div>
+    </div>
+{% endif %}

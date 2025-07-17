@@ -1,0 +1,88 @@
+<link rel="stylesheet" href="{{ "section-portfolio-detail-hero.css" | asset_url }}">
+
+<div class="section-portfolio-detail-hero__wrapper page_wrap horizontal--{{ section.settings.title_horizontal_position }} vertical--{{ section.settings.title_vertical_position }}">
+    <h1 class="section-portfolio-detail-hero__title js-title-fade">{{ article.title }}</h1>
+
+    <div class="section-portfolio-detail-hero__fade"
+         style="opacity: {{ section.settings.fade_opacity }}%; background-color: {{ section.settings.fade_color }}">
+    </div>
+
+    <img class="section-portfolio-detail-hero__image" src="{{ article.image | image_url }}" alt="">
+</div>
+
+<script src="{{ "section-portfolio-detail-hero.js" | asset_url }}" type="module" defer></script>
+
+{% schema %}
+{
+    "name": "Portfolio detail hero",
+    "class": "section-portfolio-detail-hero js-title-section",
+    "tag": "section",
+    "settings": [
+        {
+            "type": "select",
+            "id": "title_horizontal_position",
+            "label": "Title horizontal position",
+            "options": [
+                {
+                    "value": "left",
+                    "label": "Left"
+                },
+                {
+                    "value": "center",
+                    "label": "Center"
+                },
+                {
+                    "value": "right",
+                    "label": "Right"
+                }
+            ],
+            "default": "left"
+        },
+        {
+            "type": "select",
+            "id": "title_vertical_position",
+            "label": "Title vertical position",
+            "options": [
+                {
+                    "value": "top",
+                    "label": "Top"
+                },
+                {
+                    "value": "center",
+                    "label": "Center"
+                },
+                {
+                    "value": "bottom",
+                    "label": "Bottom"
+                }
+            ],
+            "default": "center"
+        },
+        {
+            "type": "color",
+            "id": "fade_color",
+            "label": "Fade color"
+        },
+        {
+            "type": "range",
+            "id": "fade_opacity",
+            "min": 0,
+            "max": 100,
+            "step": 1,
+            "unit": "%",
+            "label": "Fade opacity",
+            "default": 0
+        }
+    ],
+    "presets": [
+        {
+            "name": "Portfolio detail hero"
+        }
+    ],
+    "enabled_on": {
+        "templates": [
+            "article"
+        ]
+    }
+}
+{% endschema %}

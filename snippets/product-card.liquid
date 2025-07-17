@@ -1,0 +1,21 @@
+<div class="product-card js-fade {{ class }}">
+    <a href="{{ product.url }}" class="product-card__image-wrapper">
+        <img class="product-card__image" src="{{ product.featured_image | image_url }}" alt="Product image" width="auto" height="auto" loading="lazy">
+        {% if product.metafields.opk.product_badge == 'Hand picked' %}
+            <div class="product-card__badge hand_picked">Hand picked</div>
+        {% elsif product.metafields.opk.product_badge == 'Limited edition' %}
+            <div class="product-card__badge limited_edition">Limited edition</div>
+        {% elsif product.compare_at_price != blank %}
+            <div class="product-card__badge sale">Sale</div>
+        {% endif %}
+    </a>
+    <a href="{{ product.url }}" class="product-card__info">
+        <h3 class="product-card__title">{{ product.title }}</h3>
+        <div class="product-card__price-container">
+            {% if product.compare_at_price > 0 %}
+                <div class="product-card__compare-price">{{ product.compare_at_price | money_without_trailing_zeros | replace: '€', '€ ' }}</div>
+            {% endif %}
+            <div class="product-card__price">{{ product.price | money_without_trailing_zeros | replace: '€', '€ ' }}</div>
+        </div>
+    </a>
+</div>

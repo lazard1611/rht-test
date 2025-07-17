@@ -1,0 +1,71 @@
+<link rel="stylesheet" href="{{ "template-portfolio-content.css" | asset_url }}">
+
+<div class="template-portfolio-content__wrapper">
+    {% if article.content != blank or article.metafields.opk.portfolio_parameters != blank %}
+        {% render "portfolio-parameters", content: richtexts_block %}
+
+    {% endif %}
+
+    {% if article.metafields.opk.portfolio_richtexts_ != blank %}
+        {% for richtexts_block in article.metafields.opk.portfolio_richtexts_.value %}
+            {% assign richtext_block_class = "portfolio-richtext-" | append: forloop.index %}
+
+            {% render "portfolio-richtext", class: richtext_block_class, content: richtexts_block %}
+
+            <style>
+                .portfolio-richtext-{{ forloop.index }} {
+                    order: {{ richtexts_block.order }};
+                }
+            </style>
+        {% endfor %}
+    {% endif %}
+
+    {% if article.metafields.opk.portfolio_content_blocks != blank %}
+        {% for content_block in article.metafields.opk.portfolio_content_blocks.value %}
+            {% assign content_block_class = "portfolio-content-block-" | append: forloop.index %}
+
+            {% render "portfolio-content-block", class: content_block_class, content: content_block %}
+
+            <style>
+                .portfolio-content-block-{{ forloop.index }} {
+                    order: {{ content_block.order }};
+                }
+            </style>
+        {% endfor %}
+    {% endif %}
+
+    {% if article.metafields.opk.portfolio_video.value.video != blank or article.metafields.opk.portfolio_video.value.image != blank %}
+        {% render "portfolio-video" %}
+
+        <style>
+            .portfolio-video {
+                order: {{ article.metafields.opk.portfolio_video.value.order }};
+            }
+        </style>
+    {% endif %}
+
+    {% if article.metafields.opk.portfolio_related_products_header_.value != blank and article.metafields.opk.portfolio_related_products.value != blank %}
+        {% render "portfolio-products" %}
+
+        <style>
+            .portfolio-products {
+                order: {{ article.metafields.opk.portfolio_related_products_header_.value.order }};
+            }
+        </style>
+    {% endif %}
+</div>
+
+<script src="{{ "template-portfolio-content.js" | asset_url }}" type="module" defer></script>
+
+{% schema %}
+{
+    "name": "Portfolio content",
+    "class": "template-portfolio-content",
+    "tag": "section",
+    "presets": [
+        {
+            "name": "Portfolio content"
+        }
+    ]
+}
+{% endschema %}

@@ -1,0 +1,53 @@
+{
+  "sections": {
+    "template_portfolio_MkFViK": {
+      "type": "template-portfolio",
+      "blocks": {
+        "blog_qntkBY": {
+          "type": "blog",
+          "settings": {
+            "show_blog": "badkamer"
+          }
+        },
+        "blog_jCf9zH": {
+          "type": "blog",
+          "settings": {
+            "show_blog": "keuken"
+          }
+        },
+        "blog_MkUx3H": {
+          "type": "blog",
+          "settings": {
+            "show_blog": "los-maatwerk"
+          }
+        },
+        "blog_V7nTp4": {
+          "type": "blog",
+          "settings": {
+            "show_blog": "volledige-projecten"
+          }
+        }
+      },
+      "block_order": [
+        "blog_qntkBY",
+        "blog_jCf9zH",
+        "blog_MkUx3H",
+        "blog_V7nTp4"
+      ],
+      "settings": {
+        "padding_top": 35,
+        "padding_bottom": 35,
+        "padding_top_mobile": 35,
+        "padding_bottom_mobile": 25,
+        "title": "Portefeuille",
+        "read_more_button_title": "Lees meer",
+        "pagination_info_text": "Pagina",
+        "pagination_prev_btn_title": "Vorig",
+        "pagination_next_btn_title": "Volgende pagina"
+      }
+    }
+  },
+  "order": [
+    "template_portfolio_MkFViK"
+  ]
+}

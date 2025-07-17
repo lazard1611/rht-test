@@ -1,0 +1,97 @@
+@use '../variables.scss' as *;
+@use '../mixins/_global-mixins.scss' as *;
+@use '../mixins/typography.scss' as *;
+
+.social {
+    overflow: hidden;
+
+    @include break_points($tabletXl, min) {
+        padding: 0 var(--gl-indent);
+    }
+}
+
+.social__item {
+    position: relative;
+
+    &:before,
+    &:after {
+        position: absolute;
+        left: calc(var(--gl-indent) * -1);
+
+        width: calc(100vw + var(--gl-indent));
+        height: 3px;
+        background-color: $brown_light;
+    }
+
+    &:first-of-type::before {
+        content: '';
+        top: 0;
+    }
+
+    &:not(:last-of-type)::after {
+        content: '';
+        bottom: 0;
+    }
+}
+
+.social__wrap {
+}
+
+.social__link {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    text-transform: uppercase;
+    transition: color 0.3s ease;
+    font-weight: 800;
+
+    @include break_points($tablet, min) {
+        font-size: clamp(45px, 6vw, 80px);
+        line-height: 1.27;
+    }
+
+    @include break_points($tablet) {
+        font-size: 22px;
+        line-height: 1;
+    }    
+
+    &:hover {
+        @include break_points($tablet, min) {
+            span {
+                // color: $purple;
+            }
+        }
+    }
+
+    @include break_points($tablet, min) {
+        padding: 70px 0;
+    }
+
+    @include break_points($tablet) {
+        padding: 28px 0;
+    }
+}
+
+.social__item_icon {
+    margin-left: 10px;
+    flex-shrink: 0;
+    will-change: transform;
+    transition: transform 0.3s ease-in-out, color 0.3s ease;
+    transform-origin: center;
+
+    @include break_points($tablet, min) {
+        width: 62px;
+        height: 62px;
+    }
+
+    @include break_points($tablet) {
+        width: 18px;
+        height: 18px;
+    }
+
+    .social__link:hover & {
+        transform: rotate(45deg);
+        // color: $purple;
+    }
+}

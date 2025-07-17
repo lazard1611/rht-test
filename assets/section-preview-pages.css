@@ -1,0 +1,265 @@
+/*!*******************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].use[3]!./src/styles/sections/section-preview-pages.scss ***!
+  \*******************************************************************************************************************************************************************************************************************************************/
+/* ==================================================== ADAPTIVE =================================================== */
+/* ===================================================== FONTS ===================================================== */
+/* ===================================================== COLORS ==================================================== */
+/* ====================================================== FORM ===================================================== */
+@keyframes frame-1-animation {
+  0% {
+    opacity: 1;
+  }
+  24% {
+    opacity: 1;
+  }
+  25% {
+    opacity: 0;
+  }
+}
+@keyframes frame-2-animation {
+  0% {
+    opacity: 0;
+  }
+  24.9% {
+    opacity: 0;
+  }
+  25% {
+    opacity: 1;
+  }
+  49.9% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+@keyframes frame-3-animation {
+  0% {
+    opacity: 0;
+  }
+  49.9% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  74.9% {
+    opacity: 1;
+  }
+  75% {
+    opacity: 0;
+  }
+}
+@keyframes frame-4-animation {
+  0% {
+    opacity: 0;
+  }
+  74.9% {
+    opacity: 0;
+  }
+  75% {
+    opacity: 1;
+  }
+  99.9% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+.frames-animation {
+  position: relative;
+}
+.frames-animation .frames-animation__frame {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+@media screen and (min-width: 1440px) {
+  .frames-animation .frames-animation__frame {
+    max-width: 165px;
+    max-height: 100px;
+  }
+}
+@media (max-width: 1439px) and (min-width: 768px) {
+  .frames-animation .frames-animation__frame {
+    max-width: 140px;
+    max-height: 80px;
+  }
+}
+@media screen and (max-width: 767px) {
+  .frames-animation .frames-animation__frame {
+    max-width: 90px;
+    max-height: 50px;
+  }
+}
+.frames-animation .frames-animation__frame:nth-child(1) {
+  position: relative;
+  opacity: 0;
+  animation: frame-1-animation 3s infinite;
+}
+.frames-animation .frames-animation__frame:nth-child(2) {
+  opacity: 0;
+  animation: frame-2-animation 3s infinite;
+}
+.frames-animation .frames-animation__frame:nth-child(3) {
+  opacity: 0;
+  animation: frame-3-animation 3s infinite;
+}
+.frames-animation .frames-animation__frame:nth-child(4) {
+  opacity: 0;
+  animation: frame-4-animation 3s infinite;
+}
+
+@media screen and (min-width: 1440px) {
+  .section-preview-pages__inner-wrapper {
+    display: grid;
+    grid-template-columns: repeat(2, 43.1%) auto;
+  }
+}
+@media (max-width: 1439px) and (min-width: 1200px) {
+  .section-preview-pages__inner-wrapper {
+    display: grid;
+    grid-template-columns: repeat(2, 42%) auto;
+    grid-template-rows: auto auto;
+  }
+}
+@media (max-width: 1199px) and (min-width: 1024px) {
+  .section-preview-pages__inner-wrapper {
+    display: grid;
+    grid-template-columns: repeat(2, 50%);
+  }
+}
+@media screen and (max-width: 1023px) {
+  .section-preview-pages__inner-wrapper {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .section-preview-pages__page-card {
+    aspect-ratio: 632/485;
+    border-right: 3px solid #E1DACD;
+  }
+}
+@media (max-width: 1199px) and (min-width: 1024px) {
+  .section-preview-pages__page-card {
+    aspect-ratio: 345/315;
+    border-bottom: 3px solid #E1DACD;
+  }
+  .section-preview-pages__page-card:first-child {
+    border-right: 3px solid #E1DACD;
+  }
+}
+@media (max-width: 1023px) and (min-width: 480px) {
+  .section-preview-pages__page-card {
+    aspect-ratio: 1.2/1;
+    border-bottom: 3px solid #E1DACD;
+  }
+}
+@media screen and (max-width: 479px) {
+  .section-preview-pages__page-card {
+    aspect-ratio: 345/315;
+    border-bottom: 3px solid #E1DACD;
+  }
+}
+
+.section-preview-pages__page-card-wrapper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+@media screen and (min-width: 1200px) {
+  .section-preview-pages__page-card-wrapper {
+    padding: 60px;
+  }
+}
+@media (max-width: 1199px) and (min-width: 768px) {
+  .section-preview-pages__page-card-wrapper {
+    padding: 40px 30px;
+  }
+}
+@media screen and (max-width: 767px) {
+  .section-preview-pages__page-card-wrapper {
+    padding: 20px 25px;
+  }
+}
+
+.section-preview-pages__page-card-title,
+.section-preview-pages__page-card-description {
+  text-align: center;
+  color: #FFFFFF;
+}
+
+.section-preview-pages__page-card-title {
+  text-transform: uppercase;
+  font-weight: 700;
+}
+@media screen and (min-width: 1200px) {
+  .section-preview-pages__page-card-title {
+    font-size: 32px;
+  }
+}
+
+.section-preview-pages__page-card-description {
+  max-width: 480px;
+  font-weight: 400;
+  line-height: 1.27;
+}
+
+.section-preview-pages__fade,
+.section-preview-pages__page-card-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.section-preview-pages__fade {
+  transition: 0.3s ease;
+  z-index: -1;
+}
+
+.section-preview-pages__page-card-background {
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: center;
+     object-position: center;
+  z-index: -2;
+}
+
+.section-preview-pages__frames-wrapper {
+  position: relative;
+  height: 100%;
+}
+@media screen and (min-width: 1200px) {
+  .section-preview-pages__frames-wrapper {
+    display: flex;
+    justify-content: center;
+    padding-left: 25px;
+    padding-right: 25px;
+  }
+}
+@media screen and (max-width: 1199px) {
+  .section-preview-pages__frames-wrapper {
+    display: flex;
+    justify-content: flex-start;
+  }
+}
+@media screen and (min-width: 1200px) {
+  .section-preview-pages__frames-wrapper .frames-animation {
+    height: -moz-min-content;
+    height: min-content;
+    position: sticky;
+    top: 50%;
+    bottom: 0;
+  }
+}

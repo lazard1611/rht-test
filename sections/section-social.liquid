@@ -1,0 +1,120 @@
+<link rel="stylesheet" href="{{ 'section-social.css' | asset_url }}">
+
+{% if template.name != '404' %}
+    {% if section.blocks.size > 0 %}
+        {% for block in section.blocks %}   
+            {% case block.settings.social_type %}
+                {% when 'instagram' %}
+                    {% assign url = settings.social_instagram %}
+                {% when 'twitter' %}
+                    {% assign url = settings.social_twitter %}                 
+                {% when 'facebook' %}
+                    {% assign url = settings.social_facebook %} 
+                {% when 'linkedIn' %}
+                    {% assign url = settings.social_linkedin %} 
+                {% when 'pinterest' %}
+                    {% assign url = settings.social_pinterest %}
+                {% when 'Tumblr' %}
+                    {% assign url = settings.social_tumblr %}
+                {% when 'Snapchat' %}
+                    {% assign url = settings.social_snapchat %}
+                {% when 'youtube' %}
+                    {% assign url = settings.social_youtube %}
+                {% when 'vimeo' %}
+                    {% assign url = settings.social_vimeo %}
+            {% endcase %}
+    
+            <div class="social__item js-fade">
+                <div class="page_wrap social__wrap">            
+                    <a href="{{ url }}" class="social__link">                
+                        <span>{{ block.settings.social_type }}</span>
+                        <div class="social__item_icon">
+                            {% render 'icons', filename: 'arrow_link' %}
+                        </div>
+                    </a> 
+                </div>              
+            </div>
+        {% endfor %}
+    {% endif %}          
+{% endif %}
+
+
+<script type="module" src="{{ 'section-social.js' | asset_url }}"></script>
+
+{% schema %}
+    {
+        "name": "Social",
+        "class": "social js-fade-section",
+        "tag": "section",
+        "settings": [],
+        "blocks": [
+            {
+                "name": "Social item",
+                "type": "text",
+                "settings": [
+                    {
+                        "type": "select",
+                        "id": "social_type",
+                        "label": "Select social",
+                        "default": "instagram",
+                        "options": [
+                            {
+                                "label": "Instagram",
+                                "value": "instagram"
+                            },
+                            {
+                                "label": "Twitter",
+                                "value": "twitter"
+                            },
+                            {
+                                "label": "Facebook",
+                                "value": "facebook"
+                            },
+                            {
+                                "label": "LinkedIn",
+                                "value": "linkedIn"
+                            },
+                            {
+                                "label": "Pinterest",
+                                "value": "pinterest"
+                            },
+                            {
+                                "label": "Tumblr",
+                                "value": "tumblr"
+                            },                            
+                            {
+                                "label": "Snapchat",
+                                "value": "snapchat"
+                            },
+                            {
+                                "label": "YouTube",
+                                "value": "youtube"
+                            },
+                            {
+                                "label": "Vimeo",
+                                "value": "vimeo"
+                            }                            
+                        ]
+                    }
+                ]
+            }            
+        ],
+        "presets": [
+            {
+                "name": "Social",            
+                "blocks": [
+                    {
+                        "type": "text"
+                    },
+                    {
+                        "type": "text"
+                    },
+                    {
+                        "type": "text"
+                    }
+                ]
+            }
+        ]
+    }
+{% endschema %}
+    
