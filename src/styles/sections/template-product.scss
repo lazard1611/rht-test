@@ -3,6 +3,7 @@
 @use '../snippets/quantity';
 @use '../snippets/product-options-group';
 @use '../snippets/product-options-select';
+@use '../snippets/accordion';
 
 .template-product {
     border-top: 3px solid $brown_light;
@@ -12,7 +13,7 @@
 .template-product__wrapper {
     @include break_points($laptop, min) {
         display: grid;
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(2, 1fr);        
     }
 
     @include break_points($laptop) {
@@ -37,6 +38,7 @@
 .template-product__gallery-wrapper {
     @include break_points($laptop, min) {
         border-right: 3px solid $brown_light;
+        min-width: 0;
     }
 
     @include break_points($laptop) {
@@ -50,16 +52,18 @@
     &--mobile {
         background-color: $white;
 
-        @include break_points($laptop, min) {
-            display: none;
-        }
+        // @include break_points($laptop, min) {
+        //     display: none;
+        // }
 
         @include break_points($laptop, $tabletXl) {
             padding-bottom: 80px;
+            min-height: 480px;
         }
 
         @include break_points($tabletXl, $tablet) {
             padding-bottom: 75px;
+            min-height: 480px;
         }
 
         @include break_points($tablet) {
@@ -73,9 +77,9 @@
         grid-template-rows: auto;
         height: fit-content;
 
-        @include break_points($desktop, min) {
-            gap: 60px;
-        }
+        // @include break_points($desktop, min) {
+        //     gap: 60px;
+        // }
 
         @include break_points($desktop, $laptop) {
             gap: 30px;
@@ -170,7 +174,7 @@
     color: $black;
     background-color: $brown_light;
 
-    @include break_points($laptop, $tabletXl) {
+    @include break_points($tabletXl, min) {
         width: 50px;
         height: 50px;
     }

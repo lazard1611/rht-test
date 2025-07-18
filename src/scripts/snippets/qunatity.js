@@ -15,9 +15,9 @@ export const setButtonQuantityLogic = (buttonElement, callback = () => {
         if (!!(+valueElement.getAttribute("data-value") | undefined) && newValue === (+valueElement.getAttribute("data-value") | undefined)) changeElementClassByStatus(increaseElement, true, "disabled")
         changeElementClassByStatus(decreaseElement, false, "disabled")
 
-        console.log(+valueElement.getAttribute("data-value") | undefined);
-        console.log(valueElement.textContent);
-        console.log(valueElement.getAttribute('data-value'));
+        // console.log(+valueElement.getAttribute("data-value") | undefined);
+        // console.log(valueElement.textContent);
+        // console.log(valueElement.getAttribute('data-value'));
         
         
         valueElement.textContent = newValue
@@ -32,9 +32,9 @@ export const setButtonQuantityLogic = (buttonElement, callback = () => {
         if (blockDecreaseWhenZero) changeElementClassByStatus(decreaseElement, !(newValue - 1), "disabled")
         if (!!(+valueElement.getAttribute("data-value") | undefined) && newValue < (+valueElement.getAttribute("data-value") | undefined)) changeElementClassByStatus(increaseElement, false, "disabled")
 
-        console.log(+valueElement.getAttribute("data-value") | undefined);
-        console.log(valueElement.textContent);
-        console.log(valueElement.getAttribute('data-value'));
+        // console.log(+valueElement.getAttribute("data-value") | undefined);
+        // console.log(valueElement.textContent);
+        // console.log(valueElement.getAttribute('data-value'));
 
         valueElement.textContent = newValue || 1
         callback(newValue)

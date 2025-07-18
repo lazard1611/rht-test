@@ -36,6 +36,7 @@
   -webkit-user-select: none;
      -moz-user-select: none;
           user-select: none;
+  font-size: 20px;
 }
 .button-quantity__control-element:focus, .button-quantity__control-element:hover {
   background-color: #E1DACD;

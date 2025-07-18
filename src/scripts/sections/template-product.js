@@ -1,6 +1,7 @@
+import gsap from 'gsap';
 import '../../styles/sections/template-product.scss';
 import Swiper from "swiper";
-import {Pagination, Navigation} from "swiper/modules";
+import {Pagination, Navigation, EffectFade} from "swiper/modules";
 import productAnim from '../snippets/product-animation.js';
 
 import {setButtonQuantityLogic} from "../snippets/qunatity.js"
@@ -9,19 +10,28 @@ import {priceTransform} from "../utils/index.js"
 
 import {break_points} from "../utils/constants.js";
 import {buildFormData} from '../functions/buildFormData.js';
+import Accordion from '../snippets/accordion.js'; 
 
-let activeVariant
-let activeOptions
-let variants, newInventoryList = []
-let swiper
+let activeVariant;
+let activeOptions;
+let variants, newInventoryList = [];
+let swiper;
 
-let quantityButtonElement
+let quantityButtonElement;
+const colorObj = JSON.parse(window.colorObject);
 
 productAnim();
 
+
 const initSwiper = () => {
+    const swiperContainer = document.querySelector("[data-template-product-swiper]");
+    if (!swiperContainer) return;
+    const slidesPerViewTablet = parseInt(swiperContainer.dataset.slidesTablet || 2);
+    const slidesPerViewDesktop = parseInt(swiperContainer.dataset.slidesDesktop || 1);    
+    const slidesIndent = parseInt(swiperContainer.dataset.slidesIndent || 10);          
+    
     swiper = new Swiper("[data-template-product-swiper]", {
-            modules: [Pagination, Navigation],
+            modules: [Pagination, Navigation, EffectFade],
             slidesPerView: 1,
             spaceBetween: 30,
             navigation: {
@@ -34,12 +44,62 @@ const initSwiper = () => {
             },
             breakpoints: {
                 768: {
-                    slidesPerView: 2,
-                    spaceBetween: 25,
+                    slidesPerView: slidesPerViewTablet,
+                    spaceBetween: slidesIndent,
+                },
+                1200: {
+                    slidesPerView: slidesPerViewDesktop,
+                    spaceBetween: slidesIndent,
                 }
             }
         }
     )
+}
+
+const handleMediaVariant = (nameColor) => {        
+    const currentColorVariant = colorObj.find(item => item.title === nameColor);
+    if (!currentColorVariant) return;
+
+    if (typeof swiper !== 'undefined' && swiper.destroy) {
+        swiper.destroy(true, true);
+        swiper = null;        
+    }
+
+    const galleryContainers = document.querySelectorAll('.js-product-media');
+    if (!galleryContainers.length) return;    
+
+    galleryContainers.forEach((galleryContainer) => {
+        galleryContainer.innerHTML = '';
+
+        for (const imgUrl of currentColorVariant.images) {
+            const imgHTML = `
+                <img 
+                    class="template-product__gallery-image swiper-slide slide js-scale-fade-item"
+                    src="${imgUrl}" 
+                    alt=""
+                    width="auto"
+                    height="auto"
+                    loading="lazy"
+                >
+            `;
+            galleryContainer.insertAdjacentHTML('beforeend', imgHTML);        
+        }
+    })        
+
+    gsap.fromTo('.js-scale-fade-item',
+        {
+            autoAlpha: 0,
+            scale: 0.5,
+        },
+        {
+            duration: 0.3,
+            stagger: 0.1,
+            autoAlpha: 1,                          
+            scale: 1,            
+            ease: 'power1.out',
+    })
+    
+    setTimeout(() => initSwiper(), 200);
 }
 
 const updateBadges = () => {
@@ -93,13 +153,13 @@ const setSelectOptionsLogic = () => {
         const optionGroupPosition = selectElement.getAttribute("data-product-option-position")
 
         const onChangeActiveOption = (newActiveOptionElement) => {
-            const optionValue = newActiveOptionElement.getAttribute("data-product-option")
-
+            const optionValue = newActiveOptionElement.getAttribute("data-product-option")           
+            
             activeTitleElement.textContent = newActiveOptionElement.textContent
             optionElements.forEach((option) => option.textContent === newActiveOptionElement.textContent ? changeElementClassByClassContains(option, "active") : changeElementClassByStatus(option, false, "active"))
 
-            onChangeActiveVariant(optionGroupPosition, optionValue, window.localStorage.getItem("inventoryList").split(" | "))
-            changeElementClassByClassContains(selectElement, "active")
+            onChangeActiveVariant(optionGroupPosition, optionValue, window.localStorage.getItem("inventoryList").split(" | "));
+            changeElementClassByClassContains(selectElement, "active");
         }
 
         optionElements.forEach((option) => option.addEventListener(("click"), () => onChangeActiveOption(option, optionGroupPosition)))
@@ -120,7 +180,8 @@ const setGroupOptionsLogic = () => {
         const optionGroupPosition = groupOptionElement.getAttribute("data-product-option-position")
 
         const onChangeActiveOption = (newOptionIndex) => {
-            const optionValue = optionElements[newOptionIndex].getAttribute("data-product-option")
+            const optionValue = optionElements[newOptionIndex].getAttribute("data-product-option");            
+            handleMediaVariant(optionValue);
 
             optionElements.forEach((option, optionIndex) => changeElementClassByStatus(option, optionIndex === newOptionIndex, "active"))
             onChangeActiveVariant(optionGroupPosition, optionValue, window.localStorage.getItem("inventoryList").split(" | "))
@@ -257,7 +318,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
     activeOptions = activeVariant.options;
 
-    if (window.innerWidth <= break_points.mediaPoint0) initSwiper();
+    // if (window.innerWidth <= break_points.mediaPoint0) initSwiper();    
 
     setDetailsButtonLogic();
     setSelectOptionsLogic(window.localStorage.getItem("inventoryList").split(" | "));
@@ -268,8 +329,15 @@ window.addEventListener("DOMContentLoaded", () => {
         onUpdatePrice()
     })
 
-    window.addEventListener("resize", () => {
-        if (window.innerWidth >= break_points.mediaPoint0 && swiper) swiper.destroy()
-        else if (window.innerWidth <= break_points.mediaPoint0 && swiper?.destroyed || !swiper) initSwiper()
+    // window.addEventListener("resize", () => {
+    //     if (window.innerWidth >= break_points.mediaPoint0 && swiper) swiper.destroy()
+    //     else if (window.innerWidth <= break_points.mediaPoint0 && swiper?.destroyed || !swiper) initSwiper()
+    // });
+    // setTimeout(() => initSwiper, 100)
+    initSwiper();
+
+    const accordion = Accordion({
+        triggers: document.querySelectorAll('.accordion__head'),
+        activeStateName: 'accordion__item--active-mod',
     });
 });

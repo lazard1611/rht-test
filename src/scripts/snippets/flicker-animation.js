@@ -8,8 +8,7 @@ const SELECTORS = {
 }
 
 const flickerCircle = () => {
-    const $sections = document.querySelectorAll(SELECTORS.section);
-    console.log($sections);
+    const $sections = document.querySelectorAll(SELECTORS.section);  
     if (!$sections.length) return;
 
     gsap.registerPlugin(ScrollTrigger);

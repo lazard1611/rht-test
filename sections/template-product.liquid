@@ -2,6 +2,8 @@
 
 {% assign selectCollection = "" %}
 {% assign inventoryList = "" %}
+{% assign variant_data = '' %}
+{%- assign slide_number = section.settings.slide_number -%}
 
 {% for collection in product.collections %}
     {% unless collection.handle contains "all" or collection.handle contains "sale" %}
@@ -16,11 +18,35 @@
 
 {% for variant in product.variants %}
     {% if variant.inventory_policy == "deny" %}
-        {% assign inventoryList = inventoryList | append: variant.inventory_quantity | append: " | " %}
+        {% assign inventoryList = inventoryList | append: variant.inventory_quantity | append: " | " %}        
     {% else %}
         {% assign inventoryList = inventoryList | append: "undefined" | append: " | " %}
     {% endif %}
+
+    {% assign variant_images = variant.metafields.custom.additional_images.value %}
+    {% assign color = variant.options[0] %} 
+    {% assign variant_json = '{"title":"' | append: color | append: '","images":[' %}
+    {% if variant_images %}
+        {% for image in variant_images %}
+        {% assign image_url = image | img_url: 'large' %}
+        {% assign variant_json = variant_json | append: '"' | append: image_url | append: '"' %}
+        {% unless forloop.last %}
+            {% assign variant_json = variant_json | append: ',' %}
+        {% endunless %}
+        {% endfor %}
+    {% endif %}
+    {% assign variant_json = variant_json | append: ']}' %}
+    {% if forloop.first %}
+        {% assign variant_data = variant_json %}
+    {% else %}
+        {% assign variant_data = variant_data | append: ',' | append: variant_json %}
+    {% endif %}
 {% endfor %}
+
+{% assign json_output = '[' | append: variant_data | append: ']' %}
+
+{% assign current_variant = product.selected_or_first_available_variant %}
+{% assign variant_images = current_variant.metafields.custom.additional_images.value %} 
 
 <script>
     window.localStorage.setItem("activeVariant", '{{ product.first_available_variant | json }}')
@@ -29,46 +55,104 @@
 
     window.localStorage.setItem("cartButtonTitle", '{{ section.settings.cart_button_title }}')
     window.localStorage.setItem("cartButtonSuccessTitle", '{{ section.settings.cart_button_success_title }}')
+    window.colorObject = {{ json_output | json }};
 </script>
+
+<style>
+    @media screen and (min-width: 1440px) {
+        .template-product__gallery--desktop {
+            gap: {{ section.settings.grid_indent }}px;
+        }
+    }
+</style>
+
+{%- if section.settings.show_navigation -%}
+    <style>
+        @media screen and (min-width: 1200px) {
+            .template-product__gallery--desktop {
+                display: none;
+            }
+        }
+    </style>
+{%- else -%}
+    <style>
+        @media screen and (min-width: 1200px) {
+            .template-product__gallery--mobile {
+                display: none;
+            }
+        }
+    </style>
+{%- endif -%}
 
 
 {% form 'product', product, class: 'template-product__wrapper page_wrap page_wrap--border page_wrap--without-paddings' %}
     <div class="template-product__gallery-wrapper js-product-animation">
-        <div class="template-product__gallery template-product__gallery--mobile swiper" data-template-product-swiper>
-            <div class="swiper-wrapper ">
-                {% for image in product.media limit: 10 %}
+        <div class="template-product__gallery template-product__gallery--mobile swiper"
+            data-template-product-swiper
+            data-slides-desktop="{{ section.settings.slides_per_view_desktop }}"
+            data-slides-tablet="{{ section.settings.slides_per_view_tablet }}"
+            data-slides-indent="{{ section.settings.slide_indent }}"            
+        >
+            <div class="swiper-wrapper js-product-media">
+
+            {% if variant_images.count > 0 %}
+                {% for image in variant_images %}
+                    <img 
+                    class="template-product__gallery-image swiper-slide slide js-scale-fade-item"
+                    src="{{ image | image_url }}"
+                    alt="{{ product.title }} - {{ current_variant.title }}"
+                    width="auto"
+                    height="auto"
+                    loading="lazy"
+                    >                    
+                {% endfor %}
+            {% else %}            
+                {% for image in product.media %}                    
                     <img 
                         class="template-product__gallery-image swiper-slide slide js-scale-fade-item"
                         src="{{ image | image_url }}"
                         alt=""
                         width="auto"
                         height="auto"
-                        loading="lazy"
+                        loading="lazy"                    
                     >
                 {% endfor %}
+            {% endif %}               
             </div>
 
             <div class="template-product__navigation">
                 {% render "buttons", class: "template-product__button-prev swiper-button-prev", filename: "arrow_left", icon: true %}
                 {% render "buttons", class: "template-product__button-next swiper-button-next", filename: "arrow_right", icon: true %}
 
-                <div class="template-product__swiper-pagination swiper-pagination"></div>
+                {%- if section.settings.show_pagination -%}                    
+                    <div class="template-product__swiper-pagination swiper-pagination"></div>
+                {%- endif -%}
             </div>
         </div>
 
-        <div class="template-product__gallery template-product__gallery--desktop">
-            {% for image in product.media %}
-                <div class="template-product__gallery-image-wrapper">
+        <div class="template-product__gallery template-product__gallery--desktop js-product-media">                                 
+            
+            {% if variant_images.count > 0 %}
+                {% for image in variant_images %}
                     <img 
-                        class="template-product__gallery-image js-scale-fade-item"
-                        src="{{ image | image_url }}"
-                        alt=""
-                        width="auto"
-                        height="auto"
-                        loading="lazy"
-                    >
-                </div>
-            {% endfor %}
+                    class="template-product__gallery-image js-scale-fade-item"
+                    src="{{ image | image_url }}"
+                    alt="{{ product.title }} - {{ current_variant.title }}"
+                    width="auto"
+                    height="auto"
+                    loading="lazy"
+                    >                    
+                {% endfor %}
+            {% else %}            
+                <img 
+                width="auto"
+                height="auto"
+                loading="lazy"
+                src="{{ current_variant.image }}"
+                alt="{{ product.title }} - {{ current_variant.title }}"
+                >
+            {% endif %}
+
         </div>
     </div>
 
@@ -135,7 +219,7 @@
 
                             {% if option_group_downcase_name != blank and option_group_downcase_name != "title" %}
                                 {% render "product-options-group", option_group: option_group %}
-                                {% render "product-options-select", option_group: option_group %}
+                                {% comment %} {% render "product-options-select", option_group: option_group %} {% endcomment %}
                             {% endif %}
                         {% endfor %}
                     </div>
@@ -146,6 +230,33 @@
                     {% render "buttons", title: section.settings.cart_button_title, mobile_title: section.settings.cart_button_title_mobile, class: "template-product__cart-button btn_base_small", attribute: "data-template-product-cart-button" %}
                     {% render "buttons", class: "template-product__wishlist-button btn_icon", icon: true, filename: "heart" %}
                 </div>
+
+                {%- if product.metafields.custom.faq.value.count > 0  -%}                    
+                    <div class="template-product__faq">                        
+                        <ul class="accordion js-accordion" data-mod-open={{ section.settings.open_accordion_mod }}>
+                            {%- for item in product.metafields.custom.faq.value -%}
+                                {%- if item.description != blank -%}
+                                    {%- if item.open_by_default -%}                                 
+                                        {%- assign active_faq = 'accordion__item--active-mod' -%}
+                                    {%- else -%}
+                                        {%- assign active_faq = '' -%}                                        
+                                    {%- endif -%}
+
+                                    <li class="accordion__item js-fade {{ active_faq }}">
+                                        <button type="button" class="accordion__head">
+                                            <span class="accordion__title">{{ item.title.value }}</span>
+                                            <span class="accordion__decor"></span>
+                                        </button>
+                                        <div class="accordion__body" style="">
+                                            <div class="accordion__text">{{ item.description |  metafield_tag }}</div>
+                                        </div>
+                                    </li>
+                                {%- endif -%}                                  
+                            {%- endfor -%}                                                                                                
+                        </ul>
+                    </div>
+                {%- endif -%}
+                
             </div>
 
             <div class="template-product__content-block">
@@ -170,6 +281,71 @@
     "class": "template-product",
     "tag": "section",
     "settings": [
+        {
+            "type": "header",
+            "content": "Media"
+        },
+        {
+            "type": "range",
+            "id": "img_number",
+            "min": 1,
+            "max": 5,
+            "step": 1,            
+            "label": "Grid image number",
+            "default": 4
+        },
+        {
+            "type": "range",
+            "id": "grid_indent",
+            "min": 5,
+            "max": 60,
+            "step": 5,            
+            "label": "Grid indent",
+            "default": 40
+        },
+        {
+            "type": "range",
+            "id": "slides_per_view_desktop",
+            "min": 1,
+            "max": 3,
+            "step": 1,
+            "label": "Slides per view (desktop)",
+            "default": 1
+        },
+        {
+            "type": "range",
+            "id": "slides_per_view_tablet",
+            "min": 1,
+            "max": 3,
+            "step": 1,
+            "label": "Slides per view (tablet)",
+            "default": 2
+        },
+        {
+            "type": "range",
+            "id": "slide_indent",
+            "min": 5,
+            "max": 50,
+            "step": 1,            
+            "label": "Slide indent",
+            "default": 10
+        },
+        {
+            "type": "checkbox",
+            "id": "show_navigation",
+            "label": "Show navigation (active slider on desktop)",
+            "default": true
+        },
+        {
+            "type": "checkbox",
+            "id": "show_pagination",
+            "label": "Show pagination",
+            "default": true
+        },        
+        {
+            "type": "header",
+            "content": "Content"
+        },
         {
             "type": "text",
             "id": "default_delivery_time",
@@ -205,6 +381,12 @@
             "id": "read_more_button_title",
             "label": "Read more button title",
             "default": "Lees meer"
+        },
+        {
+            "type": "checkbox",
+            "id": "open_accordion_mod",
+            "label": "Open only one accordion",
+            "default": true
         }
     ],
     "presets": [
