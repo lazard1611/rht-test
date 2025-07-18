@@ -228,7 +228,7 @@
                 <div class="template-product__buttons js-fade">
                     {% render "quantity", class: "template-product__quantity-button", default_value: 1, max: product.first_available_variant.inventory_quantity %}
                     {% render "buttons", title: section.settings.cart_button_title, mobile_title: section.settings.cart_button_title_mobile, class: "template-product__cart-button btn_base_small", attribute: "data-template-product-cart-button" %}
-                    {% render "buttons", class: "template-product__wishlist-button btn_icon", icon: true, filename: "heart" %}
+                    {% comment %} {% render "buttons", class: "template-product__wishlist-button btn_icon", icon: true, filename: "heart" %} {% endcomment %}
                 </div>
 
                 {%- if product.metafields.custom.faq.value.count > 0  -%}                    

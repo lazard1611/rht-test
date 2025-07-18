@@ -1,17 +1,36 @@
-{
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+ {
   "sections": {
     "template_product_7nr9MQ": {
       "type": "template-product",
       "settings": {
+        "img_number": 4,
+        "grid_indent": 40,
+        "slides_per_view_desktop": 1,
+        "slides_per_view_tablet": 2,
+        "slide_indent": 35,
+        "show_navigation": false,
+        "show_pagination": true,
         "default_delivery_time": "levertijd 12-14 weken",
         "cart_button_title": "Toevoegen aan winkelwagen",
+        "cart_button_title_mobile": "Toevoegen",
         "cart_button_success_title": "Product toegevoegd",
         "read_more_title": "Productgegevens",
-        "read_more_button_title": "Lees meer"
+        "read_more_button_title": "Lees meer",
+        "open_accordion_mod": true
       }
     },
     "template_product_details_tWAqK8": {
       "type": "template-product-details",
+      "disabled": true,
       "settings": {
         "padding_top": 100,
         "padding_bottom": 85,
@@ -29,6 +48,7 @@
     },
     "template_related_products_G4Tdbh": {
       "type": "template-related-products",
+      "disabled": true,
       "settings": {
         "padding_top": 110,
         "padding_bottom": 35,
@@ -41,12 +61,13 @@
         "description": "Verlicht uw ruimte met onze prachtige verlichtingscollectie. Van strakke moderne armaturen tot tijdloze klassiekers, ontdek verlichtingsoplossingen die elke hoek van uw huis of kantoor verbeteren.",
         "button_title": "Bekijk onze producten",
         "button_title_mob": "Bekijk producten",
-        "button_url": "shopify:\/\/pages\/contact",
+        "button_url": "shopify://pages/contact",
         "collection": "all"
       }
     },
     "template_product_faq_z7ax6F": {
       "type": "template-product-faq",
+      "disabled": true,
       "settings": {
         "padding_top": 110,
         "padding_bottom": 35,
@@ -58,48 +79,7 @@
         "title": "FAQ",
         "description": "",
         "button_title": "",
-        "button_url": "",
-        "faq_image": "shopify:\/\/shop_images\/social-media-3.jpg"
-      }
-    },
-    "template_our_projects_9pp3AK": {
-      "type": "template-related-projects",
-      "blocks": {
-        "project_PW4mRJ": {
-          "type": "project",
-          "settings": {
-            "project": "news\/our-latest-project",
-            "image": "shopify:\/\/shop_images\/image_33.webp",
-            "title": "Badkamer renovatie",
-            "description": "Ontwerpgebied met marmer en een houten gemaakt."
-          }
-        },
-        "project_VKAfjw": {
-          "type": "project",
-          "settings": {
-            "project": "news\/our-latest-project",
-            "image": "shopify:\/\/shop_images\/ff095bd33dc5eee0f586f4a23878eb57.webp",
-            "title": "Keuken",
-            "description": "Ontwerpgebied met op maat gemaakte kasten en een houten."
-          }
-        }
-      },
-      "block_order": [
-        "project_PW4mRJ",
-        "project_VKAfjw"
-      ],
-      "settings": {
-        "padding_top": 110,
-        "padding_bottom": 40,
-        "padding_top_mobile": 35,
-        "padding_bottom_mobile": 25,
-        "section_horizontal_borders": "bottom",
-        "title_limits": "true",
-        "button_color": "btn_base",
-        "title": "uitgelichte projecten",
-        "description": "",
-        "button_title": "Bekijk onze projecten",
-        "button_url": "shopify:\/\/pages\/contact"
+        "button_url": ""
       }
     }
   },
@@ -107,7 +87,6 @@
     "template_product_7nr9MQ",
     "template_product_details_tWAqK8",
     "template_related_products_G4Tdbh",
-    "template_product_faq_z7ax6F",
-    "template_our_projects_9pp3AK"
+    "template_product_faq_z7ax6F"
   ]
 }

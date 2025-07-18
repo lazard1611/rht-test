@@ -663,7 +663,7 @@
 }
 @media screen and (min-width: 1200px) {
   .template-product__buttons {
-    grid-template-columns: 28% auto 48px;
+    grid-template-columns: 28% auto;
   }
 }
 @media screen and (max-width: 1199px) {
@@ -675,10 +675,7 @@
     grid-column: 1/3;
   }
   .template-product__buttons .template-product__cart-button {
-    grid-column: 1/2;
-  }
-  .template-product__buttons .template-product__wishlist-button {
-    grid-column: 2/3;
+    grid-column: 1/3;
   }
 }
 
