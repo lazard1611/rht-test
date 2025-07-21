@@ -7,7 +7,7 @@
  * made to this file may be overwritten.
  * ------------------------------------------------------------
  */
- {
+{
   "sections": {
     "template_product_7nr9MQ": {
       "type": "template-product",
@@ -17,7 +17,7 @@
         "slides_per_view_desktop": 1,
         "slides_per_view_tablet": 2,
         "slide_indent": 35,
-        "show_navigation": false,
+        "show_navigation": true,
         "show_pagination": true,
         "default_delivery_time": "levertijd 12-14 weken",
         "cart_button_title": "Toevoegen aan winkelwagen",
