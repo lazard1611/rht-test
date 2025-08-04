@@ -1,5 +1,18 @@
+<<<<<<< HEAD
 
  {
+=======
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+>>>>>>> e99839d417382ad7da009d20ef445e2fcb13378a
   "sections": {
     "template_product_7nr9MQ": {
       "type": "template-product",
