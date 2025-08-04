@@ -75,7 +75,9 @@ const handleMediaVariant = (nameColor) => {
             `;
             galleryContainer.insertAdjacentHTML('beforeend', imgHTML);        
         }
-    })        
+    })
+    
+    setTimeout(() => initSwiper(), 200);
 
     gsap.fromTo('.js-scale-fade-item',
         {
@@ -85,12 +87,11 @@ const handleMediaVariant = (nameColor) => {
         {
             duration: 0.3,
             stagger: 0.1,
+            delay: 0.2,
             autoAlpha: 1,                          
             scale: 1,            
             ease: 'power1.out',
-    })
-    
-    setTimeout(() => initSwiper(), 200);
+    })   
 }
 
 const updateBadges = () => {

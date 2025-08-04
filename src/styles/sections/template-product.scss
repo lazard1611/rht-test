@@ -191,6 +191,7 @@
     min-width: 70%;
     translate: -50%;
 
+
     @include break_points($laptop, $tabletXl) {
         bottom: 22px !important;
     }
@@ -215,14 +216,7 @@
     width: 100%;
     object-fit: cover;
     object-position: center;
-
-    @include break_points($laptop, min) {
-        height: 100%;
-    }
-
-    @include break_points($laptop) {
-        height: auto;
-    }
+    aspect-ratio: 1;   
 }
 
 .template-product__content-track {

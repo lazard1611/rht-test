@@ -1,24 +1,23 @@
-/*
- * ------------------------------------------------------------
- * IMPORTANT: The contents of this file are auto-generated.
- *
- * This file may be updated by the Shopify admin theme editor
- * or related systems. Please exercise caution as any changes
- * made to this file may be overwritten.
- * ------------------------------------------------------------
- */
+
  {
   "sections": {
     "template_product_7nr9MQ": {
       "type": "template-product",
       "settings": {
-        "img_number": 4,
-        "grid_indent": 40,
-        "slides_per_view_desktop": 1,
-        "slides_per_view_tablet": 2,
-        "slide_indent": 35,
-        "show_navigation": false,
-        "show_pagination": true,
+        "show_grid": false,
+        "grid_img_number": 3,
+        "slides_view_desktop": 1,
+        "show_pagination_desktop": true,
+        "show_navigation_desktop": true,
+        "slide_indent_desktop": 26,
+        "slides_view_tablet": 2,
+        "show_pagination_tablet": true,
+        "show_navigation_tablet": true,
+        "slide_indent_tablet": 30,
+        "slide_view_mobile": 1,
+        "show_pagination_mobile": true,
+        "show_navigation_mobile": true,
+        "slide_indent_mobile": 15,
         "default_delivery_time": "levertijd 12-14 weken",
         "cart_button_title": "Toevoegen aan winkelwagen",
         "cart_button_title_mobile": "Toevoegen",

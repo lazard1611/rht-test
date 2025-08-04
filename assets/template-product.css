@@ -434,16 +434,7 @@
      object-fit: cover;
   -o-object-position: center;
      object-position: center;
-}
-@media screen and (min-width: 1200px) {
-  .template-product__gallery-image {
-    height: 100%;
-  }
-}
-@media screen and (max-width: 1199px) {
-  .template-product__gallery-image {
-    height: auto;
-  }
+  aspect-ratio: 1;
 }
 
 .template-product__content-track {
