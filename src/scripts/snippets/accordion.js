@@ -41,8 +41,7 @@ const Accordion = ({ triggers, activeStateName }) => {
 	const openAccordion = ($parentEl, $nextElementSibling) => {
 		setTimeout(() => {
             if (openMod == 'true') {
-                closeAllAccordion();
-                console.log('OPEN mod', openMod);
+                closeAllAccordion();                
             }
 
 			$parentEl.classList.add(activeStateName);

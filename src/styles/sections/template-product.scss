@@ -21,17 +21,21 @@
 }
 
 .template-product__gallery,
-.template-product__content-block {
-    @include break_points($desktop, min) {
-        padding: 35px;
-    }
+.template-product__content-block {   
 
-    @include break_points($desktop, $tablet) {
+    @include break_points($tablet, min) {
         padding: 35px 25px;
     }
 
     @include break_points($tablet) {
         padding: 35px 15px;
+    }
+}
+
+.template-product__gallery {
+    @include break_points($laptop, min) {
+        position: sticky;
+        top: var(--heigth-header);       
     }
 }
 
@@ -49,45 +53,28 @@
 .template-product__gallery {
     max-width: 100%;
 
-    &--mobile {
-        background-color: $white;
+    &--slider {
+        background-color: $white;       
 
-        // @include break_points($laptop, min) {
-        //     display: none;
+        // @include break_points($laptop, $tabletXl) {
+        //     padding-bottom: 80px;            
         // }
 
-        @include break_points($laptop, $tabletXl) {
-            padding-bottom: 80px;
-            min-height: 480px;
-        }
+        // @include break_points($tabletXl, $tablet) {
+        //     padding-bottom: 75px;            
+        // }
 
-        @include break_points($tabletXl, $tablet) {
-            padding-bottom: 75px;
-            min-height: 480px;
-        }
-
-        @include break_points($tablet) {
-            padding-bottom: 70px;
-        }
+        // @include break_points($tablet) {
+        //     padding-bottom: 70px;
+        // }
     }
 
-    &--desktop {
+    &--grid {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
         grid-template-rows: auto;
         height: fit-content;
-
-        // @include break_points($desktop, min) {
-        //     gap: 60px;
-        // }
-
-        @include break_points($desktop, $laptop) {
-            gap: 30px;
-        }
-
-        @include break_points($laptop) {
-            display: none;
-        }
+        gap: 30px;        
 
         .template-product__gallery-image-wrapper {
             &:nth-child(5n - 4),

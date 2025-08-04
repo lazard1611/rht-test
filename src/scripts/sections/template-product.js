@@ -22,13 +22,9 @@ const colorObj = JSON.parse(window.colorObject);
 
 productAnim();
 
-
 const initSwiper = () => {
     const swiperContainer = document.querySelector("[data-template-product-swiper]");
-    if (!swiperContainer) return;
-    const slidesPerViewTablet = parseInt(swiperContainer.dataset.slidesTablet || 2);
-    const slidesPerViewDesktop = parseInt(swiperContainer.dataset.slidesDesktop || 1);    
-    const slidesIndent = parseInt(swiperContainer.dataset.slidesIndent || 10);          
+    if (!swiperContainer) return;    
     
     swiper = new Swiper("[data-template-product-swiper]", {
             modules: [Pagination, Navigation, EffectFade],
@@ -36,21 +32,16 @@ const initSwiper = () => {
             spaceBetween: 30,
             navigation: {
                 nextEl: ".swiper-button-next",
-                prevEl: ".swiper-button-prev",
-            },
-            pagination: {
-                el: ".swiper-pagination",
-                type: "bullets",
-            },
+                prevEl: ".swiper-button-prev",                
+            }, 
+            pagination: {                
+                clickable: true,
+                type: "bullets"
+            },           
             breakpoints: {
-                768: {
-                    slidesPerView: slidesPerViewTablet,
-                    spaceBetween: slidesIndent,
-                },
-                1200: {
-                    slidesPerView: slidesPerViewDesktop,
-                    spaceBetween: slidesIndent,
-                }
+                0: window.mobileSettings,
+                768: window.tabletSettings,
+                1200:  window.desktopSettings
             }
         }
     )
