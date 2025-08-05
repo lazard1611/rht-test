@@ -189,20 +189,8 @@
     left: 50% !important;
     width: fit-content !important;
     min-width: 70%;
-    translate: -50%;
-
-
-    @include break_points($laptop, $tabletXl) {
-        bottom: 22px !important;
-    }
-
-    @include break_points($tabletXl, $tablet) {
-        bottom: 22px !important;
-    }
-
-    @include break_points($tablet) {
-        bottom: 22px !important;
-    }
+    transform: translateX(-50%)!important;
+    bottom: 22px !important;   
 
     .swiper-pagination-bullet {
         top: unset !important;
@@ -417,6 +405,11 @@
         //     grid-column: 2/3;
         // }
     }
+}
+
+.swiper-button-prev.swiper-button-disabled,
+.swiper-button-next.swiper-button-disabled {
+    opacity: 0.35!important;    
 }
 
 .template-product__cart-button {
