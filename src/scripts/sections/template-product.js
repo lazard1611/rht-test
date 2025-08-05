@@ -77,7 +77,8 @@ const handleMediaVariant = (nameColor) => {
         }
     })
     
-    setTimeout(() => initSwiper(), 200);
+    // setTimeout(() => initSwiper(), 200);
+    initSwiper();
 
     gsap.fromTo('.js-scale-fade-item',
         {
